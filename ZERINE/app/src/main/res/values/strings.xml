@@ -13,4 +13,7 @@
     <string name="Login_button">Login</string>
     <string name="TB_username">Username</string>
     <string name="TB_password">Password</string>
+    <string name="WS_btnLogin">Login</string>
+    <string name="WS_btnRegister">Register</string>
+    <string name="WS_WelcomeLabel">Welcome to Zerine</string>
 </resources>

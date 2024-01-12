@@ -51,7 +51,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btn_Login"
+        android:id="@+id/LogScreen_btn_Login"
         android:layout_width="183dp"
         android:layout_height="50dp"
         android:layout_marginTop="492dp"
@@ -93,7 +93,7 @@
         android:fontFamily="@font/orbitron"
         android:text="@string/label_password"
         android:textColor="#1B0404"
-        android:textSize="18dp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
