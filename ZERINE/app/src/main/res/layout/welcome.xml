@@ -39,7 +39,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="243dp"
         android:layout_marginBottom="445dp"
-        android:fontFamily="sans-serif-black"
         android:fontFamily="@font/orbitron"
         android:text="@string/WelcomeTitle"
         android:textColor="#020000"
