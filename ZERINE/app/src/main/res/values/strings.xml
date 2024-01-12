@@ -6,4 +6,11 @@
     <string name="title_settings">Settings</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="WelcomeTitle">Welcome to Zerine</string>
+    <string name="Label_username">USERNAME</string>
+    <string name="label_password">PASSWORD</string>
+    <string name="image_ZerineLogo">ZerineLogo</string>
+    <string name="Login_button">Login</string>
+    <string name="TB_username">Username</string>
+    <string name="TB_password">Password</string>
 </resources>
