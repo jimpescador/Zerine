@@ -94,7 +94,7 @@
         android:fontFamily="@font/orbitron"
         android:text="@string/label_password"
         android:textColor="#1B0404"
-        android:textSize="18"
+        android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
