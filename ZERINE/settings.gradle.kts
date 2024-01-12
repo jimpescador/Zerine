@@ -11,7 +11,7 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
     }
-    //Hello world 1
+
 }
 
 rootProject.name = "ZERINE"
