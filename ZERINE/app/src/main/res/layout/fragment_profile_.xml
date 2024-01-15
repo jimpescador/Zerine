@@ -6,37 +6,153 @@
     android:layout_height="match_parent"
     android:background="?attr/colorPrimaryVariant"
     tools:context=".home_Fragment">
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="419dp"
         android:layout_height="71dp"
+        android:layout_marginBottom="660dp"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="match_parent"
         android:layout_height="69dp"
-        android:src="@drawable/logo" />
+        android:layout_marginBottom="662dp"
+        android:src="@drawable/logo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView8"
         android:layout_width="71dp"
         android:layout_height="45dp"
-        android:layout_gravity="right"
-        android:
+        android:layout_gravity="end"
+        android:layout_marginStart="340dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="670dp"
+        android:fontFamily="@font/orbitron"
         android:src="@drawable/exit"
-        tools:layout_editor_absoluteX="340dp"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="138dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="118dp"
+        android:layout_marginBottom="473dp"
+        android:src="@drawable/baseline_account_circle_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="296dp"
+        android:layout_marginBottom="409dp"
+        android:fontFamily="@font/orbitron"
+        android:text="EDIT PROFILE"
+        android:textColor="#070000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="368dp"
+        android:layout_marginBottom="337dp"
+        android:fontFamily="@font/orbitron"
+        android:text="Name"
+        android:textColor="#0B0101"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.123"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="140dp"
+        android:layout_height="98dp"
+        android:layout_marginTop="435dp"
+        android:layout_marginBottom="198dp"
+        android:fontFamily="@font/orbitron"
+        android:text="Emergency Contact No."
+        android:textColor="#1B0303"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.11"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextText2"
+        android:layout_width="217dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="368dp"
+        android:layout_marginBottom="328dp"
+        android:background="@drawable/rounded_editbox"
+        android:ems="10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.788"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextText7"
+        android:layout_width="217dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="435dp"
+        android:layout_marginBottom="261dp"
+        android:background="@drawable/rounded_editbox"
+        android:ems="10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.788"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_USER_rec"
+        android:layout_width="282dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="533dp"
+        android:layout_marginBottom="48dp"
+        android:background="@drawable/box"
+        android:fontFamily="@font/orbitron"
+
+        android:text="USER RECORD"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <!-- TODO: Update blank fragment layout -->
-
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
