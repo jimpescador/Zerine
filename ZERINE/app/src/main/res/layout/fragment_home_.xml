@@ -27,13 +27,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <ImageView
         android:id="@+id/imageView8"
         android:layout_width="71dp"
         android:layout_height="45dp"
-        android:layout_gravity="right"
+        android:layout_gravity="end"
 
         android:layout_marginStart="341dp"
         android:layout_marginTop="16dp"
@@ -89,7 +90,7 @@
         android:layout_marginEnd="240dp"
         android:layout_marginBottom="569dp"
         android:fontFamily="@font/orbitron"
-        android:text="BPM"
+        android:text="@string/bpm"
         android:textColor="#FF0000"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -106,7 +107,7 @@
         android:layout_marginEnd="195dp"
         android:layout_marginBottom="459dp"
         android:fontFamily="@font/orbitron"
-        android:text="Oxygen Level"
+        android:text="@string/oxygen_level"
         android:textColor="#0B0000"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -167,7 +168,7 @@
         android:layout_marginEnd="94dp"
         android:layout_marginBottom="277dp"
         android:fontFamily="@font/orbitron"
-        android:text="Epilepsy Slides"
+        android:text="@string/epilepsy_slides"
         android:textColor="#090000"
         android:textSize="20sp"
         android:textStyle="bold"
