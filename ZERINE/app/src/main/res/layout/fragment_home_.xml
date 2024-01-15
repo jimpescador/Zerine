@@ -7,27 +7,6 @@
     android:background="?attr/colorPrimaryVariant"
     tools:context=".home_Fragment">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="327dp"
-        android:layout_height="169dp"
-        app:cardBackgroundColor="#f6b2eb"
-        app:cardCornerRadius="50dp"
-        app:cardElevation="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="132dp" />
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="331dp"
-        android:layout_height="238dp"
-        app:cardBackgroundColor="#f6b2eb"
-        app:cardCornerRadius="50dp"
-        app:cardElevation="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="424dp" >
-
-    </androidx.cardview.widget.CardView>
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -55,13 +34,101 @@
         tools:layout_editor_absoluteX="340dp"
         tools:layout_editor_absoluteY="16dp" />
 
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="312dp"
+        android:layout_height="207dp"
+        android:src="@drawable/box"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="121dp" />
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="75dp"
+        android:layout_height="108dp"
+        android:src="@drawable/electrocardiogram__1_"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.267"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="121dp" />
+
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="81dp"
+        android:layout_height="126dp"
+        android:src="@drawable/oxygen_saturation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.272"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="213dp" />
+
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="176dp"
-        tools:layout_editor_absoluteY="397dp" />
+        android:fontFamily="@font/orbitron"
+        android:text="BPM"
+        android:textColor="#FF0000"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="135dp"
+        tools:layout_editor_absoluteY="144dp" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="73dp"
+        android:layout_height="43dp"
+        android:fontFamily="@font/orbitron"
+        android:text="Oxygen Level"
+        android:textColor="#0B0000"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="143dp"
+        tools:layout_editor_absoluteY="229dp" />
+
+    <EditText
+        android:id="@+id/BPM_value_edittext"
+        android:layout_width="108dp"
+        android:layout_height="46dp"
+        android:background="@drawable/box"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.765"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="144dp" />
+
+    <EditText
+        android:id="@+id/O2_value_edittext"
+        android:layout_width="108dp"
+        android:layout_height="46dp"
+        android:background="@drawable/box"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.765"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="246dp" />
+
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="318dp"
+        android:layout_height="262dp"
+        android:src="@drawable/box"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="405dp" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="189dp"
+        android:layout_height="32dp"
+        android:fontFamily="@font/orbitron"
+        android:text="Epilepsy Slides"
+        android:textColor="#090000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="128dp"
+        tools:layout_editor_absoluteY="422dp" />
 
 
     <!-- TODO: Update blank fragment layout -->
