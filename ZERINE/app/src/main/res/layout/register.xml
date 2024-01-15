@@ -9,144 +9,214 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="419dp"
+        android:layout_width="409dp"
         android:layout_height="71dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="660dp"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar2"
         android:layout_width="412dp"
         android:layout_height="58dp"
+        android:layout_marginTop="672dp"
+        android:layout_marginBottom="1dp"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="672dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="74dp"
+        android:layout_marginTop="33dp"
+        android:layout_marginEnd="73dp"
+        android:layout_marginBottom="26dp"
         android:fontFamily="@font/orbitron"
         android:text="Create Account"
         android:textColor="#000000"
         android:textSize="30sp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="73dp"
-        tools:layout_editor_absoluteY="105dp" />
+        app:layout_constraintBottom_toTopOf="@+id/editTextText3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="70dp"
         android:layout_height="72dp"
-        app:srcCompat="@drawable/logo"
-        tools:layout_editor_absoluteX="170dp"
-        tools:layout_editor_absoluteY="-1dp" />
+        android:layout_marginStart="170dp"
+        android:layout_marginEnd="171dp"
+        android:layout_marginBottom="659dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="175dp"
+        android:layout_marginEnd="268dp"
+        android:layout_marginBottom="530dp"
         android:fontFamily="@font/orbitron"
         android:text="Username"
         android:textColor="#190000"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="27dp"
-        tools:layout_editor_absoluteY="175dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="245dp"
+        android:layout_marginEnd="268dp"
+        android:layout_marginBottom="460dp"
         android:fontFamily="@font/orbitron"
         android:text="Password"
         android:textColor="#020000"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
-        tools:layout_editor_absoluteX="27dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginStart="27dp"
 
+        android:layout_marginTop="331dp"
+        android:layout_marginEnd="324dp"
+        android:layout_marginBottom="374dp"
         android:fontFamily="@font/orbitron"
         android:text="Email"
         android:textColor="#000000"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
-        tools:layout_editor_absoluteX="27dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="387dp"
+        android:layout_marginEnd="324dp"
+        android:layout_marginBottom="318dp"
         android:fontFamily="@font/orbitron"
         android:text="Code"
         android:textColor="#0E0000"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="29dp"
-        tools:layout_editor_absoluteY="387dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextText3"
         android:layout_width="220dp"
         android:layout_height="42dp"
+        android:layout_marginStart="20dp"
+
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="26dp"
         android:background="@drawable/rounded_editbox"
         android:ems="10"
-
         android:inputType="text"
-        tools:layout_editor_absoluteX="163dp"
-        tools:layout_editor_absoluteY="168dp" />
+        app:layout_constraintBottom_toTopOf="@+id/editTextText6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/editTextText4"
         android:layout_width="220dp"
         android:layout_height="42dp"
+        android:layout_marginStart="163dp"
+        android:layout_marginTop="323dp"
+
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="366dp"
         android:background="@drawable/rounded_editbox"
         android:ems="10"
-
         android:inputType="text"
-        tools:layout_editor_absoluteX="163dp"
-        tools:layout_editor_absoluteY="323dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextText6"
         android:layout_width="220dp"
         android:layout_height="42dp"
+        android:layout_marginStart="163dp"
+        android:layout_marginTop="236dp"
+
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="453dp"
         android:background="@drawable/rounded_editbox"
         android:ems="10"
-
         android:inputType="text"
-        tools:layout_editor_absoluteX="163dp"
-        tools:layout_editor_absoluteY="236dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextText5"
         android:layout_width="220dp"
         android:layout_height="42dp"
+        android:layout_marginStart="163dp"
+        android:layout_marginTop="380dp"
+
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="309dp"
         android:background="@drawable/rounded_editbox"
         android:ems="10"
-
         android:inputType="text"
-        tools:layout_editor_absoluteX="163dp"
-        tools:layout_editor_absoluteY="380dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="183dp"
         android:layout_height="50dp"
+        android:layout_marginTop="510dp"
+        android:layout_marginBottom="171dp"
         android:background="@drawable/round"
         android:text="Register"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="510dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

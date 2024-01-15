@@ -6,37 +6,176 @@
     android:layout_height="match_parent"
     android:background="?attr/colorPrimaryVariant"
     tools:context=".home_Fragment">
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="419dp"
         android:layout_height="71dp"
+        android:layout_marginBottom="660dp"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="match_parent"
         android:layout_height="69dp"
-        android:src="@drawable/logo" />
+        android:layout_marginBottom="662dp"
+        android:src="@drawable/logo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView8"
         android:layout_width="71dp"
         android:layout_height="45dp"
         android:layout_gravity="right"
-        android:
+        android:layout_marginStart="340dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="670dp"
         android:src="@drawable/exit"
-        tools:layout_editor_absoluteX="340dp"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/orbitron"
+        android:text="Settings"
+        android:textColor="#170000"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.134" />
+
+    <Button
+        android:id="@+id/button_ConnectWatch"
+        android:layout_width="240dp"
+        android:layout_height="46dp"
+        android:background="@drawable/button2"
+        android:fontFamily="@font/orbitron"
+        android:text="Connect To Watch"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView5"
+        app:layout_constraintVertical_bias="0.303" />
+
+    <Button
+        android:id="@+id/button_TriggerProf"
+        android:layout_width="240dp"
+        android:layout_height="46dp"
+        android:background="@drawable/button2"
+        android:fontFamily="@font/orbitron"
+        android:text="Trigger Profile"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView5"
+        app:layout_constraintVertical_bias="0.397" />
+
+    <Button
+        android:id="@+id/button_ViewRecords"
+        android:layout_width="240dp"
+        android:layout_height="46dp"
+        android:background="@drawable/button2"
+        android:fontFamily="@font/orbitron"
+        android:text="View Records"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView5"
+        app:layout_constraintVertical_bias="0.668" />
+
+    <Button
+        android:id="@+id/button_EditBPM"
+        android:layout_width="240dp"
+        android:layout_height="46dp"
+        android:background="@drawable/button2"
+        android:fontFamily="@font/orbitron"
+        android:text="Edit BPM Trigger"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView5"
+        app:layout_constraintVertical_bias="0.499" />
+
+    <Button
+        android:id="@+id/button_ToPDF"
+        android:layout_width="240dp"
+        android:layout_height="46dp"
+        android:background="@drawable/button2"
+        android:fontFamily="@font/orbitron"
+        android:text="Records To PDF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView5"
+        app:layout_constraintVertical_bias="0.764" />
+
+    <Button
+        android:id="@+id/button_LOGOUT"
+        android:layout_width="240dp"
+        android:layout_height="46dp"
+        android:background="@drawable/button2"
+        android:fontFamily="@font/orbitron"
+        android:text="Logout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView5"
+        app:layout_constraintVertical_bias="0.947" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/orbitron"
+        android:text="Data"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.585" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/orbitron"
+        android:text="Connection & Profile"
+        android:textColor="#100000"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView5"
+        app:layout_constraintVertical_bias="0.235" />
 
 
     <!-- TODO: Update blank fragment layout -->
-
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
