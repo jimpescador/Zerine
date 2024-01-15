@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/colorPrimaryVariant">
@@ -40,7 +39,7 @@
         android:layout_marginTop="228dp"
         android:layout_marginBottom="460dp"
         android:fontFamily="@font/orbitron"
-        android:text="Welcome to Zerine"
+        android:text="@string/WelcomeMsg"
         android:textColor="#020000"
         android:textSize="34sp"
         android:textStyle="bold"
@@ -50,28 +49,31 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/LS_btnLogin"
         android:layout_width="183dp"
         android:layout_height="50dp"
         android:layout_marginTop="492dp"
         android:layout_marginEnd="114dp"
         android:background="@drawable/round"
         android:fontFamily="@font/orbitron"
-        android:text="Login"
+        android:text="@string/LoginScreen_btnLogIn"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/EditText_Password"
         android:layout_width="217dp"
-        android:layout_height="42dp"
+        android:layout_height="50dp"
         android:layout_marginStart="163dp"
         android:layout_marginTop="405dp"
         android:layout_marginEnd="31dp"
         android:layout_marginBottom="284dp"
+        android:autofillHints=""
         android:background="@drawable/rounded_editbox"
         android:ems="10"
+        android:hint="@string/Hint_EnterPass"
         android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -86,26 +88,29 @@
         android:layout_marginTop="414dp"
         android:layout_marginEnd="258dp"
         android:layout_marginBottom="294dp"
+        android:contentDescription="@string/label_password"
         android:fontFamily="@font/orbitron"
-        android:text="PASSWORD"
+        android:text="@string/label_password"
         android:textColor="#1B0404"
-        android:textSize="18dp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/EditText_Username"
         android:layout_width="220dp"
-        android:layout_height="42dp"
+        android:layout_height="50dp"
         android:layout_marginStart="160dp"
         android:layout_marginTop="345dp"
         android:layout_marginEnd="31dp"
 
         android:layout_marginBottom="344dp"
+        android:autofillHints=""
         android:background="@drawable/rounded_editbox"
         android:ems="10"
+        android:hint="@string/Hint_EnterUser"
         android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -120,8 +125,9 @@
         android:layout_marginTop="354dp"
         android:layout_marginEnd="264dp"
         android:layout_marginBottom="354dp"
+        android:contentDescription="@string/Label_username"
         android:fontFamily="@font/orbitron"
-        android:text="USERNAME"
+        android:text="@string/Label_username"
         android:textColor="#120101"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -139,6 +145,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo" />
+        app:srcCompat="@drawable/logo"
+        android:contentDescription="@string/image_ZerineLogo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
