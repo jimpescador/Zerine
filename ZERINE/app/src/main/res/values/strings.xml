@@ -18,6 +18,7 @@
     <string name="WS_WelcomeLabel">Welcome to Zerine</string>
     <string name="WelcomeMsg">Welcome to Zerine</string>
     <string name="LoginScreen_btnLogIn">Login</string>
+    <string name="Hint_EnterUser">Enter Username Here</string>
     <string name="Hint_EnterPass">Enter Password Here</string>
     <string name="reg_create_account">Create Account</string>
     <string name="reg_username">Username</string>
