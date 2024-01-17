@@ -116,7 +116,7 @@
         android:layout_marginTop="25dp"
         android:layout_marginEnd="232dp"
         android:layout_marginBottom="252dp"
-        android:background="@drawable/boxcolor"
+        android:background="@drawable/box"
         android:text="@string/add_account"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
