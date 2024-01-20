@@ -11,9 +11,9 @@ public class Register extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.register);
+        setContentView(R.layout.register_screen);
 
-        Button button1 = findViewById(R.id.button3);
+        Button button1 = findViewById(R.id.btnSend);
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override

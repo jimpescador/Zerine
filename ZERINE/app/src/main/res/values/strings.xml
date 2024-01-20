@@ -5,37 +5,33 @@
     <string name="title_account">Account</string>
     <string name="title_settings">Settings</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="WelcomeTitle">Welcome to Zerine</string>
-    <string name="Label_username">USERNAME</string>
-    <string name="label_password">PASSWORD</string>
-    <string name="image_ZerineLogo">ZerineLogo</string>
-    <string name="Login_button">Login</string>
-    <string name="TB_username">Username</string>
-    <string name="TB_password">Password</string>
-    <string name="WS_btnLogin">Login</string>
-    <string name="WS_btnRegister">Register</string>
-    <string name="WS_WelcomeLabel">Welcome to Zerine</string>
-    <string name="WelcomeMsg">Welcome to Zerine</string>
-    <string name="LoginScreen_btnLogIn">Login</string>
-    <string name="Hint_EnterUser">Enter Username Here</string>
-    <string name="Hint_EnterPass">Enter Password Here</string>
-    <string name="reg_create_account">Create Account</string>
-    <string name="reg_username">Username</string>
-    <string name="reg_password">Password</string>
-    <string name="reg_email">Email</string>
-    <string name="reg_code">Code</string>
-    <string name="registerBTN">Register</string>
-    <string name="bpm">BPM</string>
-    <string name="oxygen_level">Oxygen Level</string>
-    <string name="epilepsy_slides">Epilepsy Slides</string>
-    <string name="account">Account</string>
-    <string name="name">Name</string>
-    <string name="mobile_number">Mobile Number</string>
-    <string name="add_account">Add Account</string>
-    <string name="edit_profile">EDIT PROFILE</string>
-    <string name="emergency_contact_no">Emergency Contact No.</string>
+
+    <string name="Username_ALL_UpperCase">USERNAME</string>
+    <string name="Username_ALL_LowerCase">username</string>
+    <string name="Username_Normal">Username</string>
+    <string name="Password_ALL_UpperCase">PASSWORD</string>
+    <string name="Password_ALL_LowerCase">password</string>
+    <string name="Password_Normal">Password</string>
+    <string name="Welcome_Zerine">Welcome to Zerine</string>
+    <string name="Login_Normal">Login</string>
+    <string name="Register_Normal">Register</string>
+
+    <string name="Hint_EnterUser">Enter Username </string>
+    <string name="Hint_Error_Username">Username does\'t Exist</string>
+    <string name="Hint_EnterPass">Enter Password </string>
+    <string name="Hint_ErrorPass">Password is Wrong</string>
+    <string name="Hint_Error_LoginUser">Username is empty, please enter Username</string>
+    <string name="Hint_Error_LoginPass">Password is Empty, please enter Password</string>
+
+
+    <string name="Hint_EnterEmail">Enter Email</string>
+    <string name="Hint_Code">Enter Code</string>
+
+
     <string name="user_record_btn">USER RECORD</string>
+    <string name="edit_profile">EDIT PROFILE</string>
+
+
     <string name="settings">Settings</string>
     <string name="connect_to_watch">Connect To Watch</string>
     <string name="trigger_profile">Trigger Profile</string>
@@ -43,6 +39,35 @@
     <string name="edit_bpm_trigger">Edit BPM Trigger</string>
     <string name="records_to_pdf">Records To PDF</string>
     <string name="logout">Logout</string>
+
+
+    <string name="account">Account</string>
+    <string name="name">Name</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="add_account">Add Account</string>
+    <string name="emergency_contact_no">Emergency Contact No.</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="image_ZerineLogo">ZerineLogo</string>
+    <string name="reg_create_account">Create Account</string>
+    <string name="reg_email">Email</string>
+    <string name="reg_code">Code</string>
+    <string name="bpm">BPM</string>
+    <string name="oxygen_level">Oxygen Level</string>
+    <string name="epilepsy_slides">Epilepsy Slides</string>
+
     <string name="data">Data</string>
     <string name="connection_profile"><![CDATA[Connection & Profile]]></string>
+
+
+
+    <string name="Send_normal">Send</string>
+    <string name="Verify_normal">Verify</string>
+
+    <string name="CreateAccount_normal">Create Account</string>
+
+
+
+
 </resources>

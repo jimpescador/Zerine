@@ -11,7 +11,7 @@ public class Welcome extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login);
+        setContentView(R.layout.welcome_screen);
 
         Button reg_button = findViewById(R.id.LS_btnRegister);
         Button log_button = findViewById(R.id.LS_btnLogin);
