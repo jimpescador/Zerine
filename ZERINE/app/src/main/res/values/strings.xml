@@ -61,13 +61,10 @@
     <string name="connection_profile"><![CDATA[Connection & Profile]]></string>
 
 
-
     <string name="Send_normal">Send</string>
     <string name="Verify_normal">Verify</string>
 
     <string name="CreateAccount_normal">Create Account</string>
-
-
 
 
 </resources>

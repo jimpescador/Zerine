@@ -1,3 +1,5 @@
+package com.example.zerine;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -18,9 +20,8 @@ public class Welcome extends AppCompatActivity {
 
         reg_button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Welcome.this, Register.class);
-                startActivity(intent);
+            public void onClick(View view) {
+                regact();
             }
 
         });
@@ -28,11 +29,22 @@ public class Welcome extends AppCompatActivity {
         log_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Welcome.this, Login.class);
-                startActivity(intent);
+                loginact();
             }
         });
+    }
+    private void regact() {
+        Intent intent = new Intent(Welcome.this, Register.class);
+        startActivity(intent);
 
 
     }
+
+    private void loginact(){
+        Intent intent = new Intent(Welcome.this, Login.class);
+        startActivity(intent);
+    }
+
+
 }
+
