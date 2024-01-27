@@ -45,10 +45,41 @@ public class Register extends AppCompatActivity {
     }
 
     private boolean validateInputs(String username, String password, String email) {
-        if (username.isEmpty() || password.isEmpty() || email.isEmpty()) {
+        if (username.isEmpty()  && password.isEmpty()  && email.isEmpty()) {
             Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
             return false;
         }
+        else if (username.isEmpty()  && password.isEmpty()) {
+            // Display a Toast message for either empty username or password
+            Toast.makeText(this, "Please fill in username and password", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else if (username.isEmpty()  && email.isEmpty()){
+            Toast.makeText(this, "Please fill in username and email", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else if (password.isEmpty()  && email.isEmpty()) {
+            Toast.makeText(this, "Please fill in password and email", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else if (username.isEmpty()) {
+            // Display a Toast message for empty username
+            Toast.makeText(this, "Please fill in username", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else if (password.isEmpty()) {
+            // Display a Toast message for empty password
+            Toast.makeText(this, "Please enter a password", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else if (email.isEmpty()) {
+            // Display a Toast message for empty email
+            Toast.makeText(this, "Please enter an email address", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+
+
 
         // Validate username (at least 4 characters)
         if (username.length() < 4) {

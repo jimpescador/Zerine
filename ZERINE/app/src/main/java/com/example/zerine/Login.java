@@ -28,13 +28,22 @@ public class Login extends AppCompatActivity {
             }
         });
         }
-    private void LoginAct(){
+    private void LoginAct() {
         String username = loginUser.getText().toString().trim();
         String password = loginPass.getText().toString().trim();
 
 
         if (validateInputs(username, password)) {
             Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show();
+        } else if (username.isEmpty() && password.isEmpty()) {
+            Toast.makeText(this, "Please fill in both username and password.", Toast.LENGTH_SHORT).show();
+        } else if (username.isEmpty()) {
+            Toast.makeText(this, "Please fill in the username.", Toast.LENGTH_SHORT).show();
+        } else if (password.isEmpty()) {
+            Toast.makeText(this,"Please fill in the password", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            Toast.makeText(this, "Invalid input. Please check your username and password.", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -45,4 +54,6 @@ public class Login extends AppCompatActivity {
         }
         return true;
     }
+
+
     }
