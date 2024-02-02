@@ -6,10 +6,8 @@
     android:layout_height="match_parent">
 
     <FrameLayout
-        android:id="@+id/frameLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -20,10 +18,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_nav"
-        app:itemIconTint="@color/purple_200"
-        app:itemTextColor="@color/purple_200"
-        android:background="@color/purple_700"
-        app:labelVisibilityMode="labeled"/>
+        android:background="@color/purple_500"/>
 
 
 

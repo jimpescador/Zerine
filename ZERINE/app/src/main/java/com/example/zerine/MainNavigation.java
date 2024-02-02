@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
+import com.example.zerine.databinding.ActivityMainNavigationBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import android.os.Bundle;
-import com.example.zerine.databinding.ActivityMainBinding;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -18,19 +20,18 @@ import android.os.Bundle;
 
 public class MainNavigation extends AppCompatActivity {
 
-    ActivityMainBinding binding;
+    ActivityMainNavigationBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        binding = ActivityMainNavigationBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
 
         loadFragment(new home_Fragment());
-        binding.
-        binding.bottomNavigationView.setOnItemSelectedListener(item -> {
-            switch (item.getItemID()) {
+        binding.bottomNavigationView6.setOnItemSelectedListener(item -> {
+            switch (item.getItemId()) {
                 case R.id.home:
                     loadFragment(new home_Fragment()) ;
                     break;
