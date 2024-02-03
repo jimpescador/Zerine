@@ -65,6 +65,9 @@
     <string name="Verify_normal">Verify</string>
 
     <string name="CreateAccount_normal">Create Account</string>
+    <string name="ChildHistory">Patient History</string>
+    <string name="SearchPatient">Enter Patient Code</string>
+    <string name="find">Find</string>
 
 
 </resources>
