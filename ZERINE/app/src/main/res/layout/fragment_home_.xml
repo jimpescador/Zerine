@@ -91,14 +91,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="135dp"
-        android:layout_marginTop="168dp"
+        android:layout_marginTop="152dp"
         android:layout_marginEnd="240dp"
         android:fontFamily="@font/orbitron"
         android:text="@string/bpm"
         android:textColor="#FF0000"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -139,8 +139,8 @@
         android:layout_marginTop="248dp"
         android:background="@drawable/box"
         android:ems="10"
-        android:text="__"
         android:inputType="text"
+        android:text="__"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.768"
@@ -178,8 +178,8 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView10" />
 
     <ViewFlipper
-        android:layout_width="265dp"
-        android:layout_height="257dp"
+        android:layout_width="298dp"
+        android:layout_height="352dp"
         android:layout_marginTop="396dp"
         android:autoStart="true"
         android:flipInterval="2000"
@@ -189,26 +189,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.888">
 
 
         <ImageView
-            android:id="@+id/imageView7"
-            android:layout_width="wrap_content"
+            android:id="@+id/imageView14"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/info1" />
+            android:src="@drawable/info3" />
 
         <ImageView
             android:id="@+id/imageView9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/info2" />
-
-        <ImageView
-            android:id="@+id/imageView14"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/info3" />
 
         <ImageView
             android:id="@+id/imageView15"
@@ -252,7 +246,11 @@
             android:layout_height="wrap_content"
             android:src="@drawable/info10" />
 
-
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/info1" />
 
 
     </ViewFlipper>

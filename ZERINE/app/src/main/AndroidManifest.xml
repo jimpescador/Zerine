@@ -19,6 +19,9 @@
         android:theme="@style/Theme.ZERINE"
         tools:targetApi="31">
         <activity
+            android:name=".parent_view"
+            android:exported="false" />
+        <activity
             android:name=".MainNavigation"
             android:exported="true"
             android:label="@string/app_name">
@@ -27,8 +30,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-
         </activity>
     </application>
 
