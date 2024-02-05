@@ -66,20 +66,6 @@
         app:layout_constraintVertical_bias="0.134" />
 
     <Button
-        android:id="@+id/button_ConnectWatch"
-        android:layout_width="240dp"
-        android:layout_height="46dp"
-        android:background="@drawable/button2"
-        android:fontFamily="@font/orbitron"
-        android:text="@string/connect_to_watch"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView5"
-        app:layout_constraintVertical_bias="0.303" />
-
-    <Button
         android:id="@+id/button_TriggerProf"
         android:layout_width="240dp"
         android:layout_height="46dp"
@@ -92,7 +78,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView5"
-        app:layout_constraintVertical_bias="0.397" />
+        app:layout_constraintVertical_bias="0.292" />
 
     <Button
         android:id="@+id/button_ViewRecords"
@@ -106,7 +92,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView5"
-        app:layout_constraintVertical_bias="0.668" />
+        app:layout_constraintVertical_bias="0.521" />
 
     <Button
         android:id="@+id/button_EditBPM"
@@ -120,7 +106,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView5"
-        app:layout_constraintVertical_bias="0.499" />
+        app:layout_constraintVertical_bias="0.373" />
 
     <Button
         android:id="@+id/button_ToPDF"
@@ -134,7 +120,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView5"
-        app:layout_constraintVertical_bias="0.764" />
+        app:layout_constraintVertical_bias="0.601" />
 
     <Button
         android:id="@+id/button_LOGOUT"
@@ -148,7 +134,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView5"
-        app:layout_constraintVertical_bias="0.947" />
+        app:layout_constraintVertical_bias="0.785" />
 
     <TextView
         android:id="@+id/textView16"
@@ -163,14 +149,14 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.585" />
+        app:layout_constraintVertical_bias="0.452" />
 
     <TextView
         android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/orbitron"
-        android:text="@string/connection_profile"
+        android:text="@string/profile"
         android:textColor="#100000"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"

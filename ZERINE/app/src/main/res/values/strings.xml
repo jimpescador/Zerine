@@ -58,7 +58,7 @@
     <string name="epilepsy_slides">Epilepsy Slides</string>
 
     <string name="data">Data</string>
-    <string name="connection_profile"><![CDATA[Connection & Profile]]></string>
+    <string name="profile"><![CDATA[Profile]]></string>
 
 
     <string name="Send_normal">Send</string>
