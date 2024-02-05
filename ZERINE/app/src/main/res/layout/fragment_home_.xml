@@ -72,7 +72,7 @@
         app:layout_constraintHorizontal_bias="0.241"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.147" />
+        app:layout_constraintVertical_bias="0.17" />
 
     <ImageView
         android:id="@+id/imageView12"
@@ -84,26 +84,23 @@
         app:layout_constraintHorizontal_bias="0.227"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.256" />
+        app:layout_constraintVertical_bias="0.297" />
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="135dp"
-        android:layout_marginTop="144dp"
+        android:layout_marginTop="168dp"
         android:layout_marginEnd="240dp"
-        android:layout_marginBottom="569dp"
         android:fontFamily="@font/orbitron"
         android:text="@string/bpm"
         android:textColor="#FF0000"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView14"
@@ -118,26 +115,26 @@
         app:layout_constraintHorizontal_bias="0.399"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.261" />
+        app:layout_constraintVertical_bias="0.289" />
 
     <EditText
         android:id="@+id/BPM_value_edittext"
         android:layout_width="108dp"
-        android:layout_height="46dp"
+        android:layout_height="48dp"
         android:background="@drawable/box"
         android:ems="10"
         android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.768"
+        app:layout_constraintHorizontal_bias="0.745"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.165" />
+        app:layout_constraintVertical_bias="0.204" />
 
     <EditText
         android:id="@+id/O2_value_edittext"
         android:layout_width="108dp"
-        android:layout_height="46dp"
+        android:layout_height="48dp"
         android:layout_marginTop="248dp"
         android:background="@drawable/box"
         android:ems="10"
