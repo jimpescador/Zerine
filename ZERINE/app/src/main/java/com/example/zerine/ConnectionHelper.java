@@ -10,8 +10,9 @@ public class ConnectionHelper {
     Connection con;
     String server,database, username, password;
 
+
     public Connection connectionclass() {
-        server = "tcp:zerine-server.database.windows.net,1433";
+        server = "zerine-server.database.windows.net:1433";
         database = "ZerineDB";
         username = "adminZerine01";
         password = "100Letters!";

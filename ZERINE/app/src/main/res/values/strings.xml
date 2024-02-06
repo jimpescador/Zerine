@@ -68,6 +68,7 @@
     <string name="ChildHistory">Patient History</string>
     <string name="SearchPatient">Enter Patient Code</string>
     <string name="find">Find</string>
+    <string name="DBpass">100Letters!</string>
 
 
 </resources>

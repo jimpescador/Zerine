@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 import android.os.AsyncTask;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,6 +22,7 @@ import com.example.zerine.R;
 public class Login extends AppCompatActivity {
     EditText loginUser, loginPass;
     Button btnLogin, btnRegister;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +39,6 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String username = loginUser.getText().toString().trim();
-                String password = loginPass.getText().toString().trim();
 
 
             }
