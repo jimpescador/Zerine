@@ -1,4 +1,5 @@
 package com.example.zerine;
+
 import android.os.StrictMode;
 import android.util.Log;
 
@@ -7,30 +8,26 @@ import java.sql.DriverManager;
 
 public class ConnectionHelper {
     Connection con;
-    String uname, pass, ip, port, database;
+    String server,database, username, password;
 
-    public Connection connectionclass()
-    {
-        ip="10.1.1.65";
-        database = "ZERINE_DB";
-        uname = "jim";
-        pass = "nov111999";
-        port = "1433";
+    public Connection connectionclass() {
+        server = "tcp:zerine-server.database.windows.net,1433";
+        database = "ZerineDB";
+        username = "adminZerine01";
+        password = "100Letters!";
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         Connection connection = null;
-        String ConnectionURL = null;
+        String connectionUrl = null;
 
-        try{
+        try {
             Class.forName("net.sourceforge.jtds.jdbc.Driver");
-            ConnectionURL= "jdbc:jtds:sqlserver://"+ ip + ":"+ port+";"+ "databasename="+ database+";user="+uname+";password="+pass+";";
-            connection= DriverManager.getConnection(ConnectionURL);
-        }
-        catch (Exception ex) {
-            Log.e("Error ", ex.getMessage());
+            connectionUrl = "jdbc:jtds:sqlserver://" + server + ";databaseName=" + database + ";user=" + username + ";password=" + password + ";encrypt=true;trustServerCertificate=false;loginTimeout=30;";
+            connection = DriverManager.getConnection(connectionUrl);
+        } catch (Exception ex) {
+            Log.e("Error", ex.getMessage());
         }
         return connection;
     }
-
 }
