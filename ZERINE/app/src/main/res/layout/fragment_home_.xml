@@ -32,7 +32,7 @@
         app:layout_constraintVertical_bias="0.012" />
 
     <ImageView
-        android:id="@+id/imageView8"
+        android:id="@+id/exitbtn"
         android:layout_width="71dp"
         android:layout_height="45dp"
         android:layout_gravity="end"
@@ -46,7 +46,9 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:clickable="true"
+        android:focusable="true"/>
 
     <ImageView
         android:id="@+id/imageView10"

@@ -35,13 +35,15 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
-        android:id="@+id/imageView8"
+        android:id="@+id/exitbtn"
         android:layout_width="71dp"
         android:layout_height="45dp"
         android:layout_gravity="end"
         android:layout_marginStart="340dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="670dp"
+        android:clickable="true"
+        android:focusable="true"
         android:fontFamily="@font/orbitron"
         android:src="@drawable/exit"
         app:layout_constraintBottom_toBottomOf="parent"
