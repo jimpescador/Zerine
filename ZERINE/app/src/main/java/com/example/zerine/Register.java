@@ -18,7 +18,7 @@ import java.sql.SQLException;
 
 public class Register extends AppCompatActivity {
     EditText editTextUser, editTextPass, editTextEmail, editTextcode;
-
+    private ConnectionHelper connectionHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,32 +48,38 @@ public class Register extends AppCompatActivity {
         String code = editTextcode.getText().toString().trim();
 
         if (validateInputs(username, password, email)) {
-            ConnectionHelper connectionHelper = new ConnectionHelper();
-            Connection con = connectionHelper.connectionclass();
 
-            if (con != null) {
-                try {
-                    String query = "INSERT INTO Users (Username, Password, Email) VALUES (?, ?, ?)";
-                    PreparedStatement stmt = con.prepareStatement(query);
-                    stmt.setString(1, username);
-                    stmt.setString(2, password);
-                    stmt.setString(3, email);
-                    int affectedRows = stmt.executeUpdate();
+            try {
+                Connection connection = connectionHelper.connectionclass();
+                if (connection != null) {
+                    String query = "INSERT INTO AccountTBL (username, password) VALUES (?, ?)";
+                    PreparedStatement preparedStatement = connection.prepareStatement(query);
+                    preparedStatement.setString(1, username);
+                    preparedStatement.setString(2, password);
 
-                    if (affectedRows > 0) {
+                    int rowsAffected = preparedStatement.executeUpdate();
+
+                    if (rowsAffected > 0) {
+                        // Registration successful
                         Toast.makeText(Register.this, "Registration successful", Toast.LENGTH_SHORT).show();
-                        // Optionally, you can navigate to another activity or perform additional actions here
+                        // Add code to navigate to the login activity or perform other actions
                     } else {
+                        // Registration failed
                         Toast.makeText(Register.this, "Registration failed", Toast.LENGTH_SHORT).show();
                     }
-                } catch (SQLException e) {
-                    Toast.makeText(Register.this, "Registration failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+
+                    preparedStatement.close();
+                    connection.close();
+                } else {
+                    Toast.makeText(Register.this, "Connection failed", Toast.LENGTH_SHORT).show();
                 }
-            } else {
-                Toast.makeText(Register.this, "Connection failed", Toast.LENGTH_SHORT).show();
+            } catch (SQLException e) {
+                e.printStackTrace();
+                Toast.makeText(Register.this, "SQL Error", Toast.LENGTH_SHORT).show();
             }
         }
     }
+
 
 
 
