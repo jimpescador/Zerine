@@ -1,35 +1,33 @@
 package com.example.zerine;
 
-import android.os.StrictMode;
-import android.util.Log;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class ConnectionHelper {
-    Connection con;
-    String server,database, username, password;
 
-
-    public Connection connectionclass() {
-        server = "zerine-server.database.windows.net:1433";
-        database = "ZerineDB";
-        username = "adminZerine01";
-        password = "100Letters!";
-
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-        Connection connection = null;
-        String connectionUrl = null;
-
+    public static Connection getConnection() throws SQLException {
         try {
+            // Load the JDBC driver
             Class.forName("net.sourceforge.jtds.jdbc.Driver");
-            connectionUrl = "jdbc:jtds:sqlserver://" + server + ";databaseName=" + database + ";user=" + username + ";password=" + password + ";encrypt=true;trustServerCertificate=false;loginTimeout=30;";
-            connection = DriverManager.getConnection(connectionUrl);
-        } catch (Exception ex) {
-            Log.e("Error", ex.getMessage());
-        }
 
-        return connection;
+            // Replace {your_password_here} with the actual password
+            String password = "100Letters!";
+
+            // Connection string from Azure
+            String connectionString = "jdbc:jtds:sqlserver://zerine-server.database.windows.net:1433;" +
+                    "database=ZerineDB;user=adminZerine01@zerine-server;password=" + password +
+                    ";encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
+
+            // Establish the connection
+            return DriverManager.getConnection(connectionString);
+
+        } catch (ClassNotFoundException e) {
+            throw new SQLException("JDBC Driver not found.", e);
+        }
     }
 }
+
+
+
+

@@ -50,9 +50,9 @@ public class Register extends AppCompatActivity {
         if (validateInputs(username, password, email)) {
 
             try {
-                Connection connection = connectionHelper.connectionclass();
+                Connection connection = connectionHelper.getConnection();
                 if (connection != null) {
-                    String query = "INSERT INTO AccountTBL (username, password) VALUES (?, ?)";
+                    String query = "INSERT INTO AccountTBL (Username, Password) VALUES (?, ?)";
                     PreparedStatement preparedStatement = connection.prepareStatement(query);
                     preparedStatement.setString(1, username);
                     preparedStatement.setString(2, password);
@@ -75,7 +75,7 @@ public class Register extends AppCompatActivity {
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
-                Toast.makeText(Register.this, "SQL Error", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Register.this, "SQL Error" + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         }
     }
