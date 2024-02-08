@@ -1,5 +1,4 @@
 package com.example.zerine;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,15 +9,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.zerine.R;
 import android.database.sqlite.SQLiteDatabase;
 import android.content.ContentValues;
-
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
+import com.example.zerine.MyDBHelper;
 
 public class Register extends AppCompatActivity {
     EditText editTextUser, editTextPass, editTextEmail, editTextcode;
-    private ConnectionHelper connectionHelper;
+    private MyDBHelper dbHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +31,7 @@ public class Register extends AppCompatActivity {
         editTextcode = findViewById(R.id.code);
         Button button1 = findViewById(R.id.btnRegisterAccount);
 
-        ConnectionHelper connectionHelper = new ConnectionHelper();
+        MyDBHelper dbHelper = new MyDBHelper(this);
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,87 +48,33 @@ public class Register extends AppCompatActivity {
         String email = editTextEmail.getText().toString().trim();
         String code = editTextcode.getText().toString().trim();
 
-        if (validateInputs(username, password, email)) {
 
-            try {
-                Connection connection = connectionHelper.getConnection();
-                if (connection != null) {
-                    String query = "INSERT INTO AccountTBL (Username, Password) VALUES (?, ?)";
-                    PreparedStatement preparedStatement = connection.prepareStatement(query);
-                    preparedStatement.setString(1, username);
-                    preparedStatement.setString(2, password);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-                    int rowsAffected = preparedStatement.executeUpdate();
+        ContentValues values = new ContentValues();
+        values.put("Username", username);
+        values.put("Password", password);
+        values.put("Email", email);
 
-                    if (rowsAffected > 0) {
-                        // Registration successful
-                        Toast.makeText(Register.this, "Registration successful", Toast.LENGTH_SHORT).show();
-                        // Add code to navigate to the login activity or perform other actions
-                    } else {
-                        // Registration failed
-                        Toast.makeText(Register.this, "Registration failed", Toast.LENGTH_SHORT).show();
-                    }
+        long newRowId = db.insert("AccountTBL", null, values);
 
-                    preparedStatement.close();
-                    connection.close();
-                } else {
-                    Toast.makeText(Register.this, "Connection failed", Toast.LENGTH_SHORT).show();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-                Toast.makeText(Register.this, "SQL Error" + e.getMessage(), Toast.LENGTH_SHORT).show();
-            }
+        if (newRowId != -1) {
+            // Registration successful
+            Toast.makeText(Register.this, "Registration successful", Toast.LENGTH_SHORT).show();
+            // Add code to navigate to the login activity or perform other actions
+        } else {
+            // Registration failed
+            Toast.makeText(Register.this, "Registration failed", Toast.LENGTH_SHORT).show();
         }
+
+        db.close();
     }
+}
 
 
 
 
-        private boolean validateInputs (String username, String password, String email){
-            if (username.isEmpty() && password.isEmpty() && email.isEmpty()) {
-                Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
-                return false;
-            } else if (username.isEmpty() && password.isEmpty()) {
-                // Display a Toast message for either empty username or password
-                Toast.makeText(this, "Please fill in username and password", Toast.LENGTH_SHORT).show();
-                return false;
-            } else if (username.isEmpty() && email.isEmpty()) {
-                Toast.makeText(this, "Please fill in username and email", Toast.LENGTH_SHORT).show();
-                return false;
-            } else if (password.isEmpty() && email.isEmpty()) {
-                Toast.makeText(this, "Please fill in password and email", Toast.LENGTH_SHORT).show();
-                return false;
-            } else if (username.isEmpty()) {
-                // Display a Toast message for empty username
-                Toast.makeText(this, "Please fill in username", Toast.LENGTH_SHORT).show();
-                return false;
-            } else if (password.isEmpty()) {
-                // Display a Toast message for empty password
-                Toast.makeText(this, "Please enter a password", Toast.LENGTH_SHORT).show();
-                return false;
-            } else if (email.isEmpty()) {
-                // Display a Toast message for empty email
-                Toast.makeText(this, "Please enter an email address", Toast.LENGTH_SHORT).show();
-                return false;
-            }
 
-
-            // Validate username (at least 4 characters)
-            if (username.length() < 4) {
-                Toast.makeText(this, "Username must be at least 4 characters", Toast.LENGTH_SHORT).show();
-                return false;
-            }
-
-            // Validate password (at least 6 characters)
-            if (password.length() < 6) {
-                Toast.makeText(this, "Password must be at least 6 characters", Toast.LENGTH_SHORT).show();
-                return false;
-            }
-
-
-            return true;
-        }
-    }
 
 
 
