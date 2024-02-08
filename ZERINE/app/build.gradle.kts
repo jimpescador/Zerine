@@ -57,7 +57,7 @@ dependencies {
     implementation ("com.microsoft.sqlserver:mssql-jdbc:9.4.0.jre8")
     implementation ("androidx.room:room-runtime:2.4.0")
     annotationProcessor ("androidx.room:room-compiler:2.4.0")
-    implementation (":jtds-1.3.1")
+
 
 
 
