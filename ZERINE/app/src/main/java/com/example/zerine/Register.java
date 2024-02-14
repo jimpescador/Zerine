@@ -56,6 +56,60 @@ public class Register extends AppCompatActivity {
         String firstName = editTextFname.getText().toString().trim();
         String lastName = editTextLname.getText().toString().trim();
 
+
+
+
+
+        //Test Validation of Empty Field START
+        String strVar1, strVar2,strVar3,strVar4,strVar5;
+        strVar1 = "Username";
+        strVar2 = "Password";
+        strVar3 = "Email";
+        strVar4 = "First Name";
+        strVar5 = "Last Name";
+
+
+        if (username.isEmpty()) {
+            strVar1 = "Username";
+        } else {
+            strVar1 = "";
+        }
+
+        if (password.isEmpty()) {
+            strVar2 = "Password";
+        } else {
+            strVar2= "";
+        }
+
+        if (email.isEmpty()) {
+            strVar3 = "Email";
+        } else {
+            strVar3 = "";
+        }
+
+        if (firstName.isEmpty()) {
+            strVar4 = "First Name";
+        } else {
+            strVar4 = "";
+        }
+
+        if (lastName.isEmpty()) {
+            strVar5 = "Last Name";
+        } else {
+            strVar5 = "";
+        }
+
+        if (username.isEmpty() || password.isEmpty() || email.isEmpty() || firstName.isEmpty() || lastName.isEmpty()) {
+            String message = strVar1 + "|"+ strVar2 + "|"+ strVar3 + "|"+ strVar4 + "|"+ strVar5 + " is empty";
+            // Display the toast message here using Android Toast API
+            Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+        }
+        else
+        {Toast.makeText(getApplicationContext(),"Error 001", Toast.LENGTH_SHORT).show();}
+
+        //Test Validation of Empty Field END
+
+
         Map<String, Object> account = new HashMap<>();
         account.put("Username", username);
         account.put("Password", password);

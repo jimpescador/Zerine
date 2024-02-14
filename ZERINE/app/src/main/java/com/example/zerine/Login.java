@@ -70,10 +70,22 @@ public class Login extends AppCompatActivity {
                         startActivity(intent);
                         finish();
 
-                    } else {
+                    }
+                    //Test Validation of Empty Field START
+                    else  if (username.isEmpty() && password.isEmpty()){
+                        Toast.makeText(getApplicationContext(), "Username and password are Empty", Toast.LENGTH_LONG).show();
+                    }
+                    else if (username.isEmpty())
+                    {
+                        Toast.makeText(getApplicationContext(),"Username is Empty",Toast.LENGTH_LONG).show();
+
+                    }
+                    else {
                         // Login failed
                         Toast.makeText(getApplicationContext(), "Invalid credentials", Toast.LENGTH_LONG).show();
                     }
+
+                    //Test Validation of Empty Field END
                 })
                 .addOnFailureListener(e -> {
                     // Handle failure
