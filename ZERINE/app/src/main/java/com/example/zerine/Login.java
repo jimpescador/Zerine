@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.zerine.R;
@@ -18,6 +19,7 @@ public class Login extends AppCompatActivity {
     EditText loginUser, loginPass;
     Button btnLogin, btnRegister;
     FirebaseFirestore firestore;
+    ProgressBar progressBar;
 
 
     @Override
@@ -30,14 +32,19 @@ public class Login extends AppCompatActivity {
         btnLogin = findViewById(R.id.LS_btnLogin);
         btnRegister= findViewById(R.id.LS_btnRegister);
         firestore = FirebaseFirestore.getInstance();
+        progressBar = findViewById(R.id.progressBar);
 
 
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 loginUser();
+                progressBar.setVisibility(View.VISIBLE);
             }
+
+
         });
     }
 
@@ -53,6 +60,7 @@ public class Login extends AppCompatActivity {
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
                     if (!queryDocumentSnapshots.isEmpty()) {
+                        progressBar.setVisibility(View.GONE);
                         // Login successful
                         Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_LONG).show();
                         // You can redirect the user to another activity here
@@ -60,6 +68,7 @@ public class Login extends AppCompatActivity {
                         // startActivity(new Intent(LoginActivity.this, YourNextActivity.class));
                         Intent intent = new Intent(Login.this, MainNavigation.class);
                         startActivity(intent);
+                        finish();
 
                     } else {
                         // Login failed

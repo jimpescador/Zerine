@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -30,6 +31,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class Register extends AppCompatActivity {
     EditText editTextUser, editTextPass, editTextEmail;
     FirebaseFirestore firestore;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,9 @@ public class Register extends AppCompatActivity {
         editTextUser = findViewById(R.id.reg_user);
         editTextPass = findViewById(R.id.reg_pass);
         editTextEmail = findViewById(R.id.reg_email);
+        editTextFname = findViewById(R.id.reg_email);
+        editTextLname = findViewById(R.id.reg_email);
+        
         Button button1 = findViewById(R.id.btnRegisterAccount);
 
 
@@ -46,7 +51,7 @@ public class Register extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                progressBar.setVisibility(View.VISIBLE);
                 RegisterUser();
             }
         });
@@ -56,16 +61,22 @@ public class Register extends AppCompatActivity {
         String username = editTextUser.getText().toString().trim();
         String password = editTextPass.getText().toString().trim();
         String email = editTextEmail.getText().toString().trim();
+        String firstName = editTextFname.getText().toString().trim();
+        String lastName = editTextLname.getText().toString().trim();
 
         Map<String, Object> account = new HashMap<>();
         account.put("Username", username);
         account.put("Password", password);
         account.put("Email", email);
+        account.put("FirstName", firstName);
+        account.put("LastName", lastName);
 
         firestore.collection("accounts").add(account).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override
             public void onSuccess(DocumentReference documentReference) {
+                progressBar.setVisibility(View.GONE);
                 Toast.makeText(getApplicationContext(), "Success",Toast.LENGTH_LONG).show();
+
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
