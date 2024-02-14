@@ -28,7 +28,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Register extends AppCompatActivity {
-    EditText editTextUser, editTextPass, editTextEmail, editTextcode;
+    EditText editTextUser, editTextPass, editTextEmail;
     FirebaseFirestore firestore;
 
     @Override
@@ -39,10 +39,9 @@ public class Register extends AppCompatActivity {
         editTextUser = findViewById(R.id.reg_user);
         editTextPass = findViewById(R.id.reg_pass);
         editTextEmail = findViewById(R.id.reg_email);
-        editTextcode = findViewById(R.id.code);
         Button button1 = findViewById(R.id.btnRegisterAccount);
 
-        // DBconnection dBconnection = new DBconnection(this);
+
         firestore = FirebaseFirestore.getInstance();
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,7 +56,6 @@ public class Register extends AppCompatActivity {
         String username = editTextUser.getText().toString().trim();
         String password = editTextPass.getText().toString().trim();
         String email = editTextEmail.getText().toString().trim();
-        String code = editTextcode.getText().toString().trim();
 
         Map<String, Object> account = new HashMap<>();
         account.put("Username", username);
@@ -72,18 +70,13 @@ public class Register extends AppCompatActivity {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getApplicationContext(), "Failed",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Failed"+ e.getMessage(),Toast.LENGTH_LONG).show();
 
             }
         });
     }
-
-
-
-
-
-    }
 }
+
 
 
 

@@ -24,9 +24,6 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".parent_view"
-            android:exported="false" />
-        <activity
             android:name=".Login"
             android:exported="false" />
         <activity

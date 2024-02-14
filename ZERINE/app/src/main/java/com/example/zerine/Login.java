@@ -10,7 +10,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.zerine.R;
 import android.database.sqlite.SQLiteDatabase;
-
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 public class Login extends AppCompatActivity {
     EditText loginUser, loginPass;
     Button btnLogin, btnRegister;
@@ -41,34 +44,24 @@ public class Login extends AppCompatActivity {
         String password = loginPass.getText().toString().trim();
 
 
-        if (validateInputs(username, password)) {
-            Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(Login.this, MainNavigation.class);
-            startActivity(intent);
-            loginUser.getText().clear();
-            loginPass.getText().clear();
-
-        } else if (username.isEmpty() && password.isEmpty()) {
-            Toast.makeText(this, "Please fill in both username and password.", Toast.LENGTH_SHORT).show();
-        } else if (username.isEmpty()) {
-            Toast.makeText(this, "Please fill in the username.", Toast.LENGTH_SHORT).show();
-        } else if (password.isEmpty()) {
-            Toast.makeText(this,"Please fill in the password", Toast.LENGTH_SHORT).show();
-        }
-        else {
-            Toast.makeText(this, "Invalid input. Please check your username and password.", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    private boolean validateInputs(String username, String password) {
-        if (username.isEmpty() || password.isEmpty()) {
-            Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        return true;
-    }
-
-
+        mAuth.createUserWithEmailAndPassword(username, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "createUserWithEmail:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            updateUI(user);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                            Toast.makeText(EmailPasswordActivity.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                            updateUI(null);
+                        }
+                    }
+                });
 }
 
 

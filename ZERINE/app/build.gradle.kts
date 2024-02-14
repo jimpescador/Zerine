@@ -60,8 +60,7 @@ dependencies {
     implementation ("com.microsoft.sqlserver:mssql-jdbc:9.4.0.jre8")
     implementation ("androidx.room:room-runtime:2.4.0")
     annotationProcessor ("androidx.room:room-compiler:2.4.0")
-    implementation(platform("com.google.firebase:firebase-bom:32.7.2"))
-    implementation ("com.google.firebase:firebase-firestore:17.0.4")
+    implementation ("com.google.firebase:firebase-firestore:24.10.2")
     implementation ("com.google.firebase:firebase-core:16.0.1")
 
 
