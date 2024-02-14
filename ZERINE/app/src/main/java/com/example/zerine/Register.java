@@ -33,10 +33,11 @@ public class Register extends AppCompatActivity {
         editTextPass = findViewById(R.id.reg_pass);
         editTextEmail = findViewById(R.id.reg_email);
         editTextFname = findViewById(R.id.reg_fname);
-        editTextLname = findViewById(R.id.reg_lname;
-        
+        editTextLname = findViewById(R.id.reg_lname);
+
         Button button1 = findViewById(R.id.btnRegisterAccount);
 
+        progressBar = findViewById(R.id.progressBar); // Make sure to initialize progressBar
 
         firestore = FirebaseFirestore.getInstance();
         button1.setOnClickListener(new View.OnClickListener() {
@@ -59,33 +60,39 @@ public class Register extends AppCompatActivity {
         account.put("Username", username);
         account.put("Password", password);
         account.put("Email", email);
-        account.put("FirstName", firstName);
-        account.put("LastName", lastName);
 
-        firestore.collection("accounts").add(account).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-            @Override
-            public void onSuccess(DocumentReference documentReference) {
-                progressBar.setVisibility(View.GONE);
-                Toast.makeText(getApplicationContext(), "Success",Toast.LENGTH_LONG).show();
+        firestore.collection("accounts").add(account)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        String accountId = documentReference.getId();
+                        Map<String, Object> info = new HashMap<>();
+                        info.put("FirstName", firstName);
+                        info.put("LastName", lastName);
 
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getApplicationContext(), "Failed"+ e.getMessage(),Toast.LENGTH_LONG).show();
-
-            }
-        });
+                        firestore.collection("info").document(accountId).set(info)
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        progressBar.setVisibility(View.GONE);
+                                        Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_LONG).show();
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        progressBar.setVisibility(View.GONE);
+                                        Toast.makeText(getApplicationContext(), "Failed: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                                    }
+                                });
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        progressBar.setVisibility(View.GONE);
+                        Toast.makeText(getApplicationContext(), "Failed: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                });
     }
 }
-
-
-
-
-
-
-
-
-
-
-

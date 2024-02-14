@@ -75,59 +75,113 @@
         android:layout_marginEnd="114dp"
         android:layout_marginBottom="15dp"
         android:src="@drawable/baseline_account_circle_24"
-        app:layout_constraintBottom_toTopOf="@+id/textView10"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/namelabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="173dp"
         android:layout_marginEnd="174dp"
-        android:layout_marginBottom="10dp"
         android:fontFamily="@font/orbitron"
         android:text="@string/name"
         android:textColor="#0C0000"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView12"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.792" />
+        app:layout_constraintVertical_bias="0.44" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/mobilelabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="25dp"
         android:fontFamily="@font/orbitron"
         android:text="@string/mobile_number"
         android:textColor="#220202"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/button4"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.565" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/btnEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="37dp"
 
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="232dp"
-        android:layout_marginBottom="252dp"
         android:background="@drawable/box"
-        android:text="@string/add_account"
+        android:text="Edit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.433"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.724" />
+
+    <Button
+        android:id="@+id/btnApply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="37dp"
+        android:background="@drawable/box"
+        android:text="Apply"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.433"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toTopOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0.723" />
+
+    <EditText
+        android:id="@+id/EditText_Name"
+        android:layout_width="220dp"
+        android:layout_height="50dp"
+        android:visibility="gone"
+        android:autofillHints="Enter Name"
+        android:background="@drawable/rounded_editbox"
+        android:ems="10"
+        android:hint="Enter Name"
+        android:inputType="text"
+        android:textColor="#090000"
+
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.499" />
+
+    <EditText
+        android:id="@+id/EditText_Mobile"
+        android:layout_width="220dp"
+        android:layout_height="50dp"
+        android:visibility="gone"
+        android:autofillHints=""
+        android:background="@drawable/rounded_editbox"
+        android:ems="10"
+        android:hint="Enter Mobile Number"
+        android:inputType="text"
+        android:textColor="#090000"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.633" />
 
 
     <!-- TODO: Update blank fragment layout -->
