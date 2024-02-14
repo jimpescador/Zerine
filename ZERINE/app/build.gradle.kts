@@ -2,6 +2,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id ("com.google.gms.google-services")
+
 }
 
 android {
@@ -51,15 +53,21 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:2.5.3")
     implementation("androidx.gridlayout:gridlayout:1.0.0")
     implementation(files("D:\\11jim\\Desktop\\4thyear\\CAPSTONE\\App\\Zerine\\ZERINE\\app\\libs\\jtds-1.3.1.jar"))
+    implementation("com.google.firebase:firebase-database:20.3.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     implementation ("com.microsoft.sqlserver:mssql-jdbc:9.4.0.jre8")
     implementation ("androidx.room:room-runtime:2.4.0")
     annotationProcessor ("androidx.room:room-compiler:2.4.0")
+    implementation(platform("com.google.firebase:firebase-bom:32.7.2"))
+    implementation ("com.google.firebase:firebase-firestore:17.0.4")
+    implementation ("com.google.firebase:firebase-core:16.0.1")
+
 
 
 
 
 
 }
+

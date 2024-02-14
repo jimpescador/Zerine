@@ -4,7 +4,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-
     <supports-screens
         android:largeScreens="true"
         android:normalScreens="true"
@@ -21,6 +20,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ZERINE"
         tools:targetApi="31">
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
         <activity
             android:name=".parent_view"
             android:exported="false" />
