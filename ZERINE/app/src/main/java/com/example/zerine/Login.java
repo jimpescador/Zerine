@@ -17,6 +17,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class Login extends AppCompatActivity {
     EditText loginUser, loginPass;
     Button btnLogin, btnRegister;
+    FirebaseFirestore firestore;
 
 
     @Override
@@ -28,42 +29,49 @@ public class Login extends AppCompatActivity {
         loginPass = findViewById(R.id.EditText_Password);
         btnLogin = findViewById(R.id.LS_btnLogin);
         btnRegister= findViewById(R.id.LS_btnRegister);
+        firestore = FirebaseFirestore.getInstance();
 
 
-        btnLogin.setOnClickListener(v -> LoginAct());
 
-        btnRegister.setOnClickListener(v -> {
-            Intent intent = new Intent(Login.this,Register.class);
-            startActivity(intent);
-            finish();
-
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loginUser();
+            }
         });
     }
-    private void LoginAct() {
+
+
+    private void loginUser() {
         String username = loginUser.getText().toString().trim();
         String password = loginPass.getText().toString().trim();
 
+        // Check the user credentials against the Firestore collection
+        firestore.collection("accounts")
+                .whereEqualTo("Username", username)
+                .whereEqualTo("Password", password)
+                .get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    if (!queryDocumentSnapshots.isEmpty()) {
+                        // Login successful
+                        Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_LONG).show();
+                        // You can redirect the user to another activity here
+                        // For example, start a new activity:
+                        // startActivity(new Intent(LoginActivity.this, YourNextActivity.class));
+                        Intent intent = new Intent(Login.this, MainNavigation.class);
+                        startActivity(intent);
 
-        mAuth.createUserWithEmailAndPassword(username, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "createUserWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            updateUI(user);
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            Toast.makeText(EmailPasswordActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                            updateUI(null);
-                        }
+                    } else {
+                        // Login failed
+                        Toast.makeText(getApplicationContext(), "Invalid credentials", Toast.LENGTH_LONG).show();
                     }
+                })
+                .addOnFailureListener(e -> {
+                    // Handle failure
+                    Toast.makeText(getApplicationContext(), "Failed: " + e.getMessage(), Toast.LENGTH_LONG).show();
                 });
+    }
 }
-
 
 
 
