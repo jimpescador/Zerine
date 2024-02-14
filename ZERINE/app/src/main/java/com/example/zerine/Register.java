@@ -62,11 +62,6 @@ public class Register extends AppCompatActivity {
 
         //Test Validation of Empty Field START
         String strVar1, strVar2,strVar3,strVar4,strVar5;
-        strVar1 = "Username";
-        strVar2 = "Password";
-        strVar3 = "Email";
-        strVar4 = "First Name";
-        strVar5 = "Last Name";
 
 
         if (username.isEmpty()) {
