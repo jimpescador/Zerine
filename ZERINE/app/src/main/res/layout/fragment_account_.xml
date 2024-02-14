@@ -82,35 +82,70 @@
 
     <TextView
         android:id="@+id/namelabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="211dp"
+        android:layout_height="28dp"
         android:layout_marginStart="173dp"
         android:layout_marginEnd="174dp"
         android:fontFamily="@font/orbitron"
+        android:gravity="center"
         android:text="@string/name"
+        android:textColor="#0C0000"
+        android:textSize="25sp"
+        android:textStyle="bold"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0.398" />
+
+    <TextView
+        android:id="@+id/mobilelabel"
+        android:layout_width="211dp"
+        android:layout_height="28dp"
+        android:fontFamily="@font/orbitron"
+        android:text="@string/mobile_number"
+        android:textColor="#220202"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.457" />
+
+    <TextView
+        android:id="@+id/NameTXT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/orbitron"
+        android:text="@string/name"
+        android:visibility="gone"
         android:textColor="#0C0000"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.44" />
+        app:layout_constraintVertical_bias="0.397" />
 
     <TextView
-        android:id="@+id/mobilelabel"
+        android:id="@+id/MobileTXT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/orbitron"
-        android:text="@string/mobile_number"
-        android:textColor="#220202"
+        android:text="Mobile"
+        android:visibility="gone"
+        android:textColor="#0C0000"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.565" />
+        app:layout_constraintTop_toTopOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0.515" />
 
     <Button
         android:id="@+id/btnEdit"
@@ -126,7 +161,7 @@
         app:layout_constraintStart_toStartOf="parent"
 
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.724" />
+        app:layout_constraintVertical_bias="0.667" />
 
     <Button
         android:id="@+id/btnApply"
@@ -142,7 +177,7 @@
         app:layout_constraintStart_toStartOf="parent"
 
         app:layout_constraintTop_toTopOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.723" />
+        app:layout_constraintVertical_bias="0.666" />
 
     <EditText
         android:id="@+id/EditText_Name"
@@ -162,7 +197,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        app:layout_constraintVertical_bias="0.455" />
 
     <EditText
         android:id="@+id/EditText_Mobile"
@@ -181,7 +216,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.633" />
+        app:layout_constraintVertical_bias="0.583" />
 
 
     <!-- TODO: Update blank fragment layout -->

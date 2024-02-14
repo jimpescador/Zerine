@@ -28,12 +28,42 @@ class account_Fragment : Fragment() {
         val mobileEdit: EditText = view.findViewById(R.id.EditText_Mobile)
         val editBtn: Button = view.findViewById(R.id.btnEdit)
         val applyBtn: Button = view.findViewById(R.id.btnApply)
+        val nametxt: TextView = view.findViewById(R.id.NameTXT)
+        val mobiletxt: TextView = view.findViewById(R.id.MobileTXT)
+
+        firestore.collection("info").document(userId)
+            .get()
+            .addOnSuccessListener { document ->
+                if (document != null && document.exists()) {
+                    val recentName = document.getString("Name")
+                    val recentMobile = document.getString("Mobile")
+
+                    nameLabel.text = recentName
+                    mobileLabel.text = recentMobile
+
+                    // Set the recent values to the EditTexts as well, if needed
+                    nameEdit.setText(recentName)
+                    mobileEdit.setText(recentMobile)
+                } else {
+                    // Document doesn't exist, handle accordingly
+                    Toast.makeText(context, "Input Name and Mobile #", Toast.LENGTH_SHORT).show()
+                }
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(context, "Error fetching document: $e", Toast.LENGTH_SHORT).show()
+            }
+
 
         editBtn.setOnClickListener {
             nameEdit.visibility = View.VISIBLE
             mobileEdit.visibility = View.VISIBLE
             applyBtn.visibility = View.VISIBLE
+            nametxt.visibility = View.VISIBLE
+            mobiletxt.visibility = View.VISIBLE
             editBtn.visibility = View.GONE
+            nameLabel.visibility = View.GONE
+            mobileLabel.visibility = View.GONE
+
         }
 
         applyBtn.setOnClickListener {
@@ -57,7 +87,11 @@ class account_Fragment : Fragment() {
                     nameEdit.visibility = View.GONE
                     mobileEdit.visibility = View.GONE
                     applyBtn.visibility = View.GONE
+                    nametxt.visibility = View.GONE
+                    mobiletxt.visibility = View.GONE
                     editBtn.visibility = View.VISIBLE
+                    nameLabel.visibility = View.VISIBLE
+                    mobileLabel.visibility = View.VISIBLE
                     nameLabel.text = updatedName
                     mobileLabel.text = updatedMobile
                 }
