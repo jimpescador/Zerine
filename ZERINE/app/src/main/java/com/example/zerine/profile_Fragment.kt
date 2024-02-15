@@ -30,8 +30,8 @@ class profile_Fragment : Fragment() {
         val mobileEdit: EditText = view.findViewById(R.id.Prof_Mobile)
         val editBtn: Button = view.findViewById(R.id.prof_btnEdit)
         val applyBtn: Button = view.findViewById(R.id.prof_btnapply)
-        val nametxt: TextView = view.findViewById(R.id.NameTXT)
-        val mobiletxt: TextView = view.findViewById(R.id.MobileTXT)
+        val nametxt: TextView = view.findViewById(R.id.name)
+
 
 
         editBtn.setOnClickListener {
@@ -39,7 +39,6 @@ class profile_Fragment : Fragment() {
             mobileEdit.visibility = View.VISIBLE
             applyBtn.visibility = View.VISIBLE
             nametxt.visibility = View.VISIBLE
-            mobiletxt.visibility = View.VISIBLE
             editBtn.visibility = View.GONE
             
 
@@ -67,12 +66,11 @@ class profile_Fragment : Fragment() {
                     mobileEdit.visibility = View.GONE
                     applyBtn.visibility = View.GONE
                     nametxt.visibility = View.GONE
-                    mobiletxt.visibility = View.GONE
+
                     editBtn.visibility = View.VISIBLE
-                    nameLabel.visibility = View.VISIBLE
-                    mobileLabel.visibility = View.VISIBLE
-                    nameLabel.text = updatedName
-                    mobileLabel.text = updatedMobile
+
+
+
                 }
                 .addOnFailureListener { e ->
                     Toast.makeText(context, "Error updating document: $e", Toast.LENGTH_SHORT).show()
