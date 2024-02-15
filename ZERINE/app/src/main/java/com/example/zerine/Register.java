@@ -37,7 +37,7 @@ public class Register extends AppCompatActivity {
 
         Button button1 = findViewById(R.id.btnRegisterAccount);
 
-        progressBar = findViewById(R.id.progressBar); // Make sure to initialize progressBar
+        progressBar = findViewById(R.id.progressBar2); // Make sure to initialize progressBar
 
         firestore = FirebaseFirestore.getInstance();
         button1.setOnClickListener(new View.OnClickListener() {
@@ -57,91 +57,102 @@ public class Register extends AppCompatActivity {
         String lastName = editTextLname.getText().toString().trim();
 
 
-
-
-
         //Test Validation of Empty Field START
-        String strVar1, strVar2,strVar3,strVar4,strVar5;
+        String strVar1, strVar2, strVar3, strVar4, strVar5;
+
 
 
         if (username.isEmpty()) {
             strVar1 = "Username";
+            progressBar.setVisibility(View.GONE);
         } else {
             strVar1 = "";
+            progressBar.setVisibility(View.GONE);
         }
 
         if (password.isEmpty()) {
             strVar2 = "Password";
+            progressBar.setVisibility(View.GONE);
         } else {
-            strVar2= "";
+            strVar2 = "";
+            progressBar.setVisibility(View.GONE);
         }
 
         if (email.isEmpty()) {
             strVar3 = "Email";
-        } else {
+            progressBar.setVisibility(View.GONE);
+        } else
+        {
             strVar3 = "";
+            progressBar.setVisibility(View.GONE);
         }
 
         if (firstName.isEmpty()) {
             strVar4 = "First Name";
+            progressBar.setVisibility(View.GONE);
         } else {
             strVar4 = "";
+            progressBar.setVisibility(View.GONE);
         }
 
         if (lastName.isEmpty()) {
             strVar5 = "Last Name";
+            progressBar.setVisibility(View.GONE);
         } else {
             strVar5 = "";
+            progressBar.setVisibility(View.GONE);
         }
 
         if (username.isEmpty() || password.isEmpty() || email.isEmpty() || firstName.isEmpty() || lastName.isEmpty()) {
-            String message = strVar1 + "|"+ strVar2 + "|"+ strVar3 + "|"+ strVar4 + "|"+ strVar5 + " is empty";
+            String message = strVar1 + strVar2 + strVar3 + strVar4 + strVar5 + " is empty";
             // Display the toast message here using Android Toast API
             Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+            progressBar.setVisibility(View.GONE);
         }
         else
-        {Toast.makeText(getApplicationContext(),"Error 001", Toast.LENGTH_SHORT).show();}
+        {
+            Map<String, Object> account = new HashMap<>();
+            account.put("Username", username);
+            account.put("Password", password);
+            account.put("Email", email);
+
+            firestore.collection("accounts").add(account)
+                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                        @Override
+                        public void onSuccess(DocumentReference documentReference) {
+                            String accountId = documentReference.getId();
+                            Map<String, Object> info = new HashMap<>();
+                            info.put("FirstName", firstName);
+                            info.put("LastName", lastName);
+
+                            firestore.collection("info").document(accountId).set(info)
+                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            progressBar.setVisibility(View.GONE);
+                                            Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_LONG).show();
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            progressBar.setVisibility(View.GONE);
+                                            Toast.makeText(getApplicationContext(), "Failed: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                                        }
+                                    });
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            progressBar.setVisibility(View.GONE);
+                            Toast.makeText(getApplicationContext(), "Failed: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    });
+        }
 
         //Test Validation of Empty Field END
 
 
-        Map<String, Object> account = new HashMap<>();
-        account.put("Username", username);
-        account.put("Password", password);
-        account.put("Email", email);
-
-        firestore.collection("accounts").add(account)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        String accountId = documentReference.getId();
-                        Map<String, Object> info = new HashMap<>();
-                        info.put("FirstName", firstName);
-                        info.put("LastName", lastName);
-
-                        firestore.collection("info").document(accountId).set(info)
-                                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void aVoid) {
-                                        progressBar.setVisibility(View.GONE);
-                                        Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_LONG).show();
-                                    }
-                                })
-                                .addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        progressBar.setVisibility(View.GONE);
-                                        Toast.makeText(getApplicationContext(), "Failed: " + e.getMessage(), Toast.LENGTH_LONG).show();
-                                    }
-                                });
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        progressBar.setVisibility(View.GONE);
-                        Toast.makeText(getApplicationContext(), "Failed: " + e.getMessage(), Toast.LENGTH_LONG).show();
-                    }
-                });
     }
 }

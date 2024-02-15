@@ -74,15 +74,18 @@ public class Login extends AppCompatActivity {
                     //Test Validation of Empty Field START
                     else  if (username.isEmpty() && password.isEmpty()){
                         Toast.makeText(getApplicationContext(), "Username and password are Empty", Toast.LENGTH_LONG).show();
+                        progressBar.setVisibility(View.GONE);
                     }
                     else if (username.isEmpty())
                     {
                         Toast.makeText(getApplicationContext(),"Username is Empty",Toast.LENGTH_LONG).show();
+                        progressBar.setVisibility(View.GONE);
 
                     }
                     else {
                         // Login failed
                         Toast.makeText(getApplicationContext(), "Invalid credentials", Toast.LENGTH_LONG).show();
+                        progressBar.setVisibility(View.GONE);
                     }
 
                     //Test Validation of Empty Field END
@@ -90,6 +93,7 @@ public class Login extends AppCompatActivity {
                 .addOnFailureListener(e -> {
                     // Handle failure
                     Toast.makeText(getApplicationContext(), "Failed: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                    progressBar.setVisibility(View.GONE);
                 });
     }
 }
