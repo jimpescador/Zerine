@@ -31,6 +31,8 @@ class account_Fragment : Fragment() {
         val nametxt: TextView = view.findViewById(R.id.NameTXT)
         val mobiletxt: TextView = view.findViewById(R.id.MobileTXT)
 
+        val userId = "your_user_id"
+
         firestore.collection("info").document(userId)
             .get()
             .addOnSuccessListener { document ->

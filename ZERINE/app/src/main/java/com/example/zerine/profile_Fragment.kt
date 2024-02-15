@@ -17,14 +17,13 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class profile_Fragment : Fragment() {
     private val firestore = FirebaseFirestore.getInstance()
-    ooverride fun onCreateView(
+    override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_profile_, container, false)
 
-        val view = inflater.inflate(R.layout.fragment_account_, container, false)
         val sosnameLabel: TextView = view.findViewById(R.id.sosname)
         val sosmobileLabel: TextView = view.findViewById(R.id.sosmobile)
         val nameEdit: EditText = view.findViewById(R.id.Prof_Name)

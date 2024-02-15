@@ -62,6 +62,7 @@ public class Login extends AppCompatActivity {
                     if (!queryDocumentSnapshots.isEmpty()) {
                         progressBar.setVisibility(View.GONE);
                         // Login successful
+
                         Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_LONG).show();
                         // You can redirect the user to another activity here
                         // For example, start a new activity:
@@ -73,12 +74,13 @@ public class Login extends AppCompatActivity {
                     }
                     //Test Validation of Empty Field START
                     else  if (username.isEmpty() && password.isEmpty()){
-                        Toast.makeText(getApplicationContext(), "Username and password are Empty", Toast.LENGTH_LONG).show();
+                        loginUser.setError("Username and password are Empty");
                         progressBar.setVisibility(View.GONE);
                     }
                     else if (username.isEmpty())
                     {
-                        Toast.makeText(getApplicationContext(),"Username is Empty",Toast.LENGTH_LONG).show();
+
+                        loginUser.setError("Username is Empty");
                         progressBar.setVisibility(View.GONE);
 
                     }
