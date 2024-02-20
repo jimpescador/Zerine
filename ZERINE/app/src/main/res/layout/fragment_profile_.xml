@@ -71,8 +71,6 @@
         android:layout_width="71dp"
         android:layout_height="45dp"
         android:layout_gravity="end"
-        android:layout_marginStart="340dp"
-        android:layout_marginTop="16dp"
         android:layout_marginBottom="670dp"
         android:clickable="true"
         android:focusable="true"
@@ -80,10 +78,10 @@
         android:src="@drawable/exit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.09" />
 
     <ImageView
         android:id="@+id/imageView6"
@@ -118,13 +116,14 @@
 
     <TextView
         android:id="@+id/name"
-        android:layout_width="168dp"
-        android:layout_height="26dp"
+        android:layout_width="242dp"
+        android:layout_height="24dp"
         android:fontFamily="@font/orbitron"
         android:text="@string/name"
-        android:textColor="#0B0101"
-        android:textSize="20sp"
         android:textAlignment="center"
+        android:textColor="#0B0101"
+        android:textSize="25sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.489"
@@ -137,37 +136,40 @@
         android:layout_width="168dp"
         android:layout_height="26dp"
         android:fontFamily="@font/orbitron"
-        android:text="Mobile No."
+        android:text="-"
         android:textAlignment="center"
         android:textColor="#0B0101"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.761"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.605" />
+        app:layout_constraintVertical_bias="0.609" />
 
     <TextView
         android:id="@+id/sosname"
         android:layout_width="168dp"
         android:layout_height="26dp"
         android:fontFamily="@font/orbitron"
-        android:text="@string/name"
+        android:text="-"
         android:textAlignment="center"
         android:textColor="#0B0101"
         android:textSize="20sp"
+        android:textStyle="bold"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.761"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.522" />
+        app:layout_constraintVertical_bias="0.524" />
 
     <TextView
         android:id="@+id/name1"
-        android:layout_width="132dp"
-        android:layout_height="94dp"
+        android:layout_width="140dp"
+        android:layout_height="98dp"
         android:fontFamily="@font/orbitron"
         android:text="Emergency Contact Name"
         android:textAlignment="center"
@@ -175,10 +177,10 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.057"
+        app:layout_constraintHorizontal_bias="0.059"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.54" />
+        app:layout_constraintVertical_bias="0.562" />
 
     <TextView
         android:id="@+id/textView20"
@@ -189,22 +191,25 @@
         android:fontFamily="@font/orbitron"
         android:text="@string/emergency_contact_no"
         android:textColor="#1B0303"
+        android:textAlignment="center"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.11"
+        app:layout_constraintHorizontal_bias="0.073"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.493" />
 
     <EditText
         android:id="@+id/Prof_Name"
-        android:layout_width="217dp"
+        android:layout_width="200dp"
         android:layout_height="35dp"
         android:layout_marginTop="368dp"
         android:layout_marginBottom="328dp"
         android:background="@drawable/rounded_editbox"
         android:ems="10"
         android:visibility="gone"
+        android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.788"
@@ -214,13 +219,14 @@
 
     <EditText
         android:id="@+id/Prof_Mobile"
-        android:layout_width="217dp"
+        android:layout_width="200dp"
         android:layout_height="35dp"
         android:layout_marginTop="435dp"
         android:layout_marginBottom="261dp"
         android:background="@drawable/rounded_editbox"
         android:ems="10"
         android:visibility="gone"
+        android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.788"
@@ -244,6 +250,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.662" />
+
+    <ProgressBar
+        android:id="@+id/progressBarprof"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.67" />
 
 
     <!-- TODO: Update blank fragment layout -->

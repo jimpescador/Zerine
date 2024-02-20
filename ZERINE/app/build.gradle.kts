@@ -62,6 +62,10 @@ dependencies {
     annotationProcessor ("androidx.room:room-compiler:2.4.0")
     implementation ("com.google.firebase:firebase-firestore:24.10.2")
     implementation ("com.google.firebase:firebase-core:16.0.1")
+    implementation (platform("com.google.firebase:firebase-bom:30.5.0"))
+    implementation ("com.google.firebase:firebase-auth-ktx")
+
+
 
 
 

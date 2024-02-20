@@ -8,78 +8,172 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.firestore.FirebaseFirestore
 
 
 class profile_Fragment : Fragment() {
-    private val firestore = FirebaseFirestore.getInstance()
+    private val currentUser = FirebaseAuth.getInstance().currentUser
+    private val db = FirebaseFirestore.getInstance()
+    private val mAuth = FirebaseAuth.getInstance()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_profile_, container, false)
-
-        val sosnameLabel: TextView = view.findViewById(R.id.sosname)
-        val sosmobileLabel: TextView = view.findViewById(R.id.sosmobile)
+        val sosN: TextView = view.findViewById(R.id.sosname)
+        val sosM: TextView = view.findViewById(R.id.sosmobile)
         val nameEdit: EditText = view.findViewById(R.id.Prof_Name)
         val mobileEdit: EditText = view.findViewById(R.id.Prof_Mobile)
         val editBtn: Button = view.findViewById(R.id.prof_btnEdit)
         val applyBtn: Button = view.findViewById(R.id.prof_btnapply)
         val nametxt: TextView = view.findViewById(R.id.name)
+        val pgbarprof: ProgressBar = view.findViewById(R.id.progressBarprof)
 
+        val currentUser: FirebaseUser? = mAuth.currentUser
 
+        if (currentUser != null) {
+            val userId = currentUser.uid
+            db.collection("info").document(userId)
+                .get()
+                .addOnSuccessListener { document ->
+                    if (document != null && document.exists()) {
+                        val recentName = document.getString("Name")
 
-        editBtn.setOnClickListener {
-            nameEdit.visibility = View.VISIBLE
-            mobileEdit.visibility = View.VISIBLE
-            applyBtn.visibility = View.VISIBLE
-            nametxt.visibility = View.VISIBLE
-            editBtn.visibility = View.GONE
-            
+                        // Update TextView
+                        nametxt.text = recentName
 
-        }
+                        // Update EditText if needed
+                        nameEdit.setText(recentName)
 
-        applyBtn.setOnClickListener {
-            // Get the updated name and mobile values
-            val updatedName = nameEdit.text.toString()
-            val updatedMobile = mobileEdit.text.toString()
+                        // Retrieve data from "EContacts" collection
 
-            // Update the Firebase Firestore with the new information
-            // Assuming you have a user ID to identify the document
-            val userId = "your_user_id"
-
-            val info = hashMapOf(
-                "Name" to updatedName,
-                "Mobile" to updatedMobile
-            )
-
-            firestore.collection("info").document(userId)
-                .set(info)
-                .addOnSuccessListener {
-                    Toast.makeText(context, "Update successful", Toast.LENGTH_SHORT).show()
-                    nameEdit.visibility = View.GONE
-                    mobileEdit.visibility = View.GONE
-                    applyBtn.visibility = View.GONE
-                    nametxt.visibility = View.GONE
-
-                    editBtn.visibility = View.VISIBLE
-
-
-
+                    } else {
+                        // Handle the case when "info" document doesn't exist
+                        // This could include clearing/resetting values as needed
+                        Toast.makeText(context, "Info document doesn't exist", Toast.LENGTH_SHORT)
+                            .show()
+                    }
                 }
                 .addOnFailureListener { e ->
-                    Toast.makeText(context, "Error updating document: $e", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "Error fetching info document: $e", Toast.LENGTH_SHORT)
+                        .show()
                 }
-        }
 
-        return view
+            val currentUser1: FirebaseUser? = mAuth.currentUser
+            if (currentUser1 != null) {
+                val userId3 = currentUser1.uid
+                db.collection("EContacts").document(userId3)
+                    .get()
+                    .addOnSuccessListener { document ->
+                        if (document != null && document.exists()) {
+                            val sosrecentName = document.getString("eContactsName")
+                            val sosrecentMobile = document.getString("eContactsMobile")
+
+                            // Update TextViews
+                            sosN.text = sosrecentName
+                            sosM.text = sosrecentMobile
+
+                            // Update EditTexts if needed
+                            nameEdit.setText(sosrecentName)
+                            mobileEdit.setText(sosrecentMobile)
+                        } else {
+                            // Handle the case when "EContacts" document doesn't exist
+                            // This could include clearing/resetting values as needed
+                            Toast.makeText(
+                                context,
+                                "EContacts document doesn't exist",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+                    .addOnFailureListener { e ->
+                        Toast.makeText(
+                            context,
+                            "Error fetching EContacts document: $e",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+
+                editBtn.setOnClickListener {
+                    nameEdit.visibility = View.VISIBLE
+                    mobileEdit.visibility = View.VISIBLE
+                    applyBtn.visibility = View.VISIBLE
+                    editBtn.visibility = View.GONE
+
+
+                }
+
+                applyBtn.setOnClickListener {
+                    // Get the updated name and mobile values
+                    val updatedName = nameEdit.text.toString()
+                    val updatedMobile = mobileEdit.text.toString()
+
+                    // Check for null or empty values
+                    if (updatedName.isEmpty() || updatedMobile.isEmpty()) {
+                        Toast.makeText(
+                            context,
+                            "Name and Mobile cannot be empty",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        return@setOnClickListener
+                    }
+
+                    pgbarprof.visibility = View.VISIBLE
+
+                        // Update the Firebase Firestore with the new information
+                        // Assuming you have a user ID to identify the document
+
+                        val currentUser2 = FirebaseAuth.getInstance().currentUser
+                        val userId2 = currentUser2?.uid
+
+                        if (userId2 != null) {
+                            val eContacts = hashMapOf(
+                                "eContactsName" to updatedName,
+                                "eContactsMobile" to updatedMobile
+                            )
+
+                            db.collection("EContacts").document(userId2)
+                                .set(eContacts)
+                                .addOnSuccessListener {
+                                    Toast.makeText(context, "Update successful", Toast.LENGTH_SHORT)
+                                        .show()
+                                    nameEdit.visibility = View.GONE
+                                    mobileEdit.visibility = View.GONE
+                                    applyBtn.visibility = View.GONE
+                                    pgbarprof.visibility = View.GONE
+
+                                    editBtn.visibility = View.VISIBLE
+                                    sosN.text = updatedName
+                                    sosM.text = updatedMobile
+
+                                }
+                                .addOnFailureListener { e ->
+                                    Toast.makeText(
+                                        context,
+                                        "Error updating document: $e",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                    pgbarprof.visibility = View.GONE
+                                }
+                        }
+                    }
+                }
+
+            }
+            return view
+        }
     }
-}
+
+
+
 
 
 

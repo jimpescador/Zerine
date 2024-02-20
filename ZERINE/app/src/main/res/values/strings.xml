@@ -6,7 +6,7 @@
     <string name="title_settings">Settings</string>
     <!-- TODO: Remove or change this placeholder text -->
 
-    <string name="Username_ALL_UpperCase">USERNAME</string>
+    <string name="Username_ALL_UpperCase">EMAIL</string>
     <string name="Username_ALL_LowerCase">username</string>
     <string name="Username_Normal">Username</string>
     <string name="Password_ALL_UpperCase">PASSWORD</string>
@@ -16,7 +16,7 @@
     <string name="Login_Normal">Login</string>
     <string name="Register_Normal">Register</string>
 
-    <string name="Hint_EnterUser">Enter Username </string>
+    <string name="Hint_EnterUser">Enter Email </string>
     <string name="Hint_Error_Username">Username does\'t Exist</string>
     <string name="Hint_EnterPass">Enter Password </string>
     <string name="Hint_ErrorPass">Password is Wrong</string>
@@ -29,7 +29,7 @@
 
 
     <string name="user_record_btn">USER RECORD</string>
-    <string name="edit_profile">EDIT PROFILE</string>
+    <string name="edit_profile">PROFILE</string>
 
 
     <string name="settings">Settings</string>

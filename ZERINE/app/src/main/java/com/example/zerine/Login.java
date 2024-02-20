@@ -1,26 +1,30 @@
 package com.example.zerine;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.zerine.R;
-import android.database.sqlite.SQLiteDatabase;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+
 public class Login extends AppCompatActivity {
     EditText loginUser, loginPass;
     Button btnLogin, btnRegister;
-    FirebaseFirestore firestore;
+    FirebaseAuth firebaseAuth;
     ProgressBar progressBar;
-
+    TextView forgotpass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,88 +34,72 @@ public class Login extends AppCompatActivity {
         loginUser = findViewById(R.id.EditText_Username);
         loginPass = findViewById(R.id.EditText_Password);
         btnLogin = findViewById(R.id.LS_btnLogin);
-        btnRegister= findViewById(R.id.LS_btnRegister);
-        firestore = FirebaseFirestore.getInstance();
+        btnRegister = findViewById(R.id.LS_btnRegister);
         progressBar = findViewById(R.id.progressBar);
+        forgotpass = findViewById(R.id.forgot);
 
+        firebaseAuth = FirebaseAuth.getInstance();
 
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
-                loginUser();
-                progressBar.setVisibility(View.VISIBLE);
+                if (validateFields()) {
+                    loginUser();
+                    progressBar.setVisibility(View.VISIBLE);
+                }
             }
+        });
 
-
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Start the registration activity
+                Intent intent = new Intent(Login.this, Register.class);
+                startActivity(intent);
+            }
         });
     }
-
 
     private void loginUser() {
         String username = loginUser.getText().toString().trim();
         String password = loginPass.getText().toString().trim();
 
-        // Check the user credentials against the Firestore collection
-        firestore.collection("accounts")
-                .whereEqualTo("Username", username)
-                .whereEqualTo("Password", password)
-                .get()
-                .addOnSuccessListener(queryDocumentSnapshots -> {
-                    if (!queryDocumentSnapshots.isEmpty()) {
-                        progressBar.setVisibility(View.GONE);
-                        // Login successful
+        // Use Firebase Authentication signInWithEmailAndPassword method
+        firebaseAuth.signInWithEmailAndPassword(username, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success
+                            FirebaseUser user = firebaseAuth.getCurrentUser();
+                            progressBar.setVisibility(View.GONE);
 
-                        Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_LONG).show();
-                        // You can redirect the user to another activity here
-                        // For example, start a new activity:
-                        // startActivity(new Intent(LoginActivity.this, YourNextActivity.class));
-                        Intent intent = new Intent(Login.this, MainNavigation.class);
-                        startActivity(intent);
-                        finish();
-
+                            Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(Login.this, MainNavigation.class);
+                            startActivity(intent);
+                            finish();
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Toast.makeText(getApplicationContext(), "Authentication failed.", Toast.LENGTH_SHORT).show();
+                            progressBar.setVisibility(View.GONE);
+                        }
                     }
-                    //Test Validation of Empty Field START
-                    else  if (username.isEmpty() && password.isEmpty()){
-                        loginUser.setError("Username and password are Empty");
-                        progressBar.setVisibility(View.GONE);
-                    }
-                    else if (username.isEmpty())
-                    {
-
-                        loginUser.setError("Username is Empty");
-                        progressBar.setVisibility(View.GONE);
-
-                    }
-                    else {
-                        // Login failed
-                        Toast.makeText(getApplicationContext(), "Invalid credentials", Toast.LENGTH_LONG).show();
-                        progressBar.setVisibility(View.GONE);
-                    }
-
-                    //Test Validation of Empty Field END
-                })
-                .addOnFailureListener(e -> {
-                    // Handle failure
-                    Toast.makeText(getApplicationContext(), "Failed: " + e.getMessage(), Toast.LENGTH_LONG).show();
-                    progressBar.setVisibility(View.GONE);
                 });
     }
+
+    private boolean validateFields() {
+        String username = loginUser.getText().toString().trim();
+        String password = loginPass.getText().toString().trim();
+
+        if (username.isEmpty() && password.isEmpty()) {
+            loginUser.setError("Username and password are empty");
+            return false;
+        } else if (username.isEmpty()) {
+            loginUser.setError("Username is empty");
+            return false;
+        }
+
+        return true;
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
