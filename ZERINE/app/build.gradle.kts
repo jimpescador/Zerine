@@ -52,7 +52,7 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:2.5.3")
     implementation("androidx.navigation:navigation-ui-ktx:2.5.3")
     implementation("androidx.gridlayout:gridlayout:1.0.0")
-    implementation(files("D:\\11jim\\Desktop\\4thyear\\CAPSTONE\\App\\Zerine\\ZERINE\\app\\libs\\jtds-1.3.1.jar"))
+    //implementation(files("D:\\11jim\\Desktop\\4thyear\\CAPSTONE\\App\\Zerine\\ZERINE\\app\\libs\\jtds-1.3.1.jar"))
     implementation("com.google.firebase:firebase-database:20.3.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
@@ -64,6 +64,7 @@ dependencies {
     implementation ("com.google.firebase:firebase-core:16.0.1")
     implementation (platform("com.google.firebase:firebase-bom:30.5.0"))
     implementation ("com.google.firebase:firebase-auth-ktx")
+    implementation ("com.google.android.gms:play-services-location:15.0.1")
 
 
 
