@@ -79,7 +79,7 @@ class account_Fragment : Fragment() {
 
 
         accExitBtn.setOnClickListener {
-
+            showExitDialog()
         }
 
         editBtn.setOnClickListener {
@@ -138,6 +138,22 @@ class account_Fragment : Fragment() {
 
 
         return view
+    }
+
+    private fun showExitDialog() {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("Exit")
+        builder.setMessage("Are you sure you want to exit?")
+        builder.setPositiveButton("Yes") { _, _ ->
+            // Communicate with the hosting activity to finish
+            requireActivity().finishAffinity()
+        }
+        builder.setNegativeButton("No") { dialog, _ ->
+            // User clicked "No," do nothing and dismiss the dialog
+            dialog.dismiss()
+        }
+        val dialog: AlertDialog = builder.create()
+        dialog.show()
     }
 
 
