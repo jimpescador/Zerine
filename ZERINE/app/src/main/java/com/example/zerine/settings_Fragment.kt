@@ -16,6 +16,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 
 class settings_Fragment : Fragment() {
+    private val mAuth = FirebaseAuth.getInstance()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,7 +38,12 @@ class settings_Fragment : Fragment() {
         builder.setTitle("Logout")
         builder.setMessage("Are you sure you want to Logout?")
         builder.setPositiveButton("Yes") { _, _ ->
+            mAuth.signOut()
+            Toast.makeText(requireContext(), "Logged out successfully", Toast.LENGTH_SHORT).show()
             (activity as? AppCompatActivity)?.finish()
+            val intent = Intent(requireContext(), Login::class.java)
+            startActivity(intent)
+            requireActivity().finish()
         }
         builder.setNegativeButton("No") { dialog, _ ->
 

@@ -54,6 +54,7 @@ dependencies {
     implementation("androidx.gridlayout:gridlayout:1.0.0")
     //implementation(files("D:\\11jim\\Desktop\\4thyear\\CAPSTONE\\App\\Zerine\\ZERINE\\app\\libs\\jtds-1.3.1.jar"))
     implementation("com.google.firebase:firebase-database:20.3.0")
+    implementation("androidx.compose.ui:ui-text-android:1.6.2")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -65,6 +66,8 @@ dependencies {
     implementation (platform("com.google.firebase:firebase-bom:30.5.0"))
     implementation ("com.google.firebase:firebase-auth-ktx")
     implementation ("com.google.android.gms:play-services-location:21.1.0")
+    implementation ("com.itextpdf:itextg:5.5.10")
+
 
 
 

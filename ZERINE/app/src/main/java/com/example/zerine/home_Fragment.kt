@@ -199,7 +199,7 @@ class home_Fragment : Fragment() {
         builder.setMessage("Are you sure you want to exit?")
         builder.setPositiveButton("Yes") { _, _ ->
             // Communicate with the hosting activity to finish
-            (activity as? AppCompatActivity)?.finish()
+            requireActivity().finishAffinity()
         }
         builder.setNegativeButton("No") { dialog, _ ->
             // User clicked "No," do nothing and dismiss the dialog
