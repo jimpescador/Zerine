@@ -43,7 +43,7 @@ class home_Fragment : Fragment() {
     private val MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB")
     private val bluetoothAdapter: BluetoothAdapter by lazy { BluetoothAdapter.getDefaultAdapter() }
     private var serverSocket: BluetoothServerSocket? = null
-    lateinit var txtphone: EditText
+    lateinit var txtphone: TextView
     private val mAuth = FirebaseAuth.getInstance()
     companion object {
         private const val REQUEST_CODE_PERMISSION = 100
@@ -88,16 +88,19 @@ class home_Fragment : Fragment() {
 
     private fun acceptConnection() {
         Thread {
+            if (!isAdded) {
+                return@Thread
+            }
+
             var socket: BluetoothSocket? = null
             try {
-                if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
-                    // TODO: Consider calling
-                    //    ActivityCompat#requestPermissions
-                    // here to request the missing permissions, and then overriding
-                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                    //                                          int[] grantResults)
-                    // to handle the case where the user grants the permission. See the documentation
-                    // for ActivityCompat#requestPermissions for more details.
+                // ... rest of your code ...
+
+                if (ActivityCompat.checkSelfPermission(
+                        requireContext(),
+                        Manifest.permission.BLUETOOTH_CONNECT
+                    ) != PackageManager.PERMISSION_GRANTED
+                ) {
                     return@Thread
                 }
                 Log.d(TAG, "Listening...")

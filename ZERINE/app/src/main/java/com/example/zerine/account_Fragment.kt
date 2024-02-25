@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
@@ -38,7 +39,7 @@ class account_Fragment : Fragment() {
         val nametxt: TextView = view.findViewById(R.id.NameTXT)
         val mobiletxt: TextView = view.findViewById(R.id.MobileTXT)
         val pgbar: ProgressBar = view.findViewById(R.id.progressBarAcc)
-        val accExitBtn: EditText = view.findViewById(R.id.accExitBtn)
+        val accExitBtn: ImageView = view.findViewById(R.id.accExitBtn)
 
 
         val currentUser: FirebaseUser? = mAuth.currentUser
