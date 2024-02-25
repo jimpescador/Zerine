@@ -3,6 +3,9 @@ import android.Manifest
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothServerSocket
 import android.bluetooth.BluetoothSocket
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
@@ -11,27 +14,27 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import android.widget.ViewFlipper
-import androidx.fragment.app.Fragment
-import com.example.zerine.R;
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.fragment.app.Fragment
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
+import com.google.firebase.auth.FirebaseAuth
 import java.io.IOException
 import java.io.InputStream
 import java.util.Timer
 import java.util.TimerTask
 import java.util.UUID
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationServices
+
 
 class home_Fragment : Fragment() {
+
 
     private lateinit var viewFlipper: ViewFlipper
     private lateinit var fusedLocationClient: FusedLocationProviderClient
@@ -40,7 +43,8 @@ class home_Fragment : Fragment() {
     private val MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB")
     private val bluetoothAdapter: BluetoothAdapter by lazy { BluetoothAdapter.getDefaultAdapter() }
     private var serverSocket: BluetoothServerSocket? = null
-    lateinit var txt_phone: EditText
+    lateinit var txtphone: EditText
+    private val mAuth = FirebaseAuth.getInstance()
     companion object {
         private const val REQUEST_CODE_PERMISSION = 100
     }
@@ -57,7 +61,10 @@ class home_Fragment : Fragment() {
         val btnLeft: ImageButton = view.findViewById(R.id.leftbtn)
         val btnRight: ImageButton = view.findViewById(R.id.rightbtn)
         val exitImg: ImageView = view.findViewById(R.id.exitbtn)
-        txt_phone = view.findViewById(R.id.txt_phone)
+        val view2 = inflater.inflate(R.layout.fragment_profile_, container, false)
+        txtphone = view2.findViewById(R.id.sosmobile)
+
+
         btnLeft.setOnClickListener {
             viewFlipper.showPrevious()
         }
@@ -149,7 +156,7 @@ class home_Fragment : Fragment() {
                     val latitude = location.latitude
                     val longitude = location.longitude
                     val locationMessage = "Fall Detected! \nLocation: https://maps.google.com?q=$latitude,$longitude"
-                    sendSMS(txt_phone.text.toString(),locationMessage)
+                    sendSMS(txtphone.text.toString(),locationMessage)
                 } else {
                     Log.d("Error", "Invalid Location")
                 }
@@ -198,6 +205,8 @@ class home_Fragment : Fragment() {
         val dialog: AlertDialog = builder.create()
         dialog.show()
     }
+
+
 }
 
 

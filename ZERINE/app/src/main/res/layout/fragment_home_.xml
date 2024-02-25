@@ -37,18 +37,15 @@
         android:layout_height="45dp"
         android:layout_gravity="end"
 
-        android:layout_marginStart="341dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="670dp"
+        android:clickable="true"
+        android:focusable="true"
         android:src="@drawable/exit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.979"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        android:clickable="true"
-        android:focusable="true"/>
+        app:layout_constraintVertical_bias="0.018" />
 
     <ImageView
         android:id="@+id/imageView10"
@@ -95,7 +92,7 @@
         android:layout_marginStart="135dp"
         android:layout_marginTop="152dp"
         android:layout_marginEnd="240dp"
-        android:fontFamily="@font/orbitron"
+        android:fontFamily="@font/roboto"
         android:text="@string/bpm"
         android:textColor="#FF0000"
         android:textStyle="bold"
@@ -108,7 +105,7 @@
         android:id="@+id/textView14"
         android:layout_width="73dp"
         android:layout_height="43dp"
-        android:fontFamily="@font/orbitron"
+        android:fontFamily="@font/roboto"
         android:text="@string/oxygen_level"
         android:textColor="#0B0000"
         android:textStyle="bold"
@@ -169,7 +166,7 @@
         android:layout_marginStart="121dp"
         android:layout_marginTop="26dp"
         android:layout_marginEnd="122dp"
-        android:fontFamily="@font/orbitron"
+        android:fontFamily="@font/roboto"
         android:text="@string/epilepsy_slides"
         android:textColor="#090000"
         android:textSize="20sp"
@@ -283,18 +280,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.713" />
-
-    <EditText
-        android:id="@+id/txt_phone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:ems="10"
-        android:hint="Phone Number"
-        android:inputType="phone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
 
     <!-- TODO: Update blank fragment layout -->

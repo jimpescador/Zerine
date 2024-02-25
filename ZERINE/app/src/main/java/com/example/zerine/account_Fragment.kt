@@ -8,6 +8,8 @@ import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -36,6 +38,8 @@ class account_Fragment : Fragment() {
         val nametxt: TextView = view.findViewById(R.id.NameTXT)
         val mobiletxt: TextView = view.findViewById(R.id.MobileTXT)
         val pgbar: ProgressBar = view.findViewById(R.id.progressBarAcc)
+        val accExitBtn: EditText = view.findViewById(R.id.accExitBtn)
+
 
         val currentUser: FirebaseUser? = mAuth.currentUser
 
@@ -73,7 +77,10 @@ class account_Fragment : Fragment() {
 
 
 
-        // ... (your existing code)
+        accExitBtn.setOnClickListener {
+
+        }
+
         editBtn.setOnClickListener {
             nameEdit.visibility = View.VISIBLE
             mobileEdit.visibility = View.VISIBLE
@@ -131,4 +138,6 @@ class account_Fragment : Fragment() {
 
         return view
     }
+
+
 }

@@ -1,9 +1,13 @@
 package com.example.zerine;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -12,6 +16,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.zerine.databinding.ActivityMainNavigationBinding;
+import com.example.zerine.ui.ForgotPasswordActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -20,26 +26,41 @@ import com.google.firebase.auth.FirebaseUser;
 
 
 public class Login extends AppCompatActivity {
-    EditText loginUser, loginPass;
+    EditText loginEmail, loginPass;
     Button btnLogin, btnRegister;
     FirebaseAuth firebaseAuth;
     ProgressBar progressBar;
     TextView forgotpass;
+    CheckBox checkBoxRememberMe;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_screen);
 
-        loginUser = findViewById(R.id.EditText_Username);
+        loginEmail = findViewById(R.id.EditText_Username);
         loginPass = findViewById(R.id.EditText_Password);
         btnLogin = findViewById(R.id.LS_btnLogin);
         btnRegister = findViewById(R.id.LS_btnRegister);
         progressBar = findViewById(R.id.progressBar);
         forgotpass = findViewById(R.id.forgot);
+        checkBoxRememberMe = findViewById(R.id.checkBoxRememberMe);
+
 
         firebaseAuth = FirebaseAuth.getInstance();
 
+
+        loadSavedCredentials();
+
+        forgotpass.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Login.this, ForgotPasswordActivity.class));
+            }
+
+        });
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,11 +83,15 @@ public class Login extends AppCompatActivity {
     }
 
     private void loginUser() {
-        String username = loginUser.getText().toString().trim();
+        String email = loginEmail.getText().toString().trim();
         String password = loginPass.getText().toString().trim();
+        if (checkBoxRememberMe.isChecked()) {
+            // Save credentials if "Remember Me" is checked
+            saveCredentials(email, password);
+        }
 
         // Use Firebase Authentication signInWithEmailAndPassword method
-        firebaseAuth.signInWithEmailAndPassword(username, password)
+        firebaseAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -74,7 +99,6 @@ public class Login extends AppCompatActivity {
                             // Sign in success
                             FirebaseUser user = firebaseAuth.getCurrentUser();
                             progressBar.setVisibility(View.GONE);
-
                             Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_LONG).show();
                             Intent intent = new Intent(Login.this, MainNavigation.class);
                             startActivity(intent);
@@ -86,20 +110,59 @@ public class Login extends AppCompatActivity {
                         }
                     }
                 });
+
     }
 
     private boolean validateFields() {
-        String username = loginUser.getText().toString().trim();
+        String email = loginEmail.getText().toString().trim();
         String password = loginPass.getText().toString().trim();
 
-        if (username.isEmpty() && password.isEmpty()) {
-            loginUser.setError("Username and password are empty");
+        if (email.isEmpty() && password.isEmpty()) {
+            loginEmail.setError("Username and password are empty");
             return false;
-        } else if (username.isEmpty()) {
-            loginUser.setError("Username is empty");
+        } else if (email.isEmpty()) {
+            loginEmail.setError("Username is empty");
             return false;
         }
 
         return true;
+    }
+
+    private void resetPassword(String email) {
+        firebaseAuth.sendPasswordResetEmail(email)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(Login.this, "Password reset email sent", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(Login.this, "Failed to send password reset email", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+
+    private void saveCredentials(String email, String password) {
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("savedEmail", email);
+        editor.putString("savedPassword", password);
+        editor.putBoolean("rememberMe", true);
+        editor.apply();
+    }
+
+    private void loadSavedCredentials() {
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+        boolean rememberMe = sharedPreferences.getBoolean("rememberMe", false);
+
+        if (rememberMe) {
+            // Load and set saved email and password
+            String savedEmail = sharedPreferences.getString("savedEmail", "");
+            String savedPassword = sharedPreferences.getString("savedPassword", "");
+
+            loginEmail.setText(savedEmail);
+            loginPass.setText(savedPassword);
+            checkBoxRememberMe.setChecked(true);
+        }
     }
 }

@@ -36,6 +36,8 @@ class profile_Fragment : Fragment() {
         val applyBtn: Button = view.findViewById(R.id.prof_btnapply)
         val nametxt: TextView = view.findViewById(R.id.name)
         val pgbarprof: ProgressBar = view.findViewById(R.id.progressBarprof)
+        val exitbtn: ImageView = view.findViewById(R.id.exitbtn)
+
 
         val currentUser: FirebaseUser? = mAuth.currentUser
 
@@ -111,6 +113,10 @@ class profile_Fragment : Fragment() {
 
                 }
 
+                exitbtn.setOnClickListener {
+
+                }
+
                 applyBtn.setOnClickListener {
                     // Get the updated name and mobile values
                     val updatedName = nameEdit.text.toString()
@@ -170,6 +176,7 @@ class profile_Fragment : Fragment() {
             }
             return view
         }
+
     }
 
 
