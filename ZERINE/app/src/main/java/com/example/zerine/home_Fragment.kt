@@ -76,34 +76,34 @@ class home_Fragment : Fragment() {
         exitImg.setOnClickListener {
             showExitDialog()
         }
-
-        Timer().scheduleAtFixedRate(object : TimerTask() {
+        acceptConnection()
+        /*Timer().scheduleAtFixedRate(object : TimerTask() {
             override fun run() {
                 acceptConnection()
             }
-        }, 0, 3000)
+        }, 0, 3000)*/
 
         return view
     }
 
     private fun acceptConnection() {
         Thread {
-            if (!isAdded) {
-                return@Thread
-            }
 
             var socket: BluetoothSocket? = null
             try {
-                // ... rest of your code ...
-
-                if (ActivityCompat.checkSelfPermission(
-                        requireContext(),
-                        Manifest.permission.BLUETOOTH_CONNECT
-                    ) != PackageManager.PERMISSION_GRANTED
-                ) {
+                if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+                    // TODO: Consider calling
+                    //    ActivityCompat#requestPermissions
+                    // here to request the missing permissions, and then overriding
+                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                    //                                          int[] grantResults)
+                    // to handle the case where the user grants the permission. See the documentation
+                    // for ActivityCompat#requestPermissions for more details.
                     return@Thread
                 }
                 Log.d(TAG, "Listening...")
+
+
                 serverSocket = bluetoothAdapter.listenUsingRfcommWithServiceRecord("BluetoothExample", MY_UUID)
                 socket = serverSocket?.accept()
                 val inputStream: InputStream = socket?.inputStream!!
@@ -125,12 +125,12 @@ class home_Fragment : Fragment() {
             } catch (e: IOException) {
                 Log.e(TAG, "Error accepting connection: ${e.message}")
             } finally {
-                try {
+                /* try {
                     serverSocket?.close()
-                    socket?.close()
-                } catch (e: IOException) {
-                    Log.e(TAG, "Error closing sockets: ${e.message}")
-                }
+                     socket?.close()
+                 } catch (e: IOException) {
+                     Log.e(TAG, "Error closing sockets: ${e.message}")
+                 }*/
             }
         }.start()
     }
