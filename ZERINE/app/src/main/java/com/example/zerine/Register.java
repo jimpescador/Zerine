@@ -6,8 +6,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.common.internal.AccountType;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
@@ -15,6 +18,9 @@ import java.util.Map;
 
 public class Register extends AppCompatActivity {
     EditText editTextUser, editTextPass, editTextEmail, editTextFname, editTextCNum;
+    String AccountTypeChoice;
+
+    RadioButton RadioUser,RadioParent;
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firestore;
     ProgressBar progressBar;
@@ -29,6 +35,8 @@ public class Register extends AppCompatActivity {
         editTextEmail = findViewById(R.id.reg_email);
         editTextFname = findViewById(R.id.reg_fname);
         editTextCNum = findViewById(R.id.reg_cnum);
+        RadioUser = findViewById(R.id.radUser);
+        RadioParent = findViewById(R.id.radParent);
 
         Button button1 = findViewById(R.id.btnRegisterAccount);
 
@@ -46,6 +54,12 @@ public class Register extends AppCompatActivity {
     }
 
     private void registerUser() {
+
+
+
+        String AccLevel = AccountTypeChoice;
+
+
         String username = editTextUser.getText().toString().trim();
         String password = editTextPass.getText().toString().trim();
         String email = editTextEmail.getText().toString().trim();
@@ -53,10 +67,26 @@ public class Register extends AppCompatActivity {
         String contact = editTextCNum.getText().toString().trim();
 
 
+
+
         if (username.isEmpty() || password.isEmpty() || email.isEmpty() || firstName.isEmpty() || contact.isEmpty()) {
             Toast.makeText(getApplicationContext(), "All fields must be filled", Toast.LENGTH_SHORT).show();
             progressBar.setVisibility(View.GONE);
             return;
+        }
+
+
+        if (RadioUser.isChecked()) {
+            AccountTypeChoice = RadioUser.getText().toString().trim();
+        }
+        else if (RadioParent.isChecked()){
+            AccountTypeChoice = RadioParent.getText().toString().trim();
+        }
+        else {
+            Toast.makeText(getApplicationContext(), "Select Account Type User or Parent", Toast.LENGTH_SHORT).show();
+            progressBar.setVisibility(View.GONE);
+            return;
+
         }
 
         firebaseAuth.createUserWithEmailAndPassword(email, password)
@@ -67,6 +97,7 @@ public class Register extends AppCompatActivity {
                         Map<String, Object> info = new HashMap<>();
                         info.put("Name", firstName);
                         info.put("Mobile", contact);
+                        info.put("AccountType", AccountTypeChoice);
 
                         firestore.collection("info").document(accountId).set(info)
                                 .addOnSuccessListener(aVoid -> {
