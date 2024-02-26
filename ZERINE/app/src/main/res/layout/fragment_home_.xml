@@ -193,61 +193,61 @@
         app:layout_constraintVertical_bias="0.382">
 
         <ImageView
-            android:id="@+id/imageView14"
+            android:id="@+id/imginfo1"
             android:layout_width="256dp"
             android:layout_height="256dp"
             android:src="@drawable/info3" />
 
         <ImageView
-            android:id="@+id/imageView17"
+            android:id="@+id/imginfo2"
             android:layout_width="256dp"
             android:layout_height="256dp"
             android:src="@drawable/info6" />
 
         <ImageView
-            android:id="@+id/imageView15"
+            android:id="@+id/imginfo3"
             android:layout_width="256dp"
             android:layout_height="256dp"
             android:src="@drawable/info4" />
 
         <ImageView
-            android:id="@+id/imageView9"
+            android:id="@+id/imginfo4"
             android:layout_width="256dp"
             android:layout_height="256dp"
             android:src="@drawable/info2" />
 
         <ImageView
-            android:id="@+id/imageView16"
+            android:id="@+id/imginfo5"
             android:layout_width="256dp"
             android:layout_height="256dp"
             android:src="@drawable/info5" />
 
         <ImageView
-            android:id="@+id/imageView18"
+            android:id="@+id/imginfo6"
             android:layout_width="256dp"
             android:layout_height="256dp"
             android:src="@drawable/info7" />
 
         <ImageView
-            android:id="@+id/imageView19"
+            android:id="@+id/imginfo7"
             android:layout_width="256dp"
             android:layout_height="256dp"
             android:src="@drawable/info8" />
 
         <ImageView
-            android:id="@+id/imageView20"
+            android:id="@+id/imginfo8"
             android:layout_width="256dp"
             android:layout_height="256dp"
             android:src="@drawable/info9" />
 
         <ImageView
-            android:id="@+id/imageView21"
+            android:id="@+id/imginfo10"
             android:layout_width="256dp"
             android:layout_height="256dp"
             android:src="@drawable/info10" />
 
         <ImageView
-            android:id="@+id/imageView7"
+            android:id="@+id/imginfo11"
             android:layout_width="256dp"
             android:layout_height="256dp"
             android:src="@drawable/info1" />
@@ -259,6 +259,7 @@
         android:id="@+id/leftbtn"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:contentDescription="Previous Slide"
         android:onClick="onButtonClick"
         android:src="@drawable/leftpage"
         app:layout_constraintBottom_toBottomOf="parent"
