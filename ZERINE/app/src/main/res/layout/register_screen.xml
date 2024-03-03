@@ -9,7 +9,7 @@
 
 
     <TextView
-        android:id="@+id/Lname"
+        android:id="@+id/Account"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 

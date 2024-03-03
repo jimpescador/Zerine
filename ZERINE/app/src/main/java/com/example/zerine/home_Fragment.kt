@@ -10,6 +10,7 @@ import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.telephony.SmsManager
+import android.text.Editable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -26,6 +27,11 @@ import androidx.fragment.app.Fragment
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import java.io.IOException
 import java.io.InputStream
 import java.util.Timer
@@ -48,6 +54,7 @@ class home_Fragment : Fragment() {
     companion object {
         private const val REQUEST_CODE_PERMISSION = 100
     }
+    private lateinit var myRef: DatabaseReference
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -61,8 +68,40 @@ class home_Fragment : Fragment() {
         val btnLeft: ImageButton = view.findViewById(R.id.leftbtn)
         val btnRight: ImageButton = view.findViewById(R.id.rightbtn)
         val exitImg: ImageView = view.findViewById(R.id.exitbtn)
+        val bpmvalue: EditText = view.findViewById(R.id.BPM_value_edittext)
+
         val view2 = inflater.inflate(R.layout.fragment_profile_, container, false)
         txtphone = view2.findViewById(R.id.sosmobile)
+
+
+        val database: FirebaseDatabase = FirebaseDatabase.getInstance()
+
+
+
+        // Initialize your database reference
+        val myRef = FirebaseDatabase.getInstance().getReference("RealData")
+
+        // Set up ValueEventListener to read data and update bpmvalue
+        myRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // This method will be called when data changes at the specified location
+                // dataSnapshot contains the data at the specified location
+
+                // Read the value directly without specifying a child field
+                val sensorValue = dataSnapshot.getValue(Float::class.java)
+
+                // Update bpmvalue (assuming you want to display it as text)
+                sensorValue?.let {
+                    bpmvalue.text = Editable.Factory.getInstance().newEditable(sensorValue.toString())
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Handle errors that occur during the read operation
+                Log.w("Firebase", "Failed to read value.", databaseError.toException())
+            }
+        })
+
 
 
         btnLeft.setOnClickListener {
