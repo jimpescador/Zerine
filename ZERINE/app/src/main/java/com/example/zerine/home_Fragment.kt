@@ -213,7 +213,7 @@ class home_Fragment : Fragment() {
                 if (location != null) {
                     val latitude = location.latitude
                     val longitude = location.longitude
-                    val locationMessage = "Fall Detected! \nLocation: https://maps.google.com?q=$latitude,$longitude"
+                    val locationMessage = "Zerine Companion \nSeizure Detected! \nLocation: https://maps.google.com?q=$latitude,$longitude"
                     sendSMS(txtphone.text.toString(),locationMessage)
                 } else {
                     Log.d("Error", "Invalid Location")

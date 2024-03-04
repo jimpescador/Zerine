@@ -14,6 +14,7 @@ class TriggerEdit : AppCompatActivity() {
     private lateinit var numberInput1: EditText
     private lateinit var numberInput2: EditText
     private lateinit var auth: FirebaseAuth
+    private val SHARED_DOCUMENT_ID = "sharedTriggerValues"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,50 +52,40 @@ class TriggerEdit : AppCompatActivity() {
     }
 
     private fun saveToFirebase() {
-        val currentUser = FirebaseAuth.getInstance().currentUser
+        val db = FirebaseFirestore.getInstance()
 
-        if (currentUser != null) {
-            val userId = currentUser.uid
+        val numberToSave1 = numberInput1.text.toString().toDoubleOrNull() ?: 0.0
+        val numberToSave2 = numberInput2.text.toString().toDoubleOrNull() ?: 0.0
 
-            val numberToSave1 = numberInput1.text.toString().toDoubleOrNull() ?: 0.0
-            val numberToSave2 = numberInput2.text.toString().toDoubleOrNull() ?: 0.0
-
-            if (numberToSave1.isNaN() || numberToSave2.isNaN()) {
-                // Handle invalid input (NaN)
-                return
-            }
-
-            val db = FirebaseFirestore.getInstance()
-
-            val dataToSave = mapOf("Warning" to numberToSave1, "Alert" to numberToSave2)
-
-            // Access Firestore collection with user-specific document
-            val userDocument = db.collection("TriggerValues").document(userId)
-
-            userDocument
-                .set(dataToSave)
-                .addOnSuccessListener {
-                    println("DocumentSnapshot added with ID: ${userDocument.id}")
-
-                    // Clear the input fields
-                    numberInput1.text.clear()
-                    numberInput2.text.clear()
-
-                    // Display a toast indicating successful save
-                    Toast.makeText(this, "Trigger Values saved", Toast.LENGTH_SHORT).show()
-
-                    // Update the UI with the saved data
-                    updateUIWithSavedData(userDocument)
-                }
-                .addOnFailureListener { e ->
-                    println("Error adding document: $e")
-                    // Handle the error, e.g., show a message to the user
-                }
-        } else {
-            // User is not signed in, handle accordingly (e.g., show a message, redirect to login)
-            println("User is not signed in")
-            // You can show a message, navigate to the login screen, or take other appropriate actions.
+        if (numberToSave1.isNaN() || numberToSave2.isNaN()) {
+            // Handle invalid input (NaN)
+            return
         }
+
+        val dataToSave = mapOf("Warning" to numberToSave1, "Alert" to numberToSave2)
+
+        // Access Firestore collection with the shared document
+        val sharedDocument = db.collection("TriggerValues").document(SHARED_DOCUMENT_ID)
+
+        sharedDocument
+            .set(dataToSave)
+            .addOnSuccessListener {
+                println("DocumentSnapshot added with ID: ${sharedDocument.id}")
+
+                // Clear the input fields
+                numberInput1.text.clear()
+                numberInput2.text.clear()
+
+                // Display a toast indicating successful save
+                Toast.makeText(this, "Trigger Values saved", Toast.LENGTH_SHORT).show()
+
+                // Update the UI with the saved data
+                updateUIWithSavedData(sharedDocument)
+            }
+            .addOnFailureListener { e ->
+                println("Error adding document: $e")
+                // Handle the error, e.g., show a message to the user
+            }
     }
 
     private fun updateUIWithSavedData(documentReference: DocumentReference) {
