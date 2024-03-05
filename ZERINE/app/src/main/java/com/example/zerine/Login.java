@@ -117,11 +117,13 @@ public class Login extends AppCompatActivity {
         String email = loginEmail.getText().toString().trim();
         String password = loginPass.getText().toString().trim();
 
-        if (email.isEmpty() && password.isEmpty()) {
-            loginEmail.setError("Username and password are empty");
+        if (email.isEmpty()) {
+            loginEmail.setError("Email is empty");
             return false;
-        } else if (email.isEmpty()) {
-            loginEmail.setError("Username is empty");
+        }
+
+        if (password.isEmpty()) {
+            loginPass.setError("Password is empty");
             return false;
         }
 

@@ -66,11 +66,48 @@ public class Register extends AppCompatActivity {
         String firstName = editTextFname.getText().toString().trim();
         String contact = editTextCNum.getText().toString().trim();
 
+        if (username.isEmpty()) {
+            // Set error message for the username field
+            editTextUser.setError("Username is required");
+            progressBar.setVisibility(View.GONE);
+            return;
+        }
 
+        if (password.isEmpty()) {
+            // Set error message for the password field
+            editTextPass.setError("Password is required");
+            progressBar.setVisibility(View.GONE);
+            return;
+        }
 
+        if (email.isEmpty()) {
+            // Set error message for the email field
+            editTextEmail.setError("Email is required");
+            progressBar.setVisibility(View.GONE);
+            return;
+        }
+
+        if (firstName.isEmpty()) {
+            // Set error message for the firstName field
+            editTextFname.setError("Full name is required");
+            progressBar.setVisibility(View.GONE);
+            return;
+        }
+
+        if (contact.isEmpty()) {
+            // Set error message for the contact field
+            editTextCNum.setError("Contact is required");
+            progressBar.setVisibility(View.GONE);
+            return;
+        }
 
         if (username.isEmpty() || password.isEmpty() || email.isEmpty() || firstName.isEmpty() || contact.isEmpty()) {
             Toast.makeText(getApplicationContext(), "All fields must be filled", Toast.LENGTH_SHORT).show();
+            editTextCNum.setError("Contact is required");
+            editTextFname.setError("Full name is required");
+            editTextEmail.setError("Email is required");
+            editTextPass.setError("Password is required");
+            editTextUser.setError("Username is required");
             progressBar.setVisibility(View.GONE);
             return;
         }
