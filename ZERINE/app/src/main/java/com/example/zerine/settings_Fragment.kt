@@ -1,5 +1,6 @@
 package com.example.zerine
 
+
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -39,6 +40,7 @@ class settings_Fragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_settings_, container, false)
         val logout: Button = view.findViewById(R.id.button_LOGOUT)
         val pdfbtn: Button = view.findViewById(R.id.button_ToPDF)
+        val triggerbtn: Button = view.findViewById(R.id.button_EditBPM)
         val viewpdf: Button = view.findViewById(R.id.button_ViewRecords)
 
 
@@ -51,6 +53,11 @@ class settings_Fragment : Fragment() {
         }
         viewpdf.setOnClickListener{
             displayUserData()
+        }
+
+        triggerbtn.setOnClickListener{
+            val intent = Intent(requireContext(), TriggerEdit::class.java)
+            startActivity(intent)
         }
 
         return view
@@ -198,6 +205,8 @@ class settings_Fragment : Fragment() {
         }
     }
 
+
+
     private fun showDataOnUI(name: String?, mobile: String?, eContactsName: String?, eContactsMobile: String?) {
         // Use TextViews or other UI components to display the data
         val inflater = layoutInflater
@@ -226,6 +235,8 @@ class settings_Fragment : Fragment() {
         val alertDialog = alertDialogBuilder.create()
         alertDialog.show()
     }
+
+
     }
 
 

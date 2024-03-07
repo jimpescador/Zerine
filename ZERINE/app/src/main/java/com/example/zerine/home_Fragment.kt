@@ -3,13 +3,11 @@ import android.Manifest
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothServerSocket
 import android.bluetooth.BluetoothSocket
-import android.content.Context
-import android.content.Intent
-import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.telephony.SmsManager
+import android.text.Editable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -20,16 +18,18 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.ViewFlipper
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import java.io.IOException
 import java.io.InputStream
-import java.util.Timer
-import java.util.TimerTask
 import java.util.UUID
 
 
@@ -48,6 +48,8 @@ class home_Fragment : Fragment() {
     companion object {
         private const val REQUEST_CODE_PERMISSION = 100
     }
+    private lateinit var myRef: DatabaseReference
+    private lateinit var myRef2: DatabaseReference
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -61,8 +63,61 @@ class home_Fragment : Fragment() {
         val btnLeft: ImageButton = view.findViewById(R.id.leftbtn)
         val btnRight: ImageButton = view.findViewById(R.id.rightbtn)
         val exitImg: ImageView = view.findViewById(R.id.exitbtn)
+        val bpmvalue: EditText = view.findViewById(R.id.BPM_value_edittext)
+        val spo2value: EditText = view.findViewById(R.id.O2_value_edittext)
+
         val view2 = inflater.inflate(R.layout.fragment_profile_, container, false)
         txtphone = view2.findViewById(R.id.sosmobile)
+
+
+        val database = FirebaseDatabase.getInstance("https://database-ea0bd-default-rtdb.asia-southeast1.firebasedatabase.app")
+        myRef = database.getReference("sensorValues/currentValue")
+        myRef2 = database.getReference("sensorValues/spo2")
+
+        // Set up ValueEventListener to read data and update bpmvalue
+        myRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                val sensorValue = dataSnapshot.getValue(Float::class.java)
+
+                sensorValue?.let {
+                    // Update your UI or perform any other actions with the sensorValue
+                    bpmvalue.text = Editable.Factory.getInstance().newEditable("$sensorValue")
+
+                    Log.d(TAG, "Sensor Value: $sensorValue")
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Failed to read value
+                Log.w(TAG, "Failed to read value.", error.toException())
+            }
+        })
+
+        myRef2.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                val spo2Value = dataSnapshot.getValue(String::class.java)
+
+                spo2Value?.let {
+                    // Update your UI or perform any other actions with the spo2Value
+                    spo2value.text = Editable.Factory.getInstance().newEditable(it)
+
+                    Log.d(TAG, "SPO2 Value: $it")
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Failed to read value
+                Log.w(TAG, "Failed to read SPO2 value.", error.toException())
+            }
+        })
+
+
+
+
 
 
         btnLeft.setOnClickListener {
@@ -158,7 +213,7 @@ class home_Fragment : Fragment() {
                 if (location != null) {
                     val latitude = location.latitude
                     val longitude = location.longitude
-                    val locationMessage = "Fall Detected! \nLocation: https://maps.google.com?q=$latitude,$longitude"
+                    val locationMessage = "Zerine Companion \nSeizure Detected! \nLocation: https://maps.google.com?q=$latitude,$longitude"
                     sendSMS(txtphone.text.toString(),locationMessage)
                 } else {
                     Log.d("Error", "Invalid Location")
