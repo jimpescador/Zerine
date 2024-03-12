@@ -4,38 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/colorPrimaryVariant"
+    android:background="#F5E6F6"
     android:forceDarkAllowed="false"
     app:layout_constraintGuide_percent="0.35">
 
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="1286dp"
-        android:layout_height="68dp"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar2"
-        android:layout_width="1286dp"
-        android:layout_height="68dp"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView"
@@ -43,46 +15,49 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="250dp"
         android:layout_marginBottom="438dp"
-        android:fontFamily="@font/roboto"
-        android:text="@string/Welcome_Zerine"
-        android:textColor="#020000"
-        android:textSize="34sp"
+        android:fontFamily="@font/krona_one"
+        android:text="Z E R I N E"
+        android:textColor="#7F0081"
+        android:textSize="40sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/LS_btnLogin"
-        android:layout_width="183dp"
-        android:layout_height="50dp"
-        android:background="@drawable/round"
+        android:layout_width="200dp"
+        android:layout_height="55dp"
+        android:backgroundTint="#27A59C"
         android:fontFamily="@font/roboto"
         android:text="@string/Login_Normal"
-        app:layout_constraintBottom_toTopOf="@+id/toolbar2"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.615" />
+        app:layout_constraintVertical_bias="0.662" />
 
     <Button
         android:id="@+id/LS_btnRegister"
-        android:layout_width="183dp"
-        android:layout_height="50dp"
-        android:background="@drawable/round"
+        android:layout_width="200dp"
+        android:layout_height="55dp"
+        android:backgroundTint="#9F41B2"
         android:fontFamily="@font/roboto"
         android:text="@string/Register_Normal"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.684" />
+        app:layout_constraintVertical_bias="0.773" />
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="143dp"
-        android:layout_height="125dp"
+        android:layout_width="208dp"
+        android:layout_height="167dp"
         android:layout_marginTop="95dp"
         android:layout_marginBottom="511dp"
         android:contentDescription="@string/image_ZerineLogo"
@@ -91,4 +66,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="186dp"
+        android:layout_height="39dp"
+        android:fontFamily="@font/hammersmith_one"
+        android:text="A PERSONAL SEIZECARE COMPANION"
+        android:textAlignment="center"
+        android:textColor="#D81A5F"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.453" />
 </androidx.constraintlayout.widget.ConstraintLayout>
