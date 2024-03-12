@@ -299,7 +299,7 @@
         android:id="@+id/btnRegisterAccount"
         android:layout_width="183dp"
         android:layout_height="55dp"
-        android:backgroundTint="#0388D1"
+        android:backgroundTint="#F3AE0D"
         android:fontFamily="@font/hammersmith_one"
         android:text="@string/Register_Normal"
         android:textColor="#FFFFFF"
