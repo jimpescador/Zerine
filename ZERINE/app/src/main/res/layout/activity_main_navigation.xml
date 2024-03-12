@@ -16,14 +16,14 @@
         android:id="@+id/bottomNavigationView6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#9239AA"
+        app:itemIconTint="@color/purple_200"
+        app:itemTextColor="@color/purple_200"
+        app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav"
-        app:itemIconTint="@color/purple_200"
-        app:itemTextColor="@color/purple_200"
-        android:background="@color/purple_700"
-        app:labelVisibilityMode="labeled"/>
+        app:menu="@menu/bottom_nav" />
 
 
 
