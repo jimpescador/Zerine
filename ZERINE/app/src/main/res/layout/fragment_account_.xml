@@ -4,15 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/colorPrimaryVariant"
+    android:background="#F5E6F6"
     tools:context=".home_Fragment">
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="328dp"
+        android:layout_height="336dp"
+        android:layout_marginTop="88dp"
+        android:src="@drawable/box"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0.016" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="419dp"
         android:layout_height="71dp"
         android:layout_marginBottom="660dp"
-        android:background="?attr/colorPrimary"
+        android:background="#BE73BF"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -37,18 +50,18 @@
 
     <ImageView
         android:id="@+id/accExitBtn"
-        android:layout_width="71dp"
-        android:layout_height="45dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_gravity="end"
         android:clickable="true"
         android:focusable="true"
         android:src="@drawable/exit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.955"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.018" />
+        app:layout_constraintVertical_bias="0.023" />
 
     <TextView
         android:id="@+id/textView9"
@@ -56,9 +69,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="23dp"
         android:layout_marginBottom="13dp"
-        android:fontFamily="@font/roboto"
+        android:fontFamily="@font/days_one"
         android:text="@string/account"
-        android:textColor="#3A0505"
+        android:textColor="#7F0081"
         android:textSize="34sp"
         app:layout_constraintBottom_toTopOf="@+id/imageView4"
         app:layout_constraintEnd_toEndOf="parent"
@@ -68,13 +81,12 @@
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="183dp"
-        android:layout_height="166dp"
+        android:layout_width="171dp"
+        android:layout_height="160dp"
         android:layout_marginStart="114dp"
-        android:layout_marginTop="13dp"
+        android:layout_marginTop="52dp"
         android:layout_marginEnd="114dp"
-        android:layout_marginBottom="15dp"
-        android:src="@drawable/baseline_account_circle_24"
+        android:src="@drawable/profile"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -84,35 +96,35 @@
         android:id="@+id/namelabel"
         android:layout_width="242dp"
         android:layout_height="34dp"
-        android:fontFamily="@font/roboto"
-        android:textAlignment="center"
+        android:fontFamily="@font/hammersmith_one"
         android:text="-"
+        android:textAlignment="center"
         android:textColor="#0C0000"
         android:textSize="25sp"
         android:textStyle="bold"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.398" />
+        app:layout_constraintVertical_bias="0.53" />
 
     <TextView
         android:id="@+id/mobilelabel"
         android:layout_width="211dp"
         android:layout_height="28dp"
-        android:fontFamily="@font/roboto"
+        android:fontFamily="@font/hammersmith_one"
         android:text="-"
+        android:textAlignment="center"
         android:textColor="#220202"
         android:textSize="25sp"
         android:textStyle="bold"
-        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.457" />
+        app:layout_constraintVertical_bias="0.6" />
 
     <TextView
         android:id="@+id/NameTXT"
@@ -148,19 +160,20 @@
 
     <Button
         android:id="@+id/btnEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="165dp"
+        android:layout_height="57dp"
         android:layout_marginStart="37dp"
-
-        android:background="@drawable/box"
+        android:backgroundTint="#D40000"
+        android:fontFamily="@font/hammersmith_one"
         android:text="Edit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.433"
-        app:layout_constraintStart_toStartOf="parent"
 
+        app:layout_constraintHorizontal_bias="0.411"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.667" />
+        app:layout_constraintVertical_bias="0.783"
+        tools:textSize="16sp" />
 
     <Button
         android:id="@+id/btnApply"
