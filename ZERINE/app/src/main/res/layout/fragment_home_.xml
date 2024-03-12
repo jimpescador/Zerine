@@ -31,23 +31,23 @@
           app:layout_constraintTop_toTopOf="parent"
           app:layout_constraintVertical_bias="0.012" />
 
-      <ImageView
-          android:id="@+id/exitbtn"
-          android:layout_width="35dp"
-          android:layout_height="35dp"
-          android:layout_gravity="end"
+    <ImageView
+        android:id="@+id/exitbtn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="end"
 
-          android:clickable="true"
-          android:focusable="true"
-          android:src="@drawable/exit"
-          app:layout_constraintBottom_toBottomOf="parent"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintHorizontal_bias="0.956"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="parent"
-          app:layout_constraintVertical_bias="0.023" />
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/exit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.977"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
 
-      <ImageView
+    <ImageView
           android:id="@+id/imageView10"
           android:layout_width="312dp"
           android:layout_height="207dp"
