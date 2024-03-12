@@ -89,8 +89,8 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="325dp"
-        android:layout_height="53dp"
+        android:layout_width="258dp"
+        android:layout_height="44dp"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/days_one"
         android:text="@string/CreateAccount_normal"
@@ -98,10 +98,10 @@
         android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.279"
+        app:layout_constraintHorizontal_bias="0.104"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:layout_constraintVertical_bias="0.013" />
+        app:layout_constraintVertical_bias="0.016" />
 
     <ImageView
         android:id="@+id/imageView3"
