@@ -4,8 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/colorPrimaryVariant"
+    android:background="#F5E6F6"
     tools:context=".home_Fragment">
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="316dp"
+        android:layout_height="510dp"
+        android:layout_marginTop="88dp"
+        android:src="@drawable/box"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0.129" />
 
     <TextView
         android:id="@+id/emobile"
@@ -40,7 +53,7 @@
         android:layout_width="419dp"
         android:layout_height="71dp"
         android:layout_marginBottom="660dp"
-        android:background="?attr/colorPrimary"
+        android:background="#BE73BF"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -68,16 +81,15 @@
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto"
+        android:fontFamily="@font/days_one"
         android:text="View Records"
-        android:textColor="#170000"
+        android:textColor="#D7195F"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.134" />
+        app:layout_constraintVertical_bias="0.148" />
 
     <TextView
         android:id="@+id/mobile"
