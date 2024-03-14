@@ -94,7 +94,7 @@
         android:layout_marginTop="20dp"
         android:fontFamily="@font/days_one"
         android:text="@string/CreateAccount_normal"
-        android:textColor="#7F0081"
+        android:textColor="#206AA9"
         android:textSize="28sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
