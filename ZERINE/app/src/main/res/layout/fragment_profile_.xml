@@ -4,33 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/colorPrimaryVariant"
+    android:background="#F5E6F6"
     tools:context=".home_Fragment">
 
     <Button
         android:id="@+id/prof_btnEdit"
-        android:layout_width="91dp"
-        android:layout_height="36dp"
+        android:layout_width="185dp"
+        android:layout_height="50dp"
         android:layout_marginStart="37dp"
 
-        android:background="@drawable/box"
+        android:backgroundTint="#FFB300"
         android:text="Edit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.434"
-        app:layout_constraintStart_toStartOf="parent"
 
+        app:layout_constraintHorizontal_bias="0.402"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.674" />
+        app:layout_constraintVertical_bias="0.688" />
 
     <Button
         android:id="@+id/prof_btnapply"
         android:layout_width="91dp"
         android:layout_height="36dp"
         android:layout_marginStart="37dp"
-        android:visibility="gone"
         android:background="@drawable/box"
         android:text="Apply"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.434"
@@ -44,7 +44,7 @@
         android:layout_width="419dp"
         android:layout_height="71dp"
         android:layout_marginBottom="660dp"
-        android:background="?attr/colorPrimary"
+        android:background="#BE73BF"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -84,51 +84,45 @@
 
     <ImageView
         android:id="@+id/imageView6"
-        android:layout_width="138dp"
-        android:layout_height="140dp"
-        android:layout_marginTop="118dp"
-        android:layout_marginBottom="473dp"
+        android:layout_width="104dp"
+        android:layout_height="95dp"
         android:src="@drawable/baseline_account_circle_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.256" />
+        app:layout_constraintVertical_bias="0.268" />
 
     <TextView
         android:id="@+id/textView18"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="296dp"
-        android:layout_marginBottom="409dp"
+        android:layout_width="129dp"
+        android:layout_height="35dp"
         android:fontFamily="@font/roboto"
         android:text="@string/edit_profile"
-        android:textColor="#070000"
-        android:textSize="20sp"
+        android:textColor="#000000"
+        android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.153" />
+        tools:fontFamily="@font/days_one"
+        tools:layout_editor_absoluteX="147dp"
+        tools:layout_editor_absoluteY="102dp" />
 
     <TextView
         android:id="@+id/name"
-        android:layout_width="242dp"
-        android:layout_height="24dp"
-        android:fontFamily="@font/roboto"
+        android:layout_width="213dp"
+        android:layout_height="88dp"
+        android:fontFamily="@font/hammersmith_one"
         android:text="@string/name"
         android:textAlignment="center"
         android:textColor="#0B0101"
         android:textSize="25sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintHorizontal_bias="0.848"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.426" />
+        app:layout_constraintVertical_bias="0.265"
+        tools:textAlignment="textStart" />
 
     <TextView
         android:id="@+id/sosmobile"
@@ -142,15 +136,15 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.761"
+        app:layout_constraintHorizontal_bias="0.769"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.609" />
+        app:layout_constraintVertical_bias="0.546" />
 
     <TextView
         android:id="@+id/sosname"
-        android:layout_width="168dp"
-        android:layout_height="26dp"
+        android:layout_width="165dp"
+        android:layout_height="33dp"
         android:fontFamily="@font/roboto"
         android:text="-"
         android:textAlignment="center"
@@ -163,41 +157,39 @@
         app:layout_constraintHorizontal_bias="0.761"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.524" />
+        app:layout_constraintVertical_bias="0.428" />
 
     <TextView
         android:id="@+id/name1"
-        android:layout_width="140dp"
-        android:layout_height="98dp"
-        android:fontFamily="@font/roboto"
+        android:layout_width="144dp"
+        android:layout_height="66dp"
+        android:fontFamily="@font/hammersmith_one"
         android:text="Emergency Contact Name"
         android:textAlignment="center"
-        android:textColor="#0B0101"
+        android:textColor="#BF0A0A"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.059"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.562" />
+        app:layout_constraintVertical_bias="0.443" />
 
     <TextView
         android:id="@+id/textView20"
-        android:layout_width="140dp"
-        android:layout_height="98dp"
-        android:layout_marginTop="435dp"
-        android:layout_marginBottom="198dp"
-        android:fontFamily="@font/roboto"
+        android:layout_width="137dp"
+        android:layout_height="55dp"
+        android:fontFamily="@font/hammersmith_one"
         android:text="@string/emergency_contact_no"
-        android:textColor="#1B0303"
         android:textAlignment="center"
+        android:textColor="#BF0A0A"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.073"
+        app:layout_constraintHorizontal_bias="0.058"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.493" />
+        app:layout_constraintVertical_bias="0.557" />
 
     <EditText
         android:id="@+id/Prof_Name"
@@ -207,8 +199,8 @@
         android:layout_marginBottom="328dp"
         android:background="@drawable/rounded_editbox"
         android:ems="10"
-        android:visibility="gone"
         android:textColor="@android:color/black"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.788"
@@ -224,8 +216,8 @@
         android:layout_marginBottom="261dp"
         android:background="@drawable/rounded_editbox"
         android:ems="10"
-        android:visibility="gone"
         android:textColor="@android:color/black"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.788"
@@ -234,21 +226,21 @@
 
     <Button
         android:id="@+id/button_USER_rec"
-        android:layout_width="282dp"
-        android:layout_height="150dp"
+        android:layout_width="288dp"
+        android:layout_height="115dp"
         android:layout_marginTop="533dp"
         android:layout_marginBottom="48dp"
         android:background="@drawable/box"
-        android:fontFamily="@font/roboto"
+        android:fontFamily="@font/hammersmith_one"
 
         android:text="@string/user_record_btn"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.449"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.662" />
+        app:layout_constraintVertical_bias="0.285" />
 
     <ProgressBar
         android:id="@+id/progressBarprof"
