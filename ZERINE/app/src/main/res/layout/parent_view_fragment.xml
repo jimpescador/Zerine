@@ -8,7 +8,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="?attr/colorPrimaryVariant">
+        android:background="#F5E6F6">
 
 
         <Button
@@ -16,17 +16,17 @@
             style="@style/Widget.MaterialComponents.Button.Icon"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
-            android:fontFamily="@font/roboto"
+            android:fontFamily="@font/hammersmith_one"
             android:text="@string/find"
             android:textSize="15sp"
             app:icon="@drawable/ic_search"
             app:iconSize="24dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.907"
+            app:layout_constraintHorizontal_bias="0.9"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.12" />
+            app:layout_constraintVertical_bias="0.127" />
 
         <EditText
             android:id="@+id/EditText_SearchDatabase"
@@ -61,46 +61,45 @@
         <Button
             android:id="@+id/PS_btnLogout"
             android:layout_width="301dp"
-            android:layout_height="49dp"
-            android:background="@drawable/round"
-            android:fontFamily="@font/roboto"
+            android:layout_height="55dp"
+            android:backgroundTint="#B80F0F"
+            android:fontFamily="@font/hammersmith_one"
             android:text="@string/logout"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.947" />
+            app:layout_constraintVertical_bias="0.409" />
+
 
         <Button
             android:id="@+id/PS_btnRecordToPDF"
             android:layout_width="301dp"
-            android:layout_height="49dp"
-            android:background="@drawable/round"
-            android:fontFamily="@font/roboto"
+            android:layout_height="55dp"
+            android:backgroundTint="#4AAEDF"
+            android:fontFamily="@font/hammersmith_one"
             android:text="@string/records_to_pdf"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.857" />
-
-
-
+            app:layout_constraintVertical_bias="0.302" />
 
         <TextView
             android:id="@+id/textView16"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="196dp"
+            android:layout_height="34dp"
             android:layout_marginStart="100dp"
-            android:layout_marginTop="160dp"
+            android:layout_marginTop="168dp"
             android:layout_marginEnd="100dp"
-            android:fontFamily="@font/roboto"
+            android:fontFamily="@font/hammersmith_one"
             android:text="@string/ChildHistory"
-            android:textColor="#090000"
-            android:textSize="20sp"
+            android:textAlignment="center"
+            android:textColor="#49314A"
+            android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.488"
+            app:layout_constraintHorizontal_bias="0.466"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintZ="1" />
@@ -109,7 +108,7 @@
             android:id="@+id/toolbar"
             android:layout_width="419dp"
             android:layout_height="71dp"
-            android:background="?attr/colorPrimary"
+            android:background="#BE73BF"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
             app:layout_constraintStart_toStartOf="parent"
@@ -159,6 +158,25 @@
             app:layout_constraintTop_toBottomOf="@+id/imageView14"
             app:layout_constraintVertical_bias="0.0" />
 
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="121dp"
+            android:layout_marginTop="373dp"
+            android:layout_marginEnd="121dp"
+            android:layout_marginBottom="328dp"
+            android:fontFamily="@font/roboto"
+            android:text="EPILEPSY FACTS"
+            android:textColor="#D7195F"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:fontFamily="@font/hammersmith_one" />
+
         <ViewFlipper
             android:id="@+id/viewflipper"
             android:layout_width="265dp"
@@ -170,10 +188,9 @@
             android:outAnimation="@android:anim/slide_out_right"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.513"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.382">
+            app:layout_constraintVertical_bias="0.292">
 
             <ImageView
                 android:id="@+id/imginfo1"
@@ -242,51 +259,31 @@
             android:id="@+id/leftbtn"
             android:layout_width="48dp"
             android:layout_height="48dp"
+            android:backgroundTint="#F5B1EA"
             android:contentDescription="Previous Slide"
             android:onClick="onButtonClick"
             android:src="@drawable/leftpage"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.024"
+            app:layout_constraintHorizontal_bias="0.085"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.714" />
+            app:layout_constraintVertical_bias="0.756" />
 
         <ImageButton
             android:id="@+id/rightbtn"
             android:layout_width="48dp"
             android:layout_height="48dp"
+            android:background="#F5B1EA"
             android:contentDescription="Next Slide"
             android:onClick="onButtonClick"
-            android:src="@drawable/rightpage"
+            android:src="@drawable/right_page"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.981"
+            app:layout_constraintHorizontal_bias="0.917"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.713" />
-
-
-
-
-
-
-        <TextView
-            android:id="@+id/textView15"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="94dp"
-            android:layout_marginEnd="94dp"
-            android:layout_marginBottom="332dp"
-            android:fontFamily="@font/roboto"
-            android:text="@string/epilepsy_slides"
-            android:textColor="#090000"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.509"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintVertical_bias="0.756" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
