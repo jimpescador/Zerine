@@ -226,7 +226,7 @@ class settings_Fragment : Fragment() {
 
         val alertDialogBuilder = AlertDialog.Builder(requireContext())
         alertDialogBuilder.setView(secondLayout)
-        alertDialogBuilder.setPositiveButton("OK") { dialog, _ ->
+        alertDialogBuilder.setPositiveButton("DONE") { dialog, _ ->
             // Handle the OK button click if needed
             dialog.dismiss()
         }

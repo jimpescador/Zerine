@@ -102,7 +102,7 @@
             app:layout_constraintHorizontal_bias="0.466"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintZ="1" />
+             />
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"

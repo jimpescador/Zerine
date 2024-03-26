@@ -11,14 +11,13 @@
         android:id="@+id/imageView10"
         android:layout_width="328dp"
         android:layout_height="336dp"
-        android:layout_marginTop="88dp"
         android:src="@drawable/box"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.016" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.26999998" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -108,7 +107,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.53" />
+        app:layout_constraintVertical_bias="0.439" />
 
     <TextView
         android:id="@+id/mobilelabel"
@@ -124,7 +123,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.6" />
+        app:layout_constraintVertical_bias="0.499" />
 
     <TextView
         android:id="@+id/NameTXT"
@@ -162,17 +161,16 @@
         android:id="@+id/btnEdit"
         android:layout_width="165dp"
         android:layout_height="57dp"
-        android:layout_marginStart="37dp"
         android:backgroundTint="#D40000"
         android:fontFamily="@font/hammersmith_one"
         android:text="Edit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
 
-        app:layout_constraintHorizontal_bias="0.411"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.783"
+        app:layout_constraintVertical_bias="0.653"
         tools:textSize="16sp" />
 
     <Button

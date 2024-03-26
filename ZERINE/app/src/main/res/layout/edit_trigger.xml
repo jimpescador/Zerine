@@ -53,20 +53,39 @@
 
     <EditText
         android:id="@+id/numberInput"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
+        android:layout_width="94dp"
+        android:layout_height="51dp"
         android:layout_centerHorizontal="true"
+        android:autoText="false"
         android:background="@drawable/rounded_editbox"
-        android:hint="Enter a number(Default: 106)"
+        android:hint="HIGH"
         android:inputType="numberDecimal"
         android:textColor="@android:color/black"
         android:textColorHint="@android:color/darker_gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintHorizontal_bias="0.706"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.331" />
+        app:layout_constraintVertical_bias="0.33" />
+
+    <EditText
+        android:id="@+id/numberInput2"
+        android:layout_width="94dp"
+        android:layout_height="51dp"
+        android:layout_centerHorizontal="true"
+        android:autoText="false"
+        android:background="@drawable/rounded_editbox"
+        android:hint="LOW"
+        android:inputType="numberDecimal"
+        android:textColor="@android:color/black"
+        android:textColorHint="@android:color/darker_gray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.261"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0.329" />
 
     <Button
         android:id="@+id/incrementButton"
@@ -81,8 +100,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.407"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13"
-        app:layout_constraintVertical_bias="0.275" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.415" />
 
     <Button
         android:id="@+id/decrementButton"
@@ -97,7 +116,7 @@
         app:layout_constraintHorizontal_bias="0.595"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.423" />
+        app:layout_constraintVertical_bias="0.415" />
 
     <TextView
         android:id="@+id/textView8"
@@ -117,20 +136,37 @@
 
     <EditText
         android:id="@+id/alertnumberInput"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
+        android:layout_width="94dp"
+        android:layout_height="51dp"
         android:layout_centerHorizontal="true"
         android:background="@drawable/rounded_editbox"
-        android:hint="Enter a Value (Default: 120)"
+        android:hint="HIGH"
         android:inputType="numberDecimal"
         android:textColor="@android:color/black"
         android:textColorHint="@android:color/darker_gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintHorizontal_bias="0.706"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.596" />
+        app:layout_constraintVertical_bias="0.592" />
+
+    <EditText
+        android:id="@+id/alertnumberInput2"
+        android:layout_width="94dp"
+        android:layout_height="51dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/rounded_editbox"
+        android:hint="LOW"
+        android:inputType="numberDecimal"
+        android:textColor="@android:color/black"
+        android:textColorHint="@android:color/darker_gray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.252"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="0.591" />
 
     <Button
         android:id="@+id/aincrementButton"
@@ -160,7 +196,7 @@
         app:layout_constraintHorizontal_bias="0.595"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.683" />
+        app:layout_constraintVertical_bias="0.679" />
 
     <TextView
         android:id="@+id/textView9"

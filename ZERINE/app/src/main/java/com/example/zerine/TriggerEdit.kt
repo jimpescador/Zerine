@@ -39,6 +39,7 @@ class TriggerEdit : AppCompatActivity() {
         adecrementButton.setOnClickListener { decrementNumber(numberInput2) }
 
         saveButton.setOnClickListener { saveToFirebase() }
+        updateUIWithSavedData()
     }
 
     private fun incrementNumber(numberInput: EditText) {
@@ -73,14 +74,13 @@ class TriggerEdit : AppCompatActivity() {
                 println("DocumentSnapshot added with ID: ${sharedDocument.id}")
 
                 // Clear the input fields
-                numberInput1.text.clear()
-                numberInput2.text.clear()
+
 
                 // Display a toast indicating successful save
                 Toast.makeText(this, "Trigger Values saved", Toast.LENGTH_SHORT).show()
 
                 // Update the UI with the saved data
-                updateUIWithSavedData(sharedDocument)
+
             }
             .addOnFailureListener { e ->
                 println("Error adding document: $e")
@@ -88,12 +88,15 @@ class TriggerEdit : AppCompatActivity() {
             }
     }
 
-    private fun updateUIWithSavedData(documentReference: DocumentReference) {
-        documentReference.get()
+    private fun updateUIWithSavedData() {
+        val db = FirebaseFirestore.getInstance()
+        val sharedDocument = db.collection("TriggerValues").document(SHARED_DOCUMENT_ID)
+
+        sharedDocument.get()
             .addOnSuccessListener { documentSnapshot ->
                 if (documentSnapshot.exists()) {
-                    val savedNumber1 = documentSnapshot.getDouble("Warning") ?: 0.0
-                    val savedNumber2 = documentSnapshot.getDouble("Alert") ?: 0.0
+                    val savedNumber1 = documentSnapshot.getLong("Warning")?.toInt() ?: 0
+                    val savedNumber2 = documentSnapshot.getLong("Alert")?.toInt() ?: 0
 
                     // Set the retrieved values to the EditText fields
                     numberInput1.setText(savedNumber1.toString())
@@ -102,15 +105,21 @@ class TriggerEdit : AppCompatActivity() {
                     // You can also trigger any other UI updates or actions here
                     // For example, you can update TextViews, display a toast, etc.
                 } else {
+                    // If the document doesn't exist, set default values to the EditText fields
                     numberInput1.setText("106")
                     numberInput2.setText("120")
                     println("Document does not exist")
+
+                    // Since there are default values, you might want to save them to Firestore here.
+                    // Example:
+                    // saveToFirebase()
                 }
             }
             .addOnFailureListener { e ->
                 println("Error fetching document: $e")
             }
     }
+
 
 
 

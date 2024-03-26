@@ -16,6 +16,7 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import android.widget.ViewFlipper
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
@@ -215,6 +216,7 @@ class home_Fragment : Fragment() {
                     val longitude = location.longitude
                     val locationMessage = "Zerine Companion \nSeizure Detected! \nLocation: https://maps.google.com?q=$latitude,$longitude"
                     sendSMS(txtphone.text.toString(),locationMessage)
+
                 } else {
                     Log.d("Error", "Invalid Location")
                 }
@@ -232,7 +234,7 @@ class home_Fragment : Fragment() {
                 smsManager = SmsManager.getDefault()
             }
             smsManager.sendTextMessage(phoneNumber, null, message, null, null)
-            //Toast.makeText(requireContext(), "Message Sent", Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext(), "Message Sent", Toast.LENGTH_LONG).show()
 
         } catch (e: Exception) {
             Log.d("test006", "Error SMS: " + e.message.toString())

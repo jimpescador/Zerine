@@ -21,7 +21,7 @@
         app:layout_constraintHorizontal_bias="0.402"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.688" />
+        app:layout_constraintVertical_bias="0.645" />
 
     <Button
         android:id="@+id/prof_btnapply"
@@ -103,9 +103,13 @@
         android:textColor="#80078E"
         android:textSize="24sp"
         android:textStyle="bold"
-        tools:fontFamily="@font/days_one"
-        tools:layout_editor_absoluteX="147dp"
-        tools:layout_editor_absoluteY="102dp" />
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.155"
+        tools:fontFamily="@font/days_one" />
 
     <TextView
         android:id="@+id/name"
@@ -237,10 +241,10 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.544"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.285" />
+        app:layout_constraintVertical_bias="0.533" />
 
     <ProgressBar
         android:id="@+id/progressBarprof"

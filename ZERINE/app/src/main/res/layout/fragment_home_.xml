@@ -1,4 +1,4 @@
-  <?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
   <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto"
       xmlns:tools="http://schemas.android.com/tools"
@@ -61,108 +61,94 @@
           app:layout_constraintTop_toBottomOf="@+id/toolbar"
           app:layout_constraintVertical_bias="0.116" />
 
-      <ImageView
-          android:id="@+id/imageView11"
-          android:layout_width="75dp"
-          android:layout_height="108dp"
-          android:src="@drawable/electrocardiogram__1_"
-          app:layout_constraintBottom_toBottomOf="parent"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintHorizontal_bias="0.241"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="parent"
-          app:layout_constraintVertical_bias="0.17" />
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="75dp"
+        android:layout_height="108dp"
+        android:src="@drawable/electrocardiogram__1_"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.241"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.132" />
 
-      <ImageView
-          android:id="@+id/imageView12"
-          android:layout_width="81dp"
-          android:layout_height="126dp"
-          android:src="@drawable/oxygen_saturation"
-          app:layout_constraintBottom_toBottomOf="parent"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintHorizontal_bias="0.227"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="parent"
-          app:layout_constraintVertical_bias="0.297" />
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="81dp"
+        android:layout_height="126dp"
+        android:src="@drawable/oxygen_saturation"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.221"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.214" />
 
-      <TextView
-          android:id="@+id/textView11"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_marginStart="135dp"
-          android:layout_marginTop="168dp"
-          android:layout_marginEnd="240dp"
-          android:fontFamily="@font/roboto"
-          android:text="@string/bpm"
-          android:textColor="#FF0000"
-          android:textStyle="bold"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintHorizontal_bias="0.25"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="135dp"
+        android:layout_marginTop="132dp"
+        android:layout_marginEnd="240dp"
+        android:fontFamily="@font/roboto"
+        android:text="@string/bpm"
+        android:textColor="#FF0000"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-      <TextView
-          android:id="@+id/textView14"
-          android:layout_width="73dp"
-          android:layout_height="43dp"
-          android:fontFamily="@font/roboto"
-          android:text="@string/oxygen_level"
-          android:textColor="#0B0000"
-          android:textStyle="bold"
-          app:layout_constraintBottom_toBottomOf="parent"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintHorizontal_bias="0.454"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="parent"
-          app:layout_constraintVertical_bias="0.342" />
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="73dp"
+        android:layout_height="43dp"
+        android:fontFamily="@font/roboto"
+        android:text="@string/oxygen_level"
+        android:textColor="#0B0000"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.245"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.312" />
 
-      <EditText
-          android:id="@+id/BPM_value_edittext"
-          android:layout_width="108dp"
-          android:layout_height="48dp"
-          android:background="@drawable/box"
-          android:ems="10"
-          android:inputType="text"
-          android:text="__"
-          android:textSize="30sp"
-          android:textStyle="bold"
-          app:layout_constraintBottom_toBottomOf="parent"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintHorizontal_bias="0.745"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="parent"
-          app:layout_constraintVertical_bias="0.204" />
+    <EditText
+        android:id="@+id/BPM_value_edittext"
+        android:layout_width="108dp"
+        android:layout_height="48dp"
+        android:background="@drawable/box"
+        android:ems="10"
+        android:inputType="text"
+        android:text="__"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.742"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.156" />
 
-      <EditText
-          android:id="@+id/O2_value_edittext"
-          android:layout_width="108dp"
-          android:layout_height="48dp"
-          android:layout_marginTop="248dp"
-          android:background="@drawable/box"
-          android:ems="10"
-          android:inputType="text"
-          android:text="__"
-          android:textSize="30sp"
-          android:textStyle="bold"
-          app:layout_constraintBottom_toBottomOf="parent"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintHorizontal_bias="0.742"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="parent"
-          app:layout_constraintVertical_bias="0.0" />
-
-      <ImageView
-          android:id="@+id/imageView13"
-          android:layout_width="351dp"
-          android:layout_height="339dp"
-          android:layout_marginTop="405dp"
-          android:layout_marginBottom="64dp"
-          android:src="@drawable/box"
-          app:layout_constraintBottom_toBottomOf="parent"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="parent"
-          app:layout_constraintVertical_bias="1.0" />
+    <EditText
+        android:id="@+id/O2_value_edittext"
+        android:layout_width="108dp"
+        android:layout_height="48dp"
+        android:background="@drawable/box"
+        android:ems="10"
+        android:inputType="text"
+        android:text="__"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.742"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.272" />
 
     <TextView
         android:id="@+id/textView15"
@@ -182,13 +168,24 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:fontFamily="@font/hammersmith_one" />
 
-      <ViewFlipper
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="351dp"
+        android:layout_height="339dp"
+        android:src="@drawable/box"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.71000004" />
+
+    <ViewFlipper
           android:id="@+id/viewflipper"
           android:layout_width="272dp"
           android:layout_height="278dp"
           android:layout_marginTop="388dp"
           android:autoStart="true"
-          android:flipInterval="5000"
+          android:flipInterval="20000"
           android:inAnimation="@android:anim/slide_in_left"
           android:outAnimation="@android:anim/slide_out_right"
           app:layout_constraintBottom_toBottomOf="parent"
@@ -259,39 +256,39 @@
               android:src="@drawable/info1" />
 
 
-      </ViewFlipper>
+    </ViewFlipper>
 
-      <ImageButton
-          android:id="@+id/leftbtn"
-          android:layout_width="50dp"
-          android:layout_height="50dp"
-          android:backgroundTint="#F5B1EA"
-          android:contentDescription="Previous Slide"
-          android:onClick="onButtonClick"
-          android:src="@drawable/leftpage"
-          app:layout_constraintBottom_toBottomOf="parent"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintHorizontal_bias="0.082"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="parent"
-          app:layout_constraintVertical_bias="0.714" />
+    <ImageButton
+        android:id="@+id/leftbtn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:backgroundTint="#F5B1EA"
+        android:contentDescription="Previous Slide"
+        android:onClick="onButtonClick"
+        android:src="@drawable/leftpage"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.06"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.64" />
 
-      <ImageButton
-          android:id="@+id/rightbtn"
-          android:layout_width="48dp"
-          android:layout_height="48dp"
-          android:backgroundTint="#F5B1EA"
-          android:onClick="onButtonClick"
-          android:src="@drawable/right_page"
-          app:layout_constraintBottom_toBottomOf="parent"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintHorizontal_bias="0.917"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toTopOf="parent"
-          app:layout_constraintVertical_bias="0.714" />
+    <ImageButton
+        android:id="@+id/rightbtn"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:backgroundTint="#F5B1EA"
+        android:onClick="onButtonClick"
+        android:src="@drawable/right_page"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.94"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.64" />
 
 
-      <!-- TODO: Update blank fragment layout -->
+    <!-- TODO: Update blank fragment layout -->
 
 
   </androidx.constraintlayout.widget.ConstraintLayout>
