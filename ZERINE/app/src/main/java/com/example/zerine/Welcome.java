@@ -1,5 +1,7 @@
 package com.example.zerine;
 
+import android.app.ActivityManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -20,6 +22,7 @@ public class Welcome extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.welcome_screen);
+
 
         Button reg_button = findViewById(R.id.LS_btnRegister);
         Button log_button = findViewById(R.id.LS_btnLogin);
@@ -42,6 +45,9 @@ public class Welcome extends AppCompatActivity {
         // Check for permissions and request if not granted
         checkAndRequestPermissions();
     }
+
+
+
     private void regact() {
         Intent intent = new Intent(Welcome.this, Register.class);
         startActivity(intent);

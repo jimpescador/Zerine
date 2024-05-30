@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.zerine"
-        minSdk = 23
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -67,6 +67,7 @@ dependencies {
     implementation ("com.google.firebase:firebase-auth-ktx")
     implementation ("com.google.android.gms:play-services-location:21.1.0")
     implementation ("com.itextpdf:itextg:5.5.10")
+    implementation ("androidx.work:work-runtime:2.7.1")
 
 
 

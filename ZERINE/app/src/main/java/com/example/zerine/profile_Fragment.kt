@@ -1,10 +1,13 @@
 package com.example.zerine
 
+import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.os.Environment
+import android.text.Editable
+
+import android.text.TextWatcher
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,30 +18,26 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.content.FileProvider
+import androidx.fragment.app.Fragment
+import com.google.android.gms.tasks.Tasks
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.CollectionReference
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
-import java.io.FileOutputStream
 import com.itextpdf.text.Document
 import com.itextpdf.text.Paragraph
 import com.itextpdf.text.pdf.PdfWriter
-import android.Manifest
-import android.content.Intent
-import androidx.core.content.FileProvider
-import com.google.android.gms.tasks.Tasks
-import com.google.firebase.firestore.DocumentSnapshot
 import java.io.File
+import java.io.FileOutputStream
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+import android.text.InputFilter
+import android.text.Spanned
 
 
 class profile_Fragment : Fragment() {
@@ -49,6 +48,7 @@ class profile_Fragment : Fragment() {
     private val collectionReference: CollectionReference = db.collection("info")
 
     private val MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 1
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -65,6 +65,10 @@ class profile_Fragment : Fragment() {
         val pgbarprof: ProgressBar = view.findViewById(R.id.progressBarprof)
         val exitbtn: ImageView = view.findViewById(R.id.exitbtn)
         val btnrec: Button = view.findViewById(R.id.button_USER_rec)
+        val prefix: TextView = view.findViewById(R.id.plussixthree)
+
+
+
 
 
         val currentUser: FirebaseUser? = mAuth.currentUser
@@ -126,14 +130,24 @@ class profile_Fragment : Fragment() {
                         if (document != null && document.exists()) {
                             val sosrecentName = document.getString("eContactsName")
                             val sosrecentMobile = document.getString("eContactsMobile")
+                            val sosrecentMobile0 = sosrecentMobile?.substring(3)
 
                             // Update TextViews
                             sosN.text = sosrecentName
-                            sosM.text = sosrecentMobile
+                            sosM.text = sosrecentMobile0
 
                             // Update EditTexts if needed
                             nameEdit.setText(sosrecentName)
-                            mobileEdit.setText(sosrecentMobile)
+                            mobileEdit.setText(sosrecentMobile0)
+
+                            /*val data = mobileEdit.text.toString()
+                            val intent = Intent(requireContext(), ForegroundServices::class.java).apply {
+                                putExtra("data_key", data)}
+                            requireContext().startService(intent)*/
+
+
+
+
                         } else {
                             // Handle the case when "EContacts" document doesn't exist
                             // This could include clearing/resetting values as needed
@@ -155,6 +169,7 @@ class profile_Fragment : Fragment() {
                 editBtn.setOnClickListener {
                     nameEdit.visibility = View.VISIBLE
                     mobileEdit.visibility = View.VISIBLE
+                    prefix.visibility = View.VISIBLE
                     applyBtn.visibility = View.VISIBLE
                     editBtn.visibility = View.GONE
 
@@ -171,8 +186,14 @@ class profile_Fragment : Fragment() {
 
                 applyBtn.setOnClickListener {
                     // Get the updated name and mobile values
+
                     val updatedName = nameEdit.text.toString()
-                    val updatedMobile = mobileEdit.text.toString()
+                    var updatedMobile = mobileEdit.text.toString()
+                    prefix.visibility = View.GONE
+                    val updatedMobile1 = "+63$updatedMobile"
+
+
+
 
                     // Check for null or empty values
                     if (updatedName.isEmpty() || updatedMobile.isEmpty()) {
@@ -195,7 +216,7 @@ class profile_Fragment : Fragment() {
                     if (userId2 != null) {
                         val eContacts = hashMapOf(
                             "eContactsName" to updatedName,
-                            "eContactsMobile" to updatedMobile
+                            "eContactsMobile" to updatedMobile1
                         )
 
                         db.collection("EContacts").document(userId2)
@@ -244,6 +265,12 @@ class profile_Fragment : Fragment() {
         val dialog: AlertDialog = builder.create()
         dialog.show()
     }
+
+
+
+
+
+
 
     fun generatePdf() {
         // Get the current user ID

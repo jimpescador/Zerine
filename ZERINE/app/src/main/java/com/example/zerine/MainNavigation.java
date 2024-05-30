@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.ActivityManager;
+import android.content.Context;
+import android.content.Intent;
 import com.example.zerine.databinding.ActivityMainNavigationBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import android.os.Bundle;
@@ -27,6 +30,15 @@ public class MainNavigation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainNavigationBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+
+
+        Intent serviceIntent = new Intent(this, ForegroundServices.class);
+
+        startForegroundService(serviceIntent);
+
+        foregroundServiceRunning();
+
 
 
         loadFragment(new home_Fragment());
@@ -57,5 +69,16 @@ public class MainNavigation extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frameLayout, fragment);
         fragmentTransaction.commit();
+    }
+
+    public boolean foregroundServiceRunning(){
+        ActivityManager activityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+
+        for(ActivityManager.RunningServiceInfo service : activityManager.getRunningServices(Integer.MAX_VALUE)){
+            if(ForegroundServices.class.getName().equals(service.service.getClassName())){
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -1,8 +1,11 @@
 package com.example.zerine
 import android.Manifest
+import android.app.ActivityManager
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothServerSocket
 import android.bluetooth.BluetoothSocket
+import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
@@ -16,10 +19,10 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import android.widget.ViewFlipper
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -31,6 +34,8 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import java.io.IOException
 import java.io.InputStream
+import java.util.Timer
+import java.util.TimerTask
 import java.util.UUID
 
 
@@ -44,7 +49,7 @@ class home_Fragment : Fragment() {
     private val MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB")
     private val bluetoothAdapter: BluetoothAdapter by lazy { BluetoothAdapter.getDefaultAdapter() }
     private var serverSocket: BluetoothServerSocket? = null
-    lateinit var txtphone: TextView
+    private lateinit var txtphone: TextView
     private val mAuth = FirebaseAuth.getInstance()
     companion object {
         private const val REQUEST_CODE_PERMISSION = 100
@@ -69,6 +74,8 @@ class home_Fragment : Fragment() {
 
         val view2 = inflater.inflate(R.layout.fragment_profile_, container, false)
         txtphone = view2.findViewById(R.id.sosmobile)
+
+
 
 
         val database = FirebaseDatabase.getInstance("https://database-ea0bd-default-rtdb.asia-southeast1.firebasedatabase.app")
@@ -132,6 +139,7 @@ class home_Fragment : Fragment() {
         exitImg.setOnClickListener {
             showExitDialog()
         }
+
         acceptConnection()
         /*Timer().scheduleAtFixedRate(object : TimerTask() {
             override fun run() {
@@ -141,6 +149,7 @@ class home_Fragment : Fragment() {
 
         return view
     }
+
 
     private fun acceptConnection() {
         Thread {
@@ -181,17 +190,19 @@ class home_Fragment : Fragment() {
             } catch (e: IOException) {
                 Log.e(TAG, "Error accepting connection: ${e.message}")
             } finally {
-                /* try {
+                /*try {
                     serverSocket?.close()
                      socket?.close()
                  } catch (e: IOException) {
                      Log.e(TAG, "Error closing sockets: ${e.message}")
                  }*/
+
             }
         }.start()
     }
 
     private fun sendCurrentLocation() {
+
         if (ActivityCompat.checkSelfPermission(
                 requireContext(),
                 Manifest.permission.ACCESS_FINE_LOCATION
@@ -234,7 +245,7 @@ class home_Fragment : Fragment() {
                 smsManager = SmsManager.getDefault()
             }
             smsManager.sendTextMessage(phoneNumber, null, message, null, null)
-            Toast.makeText(requireContext(), "Message Sent", Toast.LENGTH_LONG).show()
+            //Toast.makeText(requireContext(), "Message Sent", Toast.LENGTH_LONG).show()
 
         } catch (e: Exception) {
             Log.d("test006", "Error SMS: " + e.message.toString())
