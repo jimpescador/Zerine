@@ -217,7 +217,7 @@
         android:background="@drawable/rounded_editbox"
 
         android:inputType="number"
-        android:maxLength="10"
+        android:maxLength="11"
 
 
         android:textColor="@android:color/black"
@@ -229,22 +229,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.544" />
 
-    <TextView
-        android:id="@+id/plussixthree"
-        android:layout_width="137dp"
-        android:layout_height="55dp"
-        android:fontFamily="@font/hammersmith_one"
-        android:text="+63"
-        android:textAlignment="center"
-        android:textColor="#BF0A0A"
-        android:textSize="18sp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.379"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.564" />
 
     <Button
         android:id="@+id/button_USER_rec"

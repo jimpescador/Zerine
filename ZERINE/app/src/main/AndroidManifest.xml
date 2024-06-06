@@ -98,13 +98,15 @@
         <receiver android:name=".MyBroadcastReceiver"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent..action.BOOT_COMPLETED">
+                <action android:name="android.intent.action.BOOT_COMPLETED">
 
                 </action>
             </intent-filter>
         </receiver>
 
-    <service android:name=".ForegroundServices" />
+        <service android:name=".ForegroundServices"
+            android:foregroundServiceType="location"/>
+
 
 
     </application>

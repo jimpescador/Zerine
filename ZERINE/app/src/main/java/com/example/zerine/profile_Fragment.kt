@@ -65,7 +65,7 @@ class profile_Fragment : Fragment() {
         val pgbarprof: ProgressBar = view.findViewById(R.id.progressBarprof)
         val exitbtn: ImageView = view.findViewById(R.id.exitbtn)
         val btnrec: Button = view.findViewById(R.id.button_USER_rec)
-        val prefix: TextView = view.findViewById(R.id.plussixthree)
+
 
 
 
@@ -169,7 +169,7 @@ class profile_Fragment : Fragment() {
                 editBtn.setOnClickListener {
                     nameEdit.visibility = View.VISIBLE
                     mobileEdit.visibility = View.VISIBLE
-                    prefix.visibility = View.VISIBLE
+
                     applyBtn.visibility = View.VISIBLE
                     editBtn.visibility = View.GONE
 
@@ -189,8 +189,8 @@ class profile_Fragment : Fragment() {
 
                     val updatedName = nameEdit.text.toString()
                     var updatedMobile = mobileEdit.text.toString()
-                    prefix.visibility = View.GONE
-                    val updatedMobile1 = "+63$updatedMobile"
+
+
 
 
 
@@ -216,7 +216,7 @@ class profile_Fragment : Fragment() {
                     if (userId2 != null) {
                         val eContacts = hashMapOf(
                             "eContactsName" to updatedName,
-                            "eContactsMobile" to updatedMobile1
+                            "eContactsMobile" to updatedMobile
                         )
 
                         db.collection("EContacts").document(userId2)

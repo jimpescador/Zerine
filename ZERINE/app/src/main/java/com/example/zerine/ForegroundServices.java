@@ -1,5 +1,8 @@
 package com.example.zerine;
 
+import static android.system.Os.accept;
+import static androidx.core.content.ContentProviderCompat.requireContext;
+
 import android.Manifest;
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -14,6 +17,7 @@ import android.os.Build;
 import android.os.IBinder;
 import android.telephony.SmsManager;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -41,7 +45,7 @@ public class ForegroundServices extends Service {
 
     private static final String CHANNEL_ID = "ForegroundServiceChannel";
     private static final String TAG = "ForegroundServices";
-    private static final String MY_UUID = "00001101-0000-1000-8000-00805F9B34FB"; // Replace this with your generated UUID
+    private static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");; // Replace this with your generated UUID
     private BluetoothAdapter bluetoothAdapter;
     private BluetoothServerSocket serverSocket = null;
     private FusedLocationProviderClient fusedLocationClient;
@@ -93,7 +97,7 @@ public class ForegroundServices extends Service {
             public void run() {
                 acceptConnection();
             }
-        }, 0, 10000);
+        }, 0, 3000);
 
         return super.onStartCommand(intent, flags, startId);
     }
@@ -113,7 +117,7 @@ public class ForegroundServices extends Service {
                 }
                 Log.d(TAG, "Foreground: Listening...");
 
-                serverSocket = bluetoothAdapter.listenUsingRfcommWithServiceRecord("BluetoothExample", UUID.fromString(MY_UUID));
+                serverSocket = bluetoothAdapter.listenUsingRfcommWithServiceRecord("BluetoothExample", MY_UUID);
                 socket = serverSocket.accept();
                 InputStream inputStream = socket.getInputStream();
 
@@ -147,6 +151,59 @@ public class ForegroundServices extends Service {
         }).start();
     }
 
+    /*private void acceptConnection() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                BluetoothSocket socket = null;
+                try {
+                    if (ActivityCompat.checkSelfPermission(ForegroundServices.this, Manifest.permission.BLUETOOTH_CONNECT) != PackageManager.PERMISSION_GRANTED) {
+                        // TODO: Consider calling
+                        //    ActivityCompat#requestPermissions
+                        // here to request the missing permissions, and then overriding
+                        //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                        //                                          int[] grantResults)
+                        // to handle the case where the user grants the permission. See the documentation
+                        // for ActivityCompat#requestPermissions for more details.
+                        return;
+                    }
+                    Log.d(TAG, "Listening...");
+                    serverSocket = bluetoothAdapter.listenUsingRfcommWithServiceRecord("BluetoothExample", MY_UUID);
+                    socket = serverSocket.accept();
+                    InputStream inputStream = socket.getInputStream();
+
+                    byte[] buffer = new byte[1024];
+                    int bytes;
+                    while ((bytes = inputStream.read(buffer)) != -1) {
+                        String data = new String(buffer, 0, bytes);
+
+                        Log.d(TAG, "Received data: " + data);
+
+                        // Handle received data here
+                        if ("1".equals(data)) {
+                            // Send message here
+                            sendCurrentLocation();
+                        }
+                    }
+                } catch (IOException e) {
+                    Log.e(TAG, "Error accepting connection: " + e.getMessage());
+                } finally {
+                /*try {
+                    if (serverSocket != null) {
+                        serverSocket.close();
+                    }
+                    if (socket != null) {
+                        socket.close();
+                    }
+                } catch (IOException e) {
+                    Log.e(TAG, "Error closing sockets: " + e.getMessage());
+                }
+                }
+            }
+        }).start();
+    }*/
+
+
     private void sendCurrentLocation() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -175,6 +232,7 @@ public class ForegroundServices extends Service {
             }
             smsManager.sendTextMessage(phoneNumber, null, message, null, null);
             Log.d(TAG, "SMS sent successfully");
+            Toast.makeText(this, "Message Sent", Toast.LENGTH_LONG).show();
         } catch (Exception e) {
             Log.e(TAG, "Error sending SMS: " + e.getMessage(), e);
         }
