@@ -3,6 +3,8 @@ package com.example.zerine
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.text.Editable
 
@@ -38,6 +40,10 @@ import java.util.Date
 import java.util.Locale
 import android.text.InputFilter
 import android.text.Spanned
+import com.itextpdf.text.Element
+import com.itextpdf.text.Font
+import com.itextpdf.text.Image
+import java.io.ByteArrayOutputStream
 
 
 class profile_Fragment : Fragment() {
@@ -65,10 +71,6 @@ class profile_Fragment : Fragment() {
         val pgbarprof: ProgressBar = view.findViewById(R.id.progressBarprof)
         val exitbtn: ImageView = view.findViewById(R.id.exitbtn)
         val btnrec: Button = view.findViewById(R.id.button_USER_rec)
-
-
-
-
 
 
         val currentUser: FirebaseUser? = mAuth.currentUser
@@ -146,8 +148,6 @@ class profile_Fragment : Fragment() {
                             requireContext().startService(intent)*/
 
 
-
-
                         } else {
                             // Handle the case when "EContacts" document doesn't exist
                             // This could include clearing/resetting values as needed
@@ -189,10 +189,6 @@ class profile_Fragment : Fragment() {
 
                     val updatedName = nameEdit.text.toString()
                     var updatedMobile = mobileEdit.text.toString()
-
-
-
-
 
 
                     // Check for null or empty values
@@ -267,11 +263,6 @@ class profile_Fragment : Fragment() {
     }
 
 
-
-
-
-
-
     fun generatePdf() {
         // Get the current user ID
         val currentUser = FirebaseAuth.getInstance().currentUser
@@ -281,82 +272,225 @@ class profile_Fragment : Fragment() {
             // Fetch data from the "info" collection for the current user
             val infoDocumentReference = db.collection("info").document(userId)
             val eContactsDocumentReference = db.collection("EContacts").document(userId)
+            val fallDetectionCollectionReference = db.collection("fallDetection")
+            val seizureRecordsCollectionReference = db.collection("SeizureRecords")
+            val bpmCollectionReference = db.collection("BPM")
 
-            // Use Tasks.whenAllSuccess to combine results from both collections
-            Tasks.whenAllSuccess<DocumentSnapshot>(infoDocumentReference.get(), eContactsDocumentReference.get())
-                .addOnCompleteListener { taskList ->
-                    if (taskList.isSuccessful) {
-                        try {
-                            // Create a PDF document
-                            val document = Document()
+            // Use Tasks.whenAllSuccess to combine results from all collections
+            Tasks.whenAllSuccess<DocumentSnapshot>(
+                infoDocumentReference.get(),
+                eContactsDocumentReference.get()
+            ).addOnCompleteListener { taskList ->
+                if (taskList.isSuccessful) {
+                    try {
+                        // Create a PDF document
+                        val document = Document()
 
-                            // Use getExternalFilesDir to get a directory where your app can write
-                            val directory = requireContext().getExternalFilesDir(null)
+                        // Use getExternalFilesDir to get a directory where your app can write
+                        val directory = requireContext().getExternalFilesDir(null)
 
-                            // Add a timestamp to the file name to make it unique
-                            val timestamp = SimpleDateFormat(
-                                "yyyy-MM-dd",
-                                Locale.getDefault()
-                            ).format(Date())
-                            val fileName = "Zerine_Record_$timestamp.pdf"
+                        // Add a timestamp to the file name to make it unique
+                        val timestamp = SimpleDateFormat(
+                            "yyyy-MM-dd",
+                            Locale.getDefault()
+                        ).format(Date())
+                        val fileName = "Zerine_Record_$timestamp.pdf"
 
-                            val filePath = File(directory, fileName)
+                        val filePath = File(directory, fileName)
 
-                            // Create the parent directories if they don't exist
-                            filePath.parentFile?.mkdirs()
+                        // Create the parent directories if they don't exist
+                        filePath.parentFile?.mkdirs()
 
-                            PdfWriter.getInstance(document, FileOutputStream(filePath))
+                        PdfWriter.getInstance(document, FileOutputStream(filePath))
 
-                            document.open()
+                        document.open()
 
-                            // Retrieve data for the "info" collection
-                            val infoSnapshot = taskList.result?.get(0) as DocumentSnapshot?
-                            val name = infoSnapshot?.getString("Name")
-                            val mobile = infoSnapshot?.getString("Mobile")
-
-                            // Add "Name" to the PDF
-                            document.add(Paragraph("Name: $name"))
-
-                            // Add "Mobile" to the next line in the PDF
-                            document.add(Paragraph("Mobile: $mobile"))
-
-                            // Retrieve data for the "EContacts" collection
-                            val eContactsSnapshot = taskList.result?.get(1) as DocumentSnapshot?
-                            val eContactsName = eContactsSnapshot?.getString("eContactsName")
-                            val eContactsMobile = eContactsSnapshot?.getString("eContactsMobile")
-
-                            // Add "Emergency Contact Name" to the PDF
-                            document.add(Paragraph("Emergency Contact Name: $eContactsName"))
-
-                            // Add "Emergency Contact Mobile" to the next line in the PDF
-                            document.add(Paragraph("Emergency Contact Mobile: $eContactsMobile"))
-
-                            document.close()
-
-                            // Display the generated PDF using an Intent
-                            val intent = Intent(Intent.ACTION_VIEW)
-                            val uri = FileProvider.getUriForFile(
-                                requireContext(),
-                                "${requireContext().packageName}.provider",
-                                filePath
-                            )
-                            intent.setDataAndType(uri, "application/pdf")
-                            intent.flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
-
-                            startActivity(intent)
-
-                        } catch (e: Exception) {
-                            Log.e("PDF Generator", "Error: ${e.message}")
+                        // Add title "ZERINE"
+                        val titleFont = Font(Font.FontFamily.HELVETICA, 20f, Font.BOLD)
+                        val title = Paragraph("ZERINE", titleFont).apply {
+                            alignment = Element.ALIGN_CENTER
                         }
-                    } else {
-                        Log.e(
-                            "Firestore",
-                            "Error getting documents: ${taskList.exception?.message}"
-                        )
-                    }
-                }
-        }
+                        document.add(title)
 
+                        // Add logo
+                        val drawable = ContextCompat.getDrawable(requireContext(), R.drawable.logo)
+                        if (drawable != null) {
+                            val bitmap = (drawable as BitmapDrawable).bitmap
+                            val stream = ByteArrayOutputStream()
+                            bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
+                            val image = Image.getInstance(stream.toByteArray())
+                            image.scaleToFit(100f, 100f) // Adjust the size as needed
+                            image.alignment = Image.ALIGN_CENTER
+                            document.add(image)
+                        }
+
+                        val ViewFont = Font(Font.FontFamily.HELVETICA, 15f, Font.BOLD)
+                        val Font = Paragraph("Records", ViewFont).apply {
+                            alignment = Element.ALIGN_CENTER
+                            spacingAfter = 20f
+                        }
+                        document.add(Font)
+
+                        // Retrieve data for the "info" collection
+                        val infoSnapshot = taskList.result?.get(0) as DocumentSnapshot?
+                        val name = infoSnapshot?.getString("Name")
+                        val mobile = infoSnapshot?.getString("Mobile")
+
+                        // Add "Name" to the PDF
+                        document.add(Paragraph("Name: $name").apply {
+                            alignment = Element.ALIGN_CENTER // Align text to center
+                            spacingAfter = 10f // Add space after the paragraph
+                        })
+
+                        // Add "Mobile" to the PDF
+                        document.add(Paragraph("Mobile: $mobile").apply {
+                            alignment = Element.ALIGN_CENTER // Align text to center
+                            spacingAfter = 10f // Add space after the paragraph
+                        })
+
+                        // Retrieve data for the "EContacts" collection
+                        val eContactsSnapshot = taskList.result?.get(1) as DocumentSnapshot?
+                        val eContactsName = eContactsSnapshot?.getString("eContactsName")
+                        val eContactsMobile = eContactsSnapshot?.getString("eContactsMobile")
+
+                        // Add "Emergency Contact Name" to the PDF
+                        document.add(Paragraph("Emergency Contact Name: $eContactsName").apply {
+                            alignment = Element.ALIGN_CENTER // Align text to center
+                            spacingAfter = 10f // Add space after the paragraph
+                        })
+
+                        // Add "Emergency Contact Mobile" to the PDF
+                        document.add(Paragraph("Emergency Contact Mobile: $eContactsMobile").apply {
+                            alignment = Element.ALIGN_CENTER // Align text to center
+                            spacingAfter = 10f // Add space after the paragraph
+                        })
+
+                        // Retrieve the latest AvgBPM from the "BPM" collection
+                        bpmCollectionReference.limit(1).get().addOnSuccessListener { bpmDocuments ->
+                            val bpmDocument = bpmDocuments.documents.firstOrNull()
+                            val avgBpm = bpmDocument?.getDouble("AvgBPM")
+
+                            val formattedAvgBpm = String.format("%.2f", avgBpm)
+
+                            // Add AvgBPM data to the PDF with space and centered alignment
+                            document.add(Paragraph("Average BPM: $formattedAvgBpm").apply {
+                                alignment = Element.ALIGN_CENTER // Align text to center
+                                spacingBefore = 10f
+                                spacingAfter = 10f // Add space after the paragraph
+                            })
+
+
+                            // Retrieve data for the "fallDetection" collection
+                            fallDetectionCollectionReference.get()
+                                .addOnSuccessListener { fallDocuments ->
+                                    val fallDataList = mutableListOf<String>()
+
+                                    // Process each fall detection document
+                                    for (fallDocument in fallDocuments) {
+                                        try {
+                                            // Retrieve timestamp
+                                            val stampFall =
+                                                fallDocument.getTimestamp("timestamp")?.toDate()
+                                                    ?.toString()
+
+                                            // Retrieve fall detection status (boolean)
+                                            val fallDetected =
+                                                fallDocument.getBoolean("fallDetected")
+                                            val fallDetectedText =
+                                                if (fallDetected == true) "True" else "False"
+
+                                            // Add fall data to the list
+                                            fallDataList.add("Fall Detected: $fallDetectedText\nTimestamp: $stampFall")
+                                        } catch (e: Exception) {
+                                            Log.e(
+                                                "PDF Generator",
+                                                "Error processing fall detection data: ${e.message}"
+                                            )
+                                        }
+                                    }
+
+                                    // Add Fall Detection data to the PDF with space and centered alignment
+                                    document.add(Paragraph("Fall Detection Records:").apply {
+                                        alignment = Element.ALIGN_CENTER // Align text to center
+                                        spacingAfter = 10f // Add space after the paragraph
+
+                                    })
+
+                                    fallDataList.forEach { fallData ->
+                                        document.add(Paragraph(fallData).apply {
+                                            alignment = Element.ALIGN_CENTER // Align text to center
+                                            spacingBefore = 5f // Add space before each line of data
+                                        })
+                                    }
+
+                                    // Retrieve data for the "SeizureRecords" collection
+                                    seizureRecordsCollectionReference.get()
+                                        .addOnSuccessListener { seizureDocuments ->
+                                            val seizureDataList = mutableListOf<String>()
+
+                                            // Process each seizure document
+                                            for (seizureDocument in seizureDocuments) {
+                                                try {
+                                                    // Retrieve timestamp
+                                                    val stampSeizure =
+                                                        seizureDocument.getTimestamp("timestamp")
+                                                            ?.toDate()?.toString()
+
+                                                    // Add seizure data to the list
+                                                    seizureDataList.add("Timestamp: $stampSeizure")
+                                                } catch (e: Exception) {
+                                                    Log.e(
+                                                        "PDF Generator",
+                                                        "Error processing seizure data: ${e.message}"
+                                                    )
+                                                }
+                                            }
+
+                                            // Add Seizure Records data to the PDF with space and centered alignment
+                                            document.add(Paragraph("Seizure Records:").apply {
+                                                alignment =
+                                                    Element.ALIGN_CENTER // Align text to center
+                                                spacingBefore = 10f
+                                                spacingAfter = 10f // Add space after the paragraph
+                                            })
+
+                                            seizureDataList.forEach { seizureData ->
+                                                document.add(Paragraph(seizureData).apply {
+                                                    alignment =
+                                                        Element.ALIGN_CENTER // Align text to center
+                                                    spacingBefore =
+                                                        5f // Add space before each line of data
+                                                })
+                                            }
+
+
+
+
+
+                                            document.close()
+
+                                            // Display the generated PDF using an Intent
+                                            val intent = Intent(Intent.ACTION_VIEW)
+                                            val uri = FileProvider.getUriForFile(
+                                                requireContext(),
+                                                "${requireContext().packageName}.provider",
+                                                filePath
+                                            )
+                                            intent.setDataAndType(uri, "application/pdf")
+                                            intent.flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
+
+                                            startActivity(intent)
+                                        }
+                                }
+                        }
+                    } catch (e: Exception) {
+                        Log.e("PDF Generator", "Error: ${e.message}")
+                    }
+                } else {
+                    Log.e("Firestore", "Error getting documents: ${taskList.exception?.message}")
+                }
+            }
+        }
     }
 }
 
