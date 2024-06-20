@@ -149,7 +149,7 @@
         android:layout_width="165dp"
         android:layout_height="33dp"
         android:fontFamily="@font/roboto"
-        android:text="-"
+
         android:textAlignment="center"
         android:textColor="#0B0101"
         android:textSize="20sp"

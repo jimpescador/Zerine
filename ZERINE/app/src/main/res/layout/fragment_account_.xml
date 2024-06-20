@@ -42,7 +42,7 @@
         android:src="@drawable/logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
@@ -66,30 +66,28 @@
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="23dp"
         android:layout_marginBottom="13dp"
         android:fontFamily="@font/days_one"
         android:text="@string/account"
         android:textColor="#FD1544"
         android:textSize="34sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView4"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.108" />
 
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="171dp"
         android:layout_height="160dp"
-        android:layout_marginStart="114dp"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="114dp"
         android:src="@drawable/profile"
 
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.219" />
 
     <TextView
         android:id="@+id/namelabel"
@@ -123,7 +121,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        app:layout_constraintVertical_bias="0.526" />
 
     <TextView
         android:id="@+id/NameTXT"
@@ -132,14 +130,15 @@
         android:fontFamily="@font/roboto"
         android:text="@string/name"
         android:visibility="gone"
+
+
         android:textColor="#0C0000"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.397" />
+        app:layout_constraintVertical_bias="0.4" />
 
     <TextView
         android:id="@+id/MobileTXT"
@@ -148,6 +147,7 @@
         android:fontFamily="@font/roboto"
         android:text="Mobile"
         android:visibility="gone"
+
         android:textColor="#0C0000"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -155,7 +155,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.515" />
+        app:layout_constraintVertical_bias="0.489" />
 
     <Button
         android:id="@+id/btnEdit"
@@ -177,42 +177,42 @@
         android:id="@+id/btnApply"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="37dp"
         android:background="@drawable/box"
         android:text="Apply"
-        android:visibility="gone"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.433"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
+        android:visibility="gone"
 
         app:layout_constraintTop_toTopOf="@+id/toolbar"
-        app:layout_constraintVertical_bias="0.666" />
+        app:layout_constraintVertical_bias="0.645" />
 
     <EditText
         android:id="@+id/EditText_Name"
         android:layout_width="220dp"
-        android:layout_height="50dp"
-        android:visibility="gone"
+        android:layout_height="30dp"
+
         android:autofillHints="Enter Name"
         android:background="@drawable/rounded_editbox"
         android:ems="10"
         android:hint="Enter Name"
         android:inputType="text"
         android:textColor="#090000"
-
+        android:visibility="gone"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.455" />
+        app:layout_constraintVertical_bias="0.441" />
 
     <EditText
         android:id="@+id/EditText_Mobile"
         android:layout_width="220dp"
-        android:layout_height="50dp"
+        android:layout_height="30dp"
         android:visibility="gone"
         android:autofillHints=""
         android:background="@drawable/rounded_editbox"
@@ -226,7 +226,7 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.583" />
+        app:layout_constraintVertical_bias="0.527" />
 
     <ProgressBar
         android:id="@+id/progressBarAcc"

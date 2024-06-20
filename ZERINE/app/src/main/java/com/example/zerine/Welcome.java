@@ -79,8 +79,8 @@ public class Welcome extends AppCompatActivity {
                 //Toast.makeText(this, "All permissions are granted.", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(this, "All permissions are required for this app.", Toast.LENGTH_SHORT).show();
-                this.finish();
-                System.exit(0);
+                //this.finish();
+                //System.exit(0);
             }
         }
     }

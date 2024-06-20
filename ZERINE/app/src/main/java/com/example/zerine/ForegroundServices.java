@@ -129,6 +129,8 @@ public class ForegroundServices extends Service {
 
                     if ("1".equals(data)) {
                         sendCurrentLocation();
+                    } else if ("2".equals(data)) {
+                        sendLocationFall();
                     }
                 }
             }catch (IOException e) {
@@ -202,6 +204,24 @@ public class ForegroundServices extends Service {
             }
         }).start();
     }*/
+
+    private void sendLocationFall() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+
+        fusedLocationClient.getLastLocation().addOnSuccessListener(location -> {
+            if (location != null) {
+                double latitude = location.getLatitude();
+                double longitude = location.getLongitude();
+                String locationMessage = "Zerine Companion \nFall Detected! \nLocation: https://maps.google.com?q=" + latitude + "," + longitude;
+                sendSMS(phoneNumber, locationMessage);
+            } else {
+                Log.d(TAG, "Invalid Location");
+            }
+        });
+    }
 
 
     private void sendCurrentLocation() {
