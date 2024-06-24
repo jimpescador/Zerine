@@ -107,7 +107,7 @@ class settings_Fragment : Fragment() {
             val infoDocumentReference = db.collection("info").document(userId)
             val eContactsDocumentReference = db.collection("EContacts").document(userId)
             val fallDetectionCollectionReference = db.collection("fallDetection")
-            val seizureRecordsCollectionReference = db.collection("SeizureRecords")
+            val seizureRecordsCollectionReference = db.collection("Seizurerecords")
             val bpmCollectionReference = db.collection("BPM")
 
             // Use Tasks.whenAllSuccess to combine results from all collections
@@ -215,93 +215,110 @@ class settings_Fragment : Fragment() {
                             })
 
 
+                            // Retrieve data for the "fallDetection" collection
+                            fallDetectionCollectionReference.get()
+                                .addOnSuccessListener { fallDocuments ->
+                                    val fallDataList = mutableListOf<String>()
 
-                        // Retrieve data for the "fallDetection" collection
-                        fallDetectionCollectionReference.get().addOnSuccessListener { fallDocuments ->
-                            val fallDataList = mutableListOf<String>()
+                                    // Process each fall detection document
+                                    for (fallDocument in fallDocuments) {
+                                        try {
+                                            // Retrieve timestamp
+                                            val stampFall =
+                                                fallDocument.getTimestamp("timestamp")?.toDate()
+                                                    ?.toString()
 
-                            // Process each fall detection document
-                            for (fallDocument in fallDocuments) {
-                                try {
-                                    // Retrieve timestamp
-                                    val stampFall = fallDocument.getTimestamp("timestamp")?.toDate()?.toString()
+                                            // Retrieve fall detection status (boolean)
+                                            val fallDetected =
+                                                fallDocument.getBoolean("fallDetected")
+                                            val fallDetectedText =
+                                                if (fallDetected == true) "True" else "N/A"
 
-                                    // Retrieve fall detection status (boolean)
-                                    val fallDetected = fallDocument.getBoolean("fallDetected")
-                                    val fallDetectedText = if (fallDetected == true) "True" else "False"
-
-                                    // Add fall data to the list
-                                    fallDataList.add("Fall Detected: $fallDetectedText\nTimestamp: $stampFall")
-                                } catch (e: Exception) {
-                                    Log.e("PDF Generator", "Error processing fall detection data: ${e.message}")
-                                }
-                            }
-
-                            // Add Fall Detection data to the PDF with space and centered alignment
-                            document.add(Paragraph("Fall Detection Records:").apply {
-                                alignment = Element.ALIGN_CENTER // Align text to center
-                                spacingAfter = 10f // Add space after the paragraph
-                                spacingAfter = 20f
-                            })
-
-                            fallDataList.forEach { fallData ->
-                                document.add(Paragraph(fallData).apply {
-                                    alignment = Element.ALIGN_CENTER // Align text to center
-                                    spacingBefore = 5f // Add space before each line of data
-                                })
-                            }
-
-                            // Retrieve data for the "SeizureRecords" collection
-                            seizureRecordsCollectionReference.get().addOnSuccessListener { seizureDocuments ->
-                                val seizureDataList = mutableListOf<String>()
-
-                                // Process each seizure document
-                                for (seizureDocument in seizureDocuments) {
-                                    try {
-                                        // Retrieve timestamp
-                                        val stampSeizure = seizureDocument.getTimestamp("timestamp")?.toDate()?.toString()
-
-                                        // Add seizure data to the list
-                                        seizureDataList.add("Timestamp: $stampSeizure")
-                                    } catch (e: Exception) {
-                                        Log.e("PDF Generator", "Error processing seizure data: ${e.message}")
+                                            // Add fall data to the list
+                                            fallDataList.add("Fall Detected: $fallDetectedText\nTimestamp: $stampFall")
+                                        } catch (e: Exception) {
+                                            Log.e(
+                                                "PDF Generator",
+                                                "Error processing fall detection data: ${e.message}"
+                                            )
+                                        }
                                     }
-                                }
 
-                                // Add Seizure Records data to the PDF with space and centered alignment
-                                document.add(Paragraph("Seizure Records:").apply {
-                                    alignment = Element.ALIGN_CENTER // Align text to center
-                                    spacingBefore = 10f
-                                    spacingAfter = 10f // Add space after the paragraph
-                                })
-
-                                seizureDataList.forEach { seizureData ->
-                                    document.add(Paragraph(seizureData).apply {
+                                    // Add Fall Detection data to the PDF with space and centered alignment
+                                    document.add(Paragraph("Fall Detection Records:").apply {
                                         alignment = Element.ALIGN_CENTER // Align text to center
-                                        spacingBefore = 5f // Add space before each line of data
+                                        spacingAfter = 10f // Add space after the paragraph
+                                        spacingAfter = 20f
                                     })
+
+                                    fallDataList.forEach { fallData ->
+                                        document.add(Paragraph(fallData).apply {
+                                            alignment = Element.ALIGN_CENTER // Align text to center
+                                            spacingBefore = 5f // Add space before each line of data
+                                        })
+                                    }
+
+                                    // Retrieve data for the "SeizureRecords" collection
+                                    seizureRecordsCollectionReference.get()
+                                        .addOnSuccessListener { seizureDocuments ->
+                                            val seizureDataList = mutableListOf<String>()
+
+                                            // Process each seizure document
+                                            for (seizureDocument in seizureDocuments) {
+                                                try {
+                                                    // Retrieve timestamp
+                                                    val stampSeizure =
+                                                        seizureDocument.getTimestamp("timestamp")
+                                                            ?.toDate()?.toString()
+
+                                                    // Add seizure data to the list
+                                                    seizureDataList.add("Timestamp: $stampSeizure")
+                                                } catch (e: Exception) {
+                                                    Log.e(
+                                                        "PDF Generator",
+                                                        "Error processing seizure data: ${e.message}"
+                                                    )
+                                                }
+                                            }
+
+                                            // Add Seizure Records data to the PDF with space and centered alignment
+                                            document.add(Paragraph("Seizure Records:").apply {
+                                                alignment =
+                                                    Element.ALIGN_CENTER // Align text to center
+                                                spacingBefore = 10f
+                                                spacingAfter = 10f // Add space after the paragraph
+                                            })
+
+                                            seizureDataList.forEach { seizureData ->
+                                                document.add(Paragraph(seizureData).apply {
+                                                    alignment =
+                                                        Element.ALIGN_CENTER // Align text to center
+                                                    spacingBefore =
+                                                        5f // Add space before each line of data
+                                                })
+                                            }
+
+
+
+
+
+                                            document.close()
+
+                                            // Display the generated PDF using an Intent
+                                            val intent = Intent(Intent.ACTION_VIEW)
+                                            val uri = FileProvider.getUriForFile(
+                                                requireContext(),
+                                                "${requireContext().packageName}.provider",
+                                                filePath
+                                            )
+                                            intent.setDataAndType(uri, "application/pdf")
+                                            intent.flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
+
+                                            startActivity(intent)
+                                        }
                                 }
-
-
-
-
-
-                                    document.close()
-
-                                    // Display the generated PDF using an Intent
-                                    val intent = Intent(Intent.ACTION_VIEW)
-                                    val uri = FileProvider.getUriForFile(
-                                        requireContext(),
-                                        "${requireContext().packageName}.provider",
-                                        filePath
-                                    )
-                                    intent.setDataAndType(uri, "application/pdf")
-                                    intent.flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
-
-                                    startActivity(intent)
-                                }
-                            }
                         }
+
                     } catch (e: Exception) {
                         Log.e("PDF Generator", "Error: ${e.message}")
                     }
@@ -359,7 +376,7 @@ class settings_Fragment : Fragment() {
                         val bpm = bpmDocuments.documents[0].getDouble("AvgBPM")
                         String.format("%.1f", bpm)
                     } else {
-                        null
+                        "N/A"
                     }
                     Log.d("Firestore", "AvgBPM retrieved successfully: $avgBPM")
                     // Continue processing the retrieved data here

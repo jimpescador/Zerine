@@ -1,5 +1,7 @@
 package com.example.zerine;
 
+import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TASK;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -68,6 +70,7 @@ public class Login extends AppCompatActivity {
                 if (validateFields()) {
                     loginUser();
                     progressBar.setVisibility(View.VISIBLE);
+
                 }
             }
         });
@@ -101,6 +104,7 @@ public class Login extends AppCompatActivity {
                             progressBar.setVisibility(View.GONE);
                             Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_LONG).show();
                             Intent intent = new Intent(Login.this, MainNavigation.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent);
                             finish();
                         } else {

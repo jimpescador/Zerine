@@ -18,9 +18,8 @@ import java.util.Map;
 
 public class Register extends AppCompatActivity {
     EditText editTextUser, editTextPass, editTextEmail, editTextFname, editTextCNum;
-    String AccountTypeChoice;
 
-    RadioButton RadioUser,RadioParent;
+
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firestore;
     ProgressBar progressBar;
@@ -35,8 +34,7 @@ public class Register extends AppCompatActivity {
         editTextEmail = findViewById(R.id.reg_email);
         editTextFname = findViewById(R.id.reg_fname);
         editTextCNum = findViewById(R.id.reg_cnum);
-        RadioUser = findViewById(R.id.radUser);
-        RadioParent = findViewById(R.id.radParent);
+
 
         Button button1 = findViewById(R.id.btnRegisterAccount);
 
@@ -54,11 +52,6 @@ public class Register extends AppCompatActivity {
     }
 
     private void registerUser() {
-
-
-
-        String AccLevel = AccountTypeChoice;
-
 
         String username = editTextUser.getText().toString().trim();
         String password = editTextPass.getText().toString().trim();
@@ -113,19 +106,6 @@ public class Register extends AppCompatActivity {
         }
 
 
-        if (RadioUser.isChecked()) {
-            AccountTypeChoice = RadioUser.getText().toString().trim();
-        }
-        else if (RadioParent.isChecked()){
-            AccountTypeChoice = RadioParent.getText().toString().trim();
-        }
-        else {
-            Toast.makeText(getApplicationContext(), "Select Account Type User or Parent", Toast.LENGTH_SHORT).show();
-            progressBar.setVisibility(View.GONE);
-            return;
-
-        }
-
         firebaseAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
@@ -134,7 +114,7 @@ public class Register extends AppCompatActivity {
                         Map<String, Object> info = new HashMap<>();
                         info.put("Name", firstName);
                         info.put("Mobile", contact);
-                        info.put("AccountType", AccountTypeChoice);
+
 
                         firestore.collection("info").document(accountId).set(info)
                                 .addOnSuccessListener(aVoid -> {

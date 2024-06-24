@@ -35,6 +35,7 @@ class TriggerEdit : AppCompatActivity() {
         val adecrementButton = findViewById<Button>(R.id.adecrementButton)
 
         val saveButton = findViewById<Button>(R.id.saveButton)
+        val backButton = findViewById<Button>(R.id.backbtn)
         auth = FirebaseAuth.getInstance()
 
         incrementButton.setOnClickListener {
@@ -88,6 +89,10 @@ class TriggerEdit : AppCompatActivity() {
             if (hasFocus) {
                 selectedEditText = numberInput4
             }
+        }
+
+        backButton.setOnClickListener{
+            finish()
         }
 
         saveButton.setOnClickListener { saveToFirebase() }

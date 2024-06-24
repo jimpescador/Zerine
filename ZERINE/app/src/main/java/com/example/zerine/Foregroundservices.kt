@@ -128,7 +128,7 @@ class Foregroundservices : Service() {
             if (location != null) {
                 val latitude = location.latitude
                 val longitude = location.longitude
-                val locationMessage = "Zerine Companion \nSeizure Detected! \nLocation: https://maps.google.com?q=$latitude,$longitude"
+                val locationMessage = "Zerine Companion \nPossible Seizure Detected! \nLocation: https://maps.google.com?q=$latitude,$longitude"
                 sendSMS(phoneNumber, locationMessage)
             } else {
                 Log.d(TAG, "Invalid Location")
