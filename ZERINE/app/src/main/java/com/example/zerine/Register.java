@@ -94,7 +94,7 @@ public class Register extends AppCompatActivity {
             return;
         }
 
-        if (username.isEmpty() || password.isEmpty() || email.isEmpty() || firstName.isEmpty() || contact.isEmpty()) {
+       /* if (username.isEmpty() || password.isEmpty() || email.isEmpty() || firstName.isEmpty() || contact.isEmpty()) {
             Toast.makeText(getApplicationContext(), "All fields must be filled", Toast.LENGTH_SHORT).show();
             editTextCNum.setError("Contact is required");
             editTextFname.setError("Full name is required");
@@ -103,7 +103,7 @@ public class Register extends AppCompatActivity {
             editTextUser.setError("Username is required");
             progressBar.setVisibility(View.GONE);
             return;
-        }
+        }*/
 
 
         firebaseAuth.createUserWithEmailAndPassword(email, password)
