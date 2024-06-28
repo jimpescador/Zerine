@@ -14,7 +14,9 @@ import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
+import android.os.Handler;
 import android.os.IBinder;
+import android.os.Looper;
 import android.telephony.SmsManager;
 import android.util.Log;
 import android.widget.Toast;
@@ -24,6 +26,10 @@ import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.firebase.auth.FirebaseAuth;
@@ -35,8 +41,19 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.UUID;
@@ -51,6 +68,8 @@ public class ForegroundServices extends Service {
     private FusedLocationProviderClient fusedLocationClient;
     private String phoneNumber;
 
+    private RequestQueue requestQueue;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -61,6 +80,7 @@ public class ForegroundServices extends Service {
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+
         new Thread(() -> {
             while (true) {
                 //Log.d(TAG, "Foreground Service is running...");
@@ -215,7 +235,7 @@ public class ForegroundServices extends Service {
             if (location != null) {
                 double latitude = location.getLatitude();
                 double longitude = location.getLongitude();
-                String locationMessage = "Zerine Companion \nFall Detected! \nLocation: https://maps.google.com?q=" + latitude + "," + longitude;
+                String locationMessage = "Zerine Companion \nPossible Fall Detected! \nLocation: " + latitude + "," + longitude + "\nPlease enter coordinates in Google Maps";
                 sendSMS(phoneNumber, locationMessage);
             } else {
                 Log.d(TAG, "Invalid Location");
@@ -234,13 +254,68 @@ public class ForegroundServices extends Service {
             if (location != null) {
                 double latitude = location.getLatitude();
                 double longitude = location.getLongitude();
-                String locationMessage = "Zerine Companion \nSeizure Detected! \nLocation: https://maps.google.com?q=" + latitude + "," + longitude;
+                String locationMessage = "Zerine Companion \nSeizure Detected! \nLocation Coordinates: " + latitude + "," + longitude + "\nPlease enter the coordinates in Google Maps";
                 sendSMS(phoneNumber, locationMessage);
-            } else {
+            }  else {
                 Log.d(TAG, "Invalid Location");
             }
         });
     }
+
+    /*private void shortenURL(String longURL) {
+        String accessToken = "70e40d03314a36658a517a8922395abce9cd8721";
+        String endpoint = "https://api-ssl.bitly.com/v4/shorten";
+
+        JSONObject requestBody = new JSONObject();
+        try {
+            requestBody.put("long_url", longURL);
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return;
+        }
+
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, endpoint, requestBody,
+                response -> {
+                    try {
+                        String shortURL = response.getString("link");
+                        String locationMessage = "Zerine Companion \nPossible Seizure Detected! \nLocation: " + shortURL;
+                        sendSMS(phoneNumber, locationMessage);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        sendSMS(phoneNumber, "Zerine Companion \nPossible Seizure Detected! \nLocation: " + longURL);
+                    }
+                },
+                error -> {
+                    error.printStackTrace();
+                    sendSMS(phoneNumber, "Zerine Companion \nPossible Seizure Detected! \nLocation: " + longURL);
+                }) {
+            @Override
+            public String getBodyContentType() {
+                return "application/json";
+            }
+
+            @Override
+            public byte[] getBody() {
+                try {
+                    return requestBody.toString().getBytes("utf-8");
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                    return null;
+                }
+            }
+
+            @Override
+            public Map<String, String> getHeaders() {
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Authorization", "Bearer " + accessToken);
+                return headers;
+            }
+        };
+
+        // Add the request to the RequestQueue
+        requestQueue.add(request);
+    }*/
+
 
     private void sendSMS(String phoneNumber, String message) {
         try {
@@ -255,7 +330,16 @@ public class ForegroundServices extends Service {
             Toast.makeText(this, "Message Sent", Toast.LENGTH_LONG).show();
         } catch (Exception e) {
             Log.e(TAG, "Error sending SMS: " + e.getMessage(), e);
+            showToastOnUiThread("SMS not sent");
         }
+    }
+    private void showToastOnUiThread(final String message) {
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     private void fetchPhoneNumberFromFirebase() {

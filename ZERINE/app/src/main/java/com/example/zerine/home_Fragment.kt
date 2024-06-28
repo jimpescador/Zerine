@@ -12,6 +12,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -70,6 +71,7 @@ class home_Fragment : Fragment() {
         val exitImg: ImageView = view.findViewById(R.id.exitbtn)
         val bpmvalue: EditText = view.findViewById(R.id.BPM_value_edittext)
         val spo2value: EditText = view.findViewById(R.id.O2_value_edittext)
+        val manualbtn: Button = view.findViewById(R.id.button)
         phone = view.findViewById(R.id.editTextPhone)
 
         val view2 = inflater.inflate(R.layout.fragment_profile_, container, false)
@@ -118,6 +120,9 @@ class home_Fragment : Fragment() {
 
         exitImg.setOnClickListener {
             showExitDialog()
+        }
+        manualbtn.setOnClickListener {
+
         }
 
         /*Timer().scheduleAtFixedRate(object : TimerTask() {
@@ -240,4 +245,6 @@ class home_Fragment : Fragment() {
         val dialog: AlertDialog = builder.create()
         dialog.show()
     }
+
+
 }

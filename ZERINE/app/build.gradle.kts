@@ -68,6 +68,8 @@ dependencies {
     implementation ("com.google.android.gms:play-services-location:21.1.0")
     implementation ("com.itextpdf:itextg:5.5.10")
     implementation ("androidx.work:work-runtime:2.7.1")
+    implementation ("com.android.volley:volley:1.2.0")
+
 
 
 

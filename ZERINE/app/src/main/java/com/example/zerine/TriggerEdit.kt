@@ -3,6 +3,7 @@ package com.example.zerine
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.FirebaseFirestore
@@ -35,7 +36,7 @@ class TriggerEdit : AppCompatActivity() {
         val adecrementButton = findViewById<Button>(R.id.adecrementButton)
 
         val saveButton = findViewById<Button>(R.id.saveButton)
-        val backButton = findViewById<Button>(R.id.backbtn)
+        val backButton = findViewById<ImageView>(R.id.backbtn)
         auth = FirebaseAuth.getInstance()
 
         incrementButton.setOnClickListener {

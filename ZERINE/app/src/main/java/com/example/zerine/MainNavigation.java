@@ -35,7 +35,7 @@ public class MainNavigation extends AppCompatActivity {
 
         Intent serviceIntent = new Intent(this, ForegroundServices.class);
 
-        startForegroundService(serviceIntent);
+        startService(serviceIntent);
 
         foregroundServiceRunning();
 
